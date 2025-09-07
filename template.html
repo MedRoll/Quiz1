@@ -1,160 +1,332 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiz Interattivo</title>
-    <style>
-        /* --- Il tuo CSS rimane invariato --- */
-        /* (omesso qui per brevità, copia quello che mi hai passato) */
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz Interattivo</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f4f6f9;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    h1 {
+      text-align: center;
+      color: #0066cc;
+      margin-bottom: 20px;
+    }
+
+    #start-container {
+      text-align: center;
+      margin: 40px 0;
+    }
+
+    #start-container button {
+      font-size: 1.5rem;
+      padding: 16px 28px;
+      background: linear-gradient(90deg, #007bff, #00c6ff);
+      border: none;
+      border-radius: 50px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.2s, background 0.3s;
+    }
+    #start-container button:hover {
+      transform: scale(1.05);
+      background: linear-gradient(90deg, #0056b3, #0094cc);
+    }
+
+    .stats {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 15px;
+      font-size: 1.1rem;
+    }
+
+    .progress-container {
+      background: #e0e0e0;
+      border-radius: 20px;
+      height: 14px;
+      margin-bottom: 25px;
+      overflow: hidden;
+    }
+
+    #progress-bar {
+      width: 0%;
+      height: 100%;
+      background: linear-gradient(to right, #4caf50, #8bc34a);
+      transition: width 0.4s;
+    }
+
+    .card {
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+      animation: fadeIn 0.6s ease-out forwards;
+    }
+
+    #domanda {
+      font-size: 1.3rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    #risposte {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .risposta {
+      background: #f8f9fa;
+      padding: 14px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 1.1rem;
+      border: 2px solid transparent;
+      transition: all 0.25s ease;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+    .risposta:hover {
+      background: #e9ecef;
+      transform: translateY(-2px);
+    }
+    .corretta {
+      background: #4caf50 !important;
+      color: white !important;
+      border-color: #4caf50 !important;
+    }
+    .sbagliata {
+      background: #dc3545 !important;
+      color: white !important;
+      border-color: #dc3545 !important;
+    }
+
+    .controls {
+      text-align: center;
+      margin: 20px 0;
+    }
+    .controls button {
+      margin: 6px;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      background: #007bff;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.2s;
+    }
+    .controls button:hover {
+      background: #0056b3;
+    }
+    .btn-danger {
+      background: #e74c3c;
+    }
+    .btn-danger:hover {
+      background: #c0392b;
+    }
+
+    #recap {
+      margin-top: 30px;
+    }
+    .domandaRecap {
+      background: white;
+      border-left: 5px solid #007bff;
+      padding: 18px;
+      margin: 18px 0;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .domandaRecap strong {
+      color: #333;
+    }
+    .risposta-testuale.corretta {
+      color: #155724;
+      background: #d4edda;
+      padding: 4px 8px;
+      border-radius: 6px;
+    }
+    .risposta-testuale.sbagliata {
+      color: #721c24;
+      background: #f8d7da;
+      padding: 4px 8px;
+      border-radius: 6px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 </head>
 <body>
-    <div id="start-container" style="text-align: center; margin-bottom: 30px;">
-        <button onclick="iniziaQuiz()">🎤 Avvia Quiz</button>
-    </div>
-    <h1 style="display:none;" id="titolo-quiz">Quiz a Scelta Multipla</h1>
-    <div class="stats" id="stats-container" style="display:none;">
-        <div><strong>Punteggio:</strong> <span id="punteggio">0</span></div>
-        <div><strong>Domanda:</strong> <span id="contatore">0</span>/15</div>
-    </div>
+  <div id="start-container">
+    <button onclick="iniziaQuiz()">🚀 Avvia il Quiz</button>
+  </div>
 
-    <div class="progress-container" style="background-color: #444; border-radius: 30px; margin-bottom: 20px; overflow: hidden;">
-        <div id="progress-bar" style="width: 0%; height: 14px; background: linear-gradient(to right, #ff416c, #ff4b2b); transition: width 0.4s;"></div>
-    </div>
+  <h1 id="titolo-quiz" style="display:none;">Quiz a Scelta Multipla</h1>
 
-    <div class="card" id="card-container" style="display:none; border-radius: 20px; padding: 30px;">
-        <div id="domanda">Caricamento...</div>
-        <div id="risposte"></div>
-        <div id="feedback" style="margin-top: 15px;"></div>
-    </div>
+  <div class="stats" id="stats-container" style="display:none;">
+    <div><strong>Punteggio:</strong> <span id="punteggio">0</span></div>
+    <div><strong>Domanda:</strong> <span id="contatore">0</span>/15</div>
+  </div>
 
-    <div class="controls controls-container" style="display:none;" id="controls-container">
-        <button onclick="caricaDomanda()">Avanti</button>
-        <button class="btn-danger" onclick="terminaTest()">🛑 Termina Test</button>
-        <button onclick="ricomincia()">🔄 Ricomincia</button>
-    </div>
+  <div class="progress-container" style="display:none;" id="progress-wrapper">
+    <div id="progress-bar"></div>
+  </div>
 
-    <div id="recap"></div>
+  <div class="card" id="card-container" style="display:none;">
+    <div id="domanda">Caricamento...</div>
+    <div id="risposte"></div>
+    <div id="feedback" style="margin-top: 15px;"></div>
+  </div>
 
-    <script>
-        let rispostaCorretta = "";
-        let punteggio = 0;
-        let tutteDomande = [];
-        let domandeEstratte = [];
-        let ultimaDomanda = null;
-        let risposteUtente = [];
-        const MAX_DOMANDE = 15;
+  <div class="controls" style="display:none;" id="controls-container">
+    <button onclick="caricaDomanda()">➡️ Avanti</button>
+    <button class="btn-danger" onclick="terminaTest()">🛑 Termina Test</button>
+    <button onclick="ricomincia()">🔄 Ricomincia</button>
+  </div>
 
-        const quizName = "{{ quiz_name }}";  // viene passato dal backend
+  <div id="recap"></div>
 
-        async function fetchTutteDomande() {
-            const res = await fetch(`/quiz/${quizName}/data`);
-            tutteDomande = await res.json();
+  <script>
+    let rispostaCorretta = "";
+    let punteggio = 0;
+    let tutteDomande = [];
+    let domandeEstratte = [];
+    let domandeFatte = new Set();
+    let ultimaDomanda = null;
+    let risposteUtente = [];
+    let tempoInizio = null;
+    const MAX_DOMANDE = 15;
 
-            // adatta i campi se nel JSON usi "question"/"options"/"answer"
-            domandeEstratte = tutteDomande.map(q => ({
-                domanda: q.question,
-                risposte: q.options,
-                corretta: q.answer
-            })).sort(() => Math.random() - 0.5).slice(0, MAX_DOMANDE);
+    async function fetchTutteDomande() {
+      const res = await fetch('/quiz_all');
+      tutteDomande = await res.json();
+      domandeEstratte = tutteDomande.sort(() => Math.random() - 0.5).slice(0, MAX_DOMANDE);
+      caricaDomanda();
+    }
 
-            caricaDomanda();
-        }
+    function caricaDomanda() {
+      if (domandeFatte.size >= MAX_DOMANDE) {
+        mostraRecap();
+        return;
+      }
+      const domandaData = domandeEstratte[domandeFatte.size];
+      domandeFatte.add(domandaData.domanda);
+      ultimaDomanda = domandaData;
 
-        function caricaDomanda() {
-            if (risposteUtente.length >= MAX_DOMANDE) {
-                mostraRecap();
-                return;
-            }
+      document.getElementById('domanda').textContent = domandaData.domanda;
+      document.getElementById('contatore').textContent = domandeFatte.size;
+      const progress = Math.floor((domandeFatte.size / MAX_DOMANDE) * 100);
+      document.getElementById('progress-bar').style.width = progress + "%";
+      rispostaCorretta = domandaData.corretta;
 
-            const domandaData = domandeEstratte[risposteUtente.length];
-            ultimaDomanda = domandaData;
+      const risposte = [...domandaData.risposte].sort(() => Math.random() - 0.5);
+      const container = document.getElementById('risposte');
+      container.innerHTML = "";
+      document.getElementById('feedback').textContent = "";
 
-            document.getElementById('domanda').textContent = domandaData.domanda;
-            rispostaCorretta = domandaData.corretta;
+      risposte.forEach(r => {
+        const btn = document.createElement('div');
+        btn.className = 'risposta';
+        btn.textContent = r;
+        btn.onclick = () => verificaRisposta(btn, r);
+        container.appendChild(btn);
+      });
+    }
 
-            const container = document.getElementById('risposte');
-            container.innerHTML = "";
-            domandaData.risposte.sort(() => Math.random() - 0.5).forEach(r => {
-                const btn = document.createElement('div');
-                btn.className = 'risposta';
-                btn.textContent = r;
-                btn.onclick = () => verificaRisposta(btn, r);
-                container.appendChild(btn);
-            });
-        }
+    function verificaRisposta(elemento, rispostaUtente) {
+      const tutte = document.querySelectorAll('.risposta');
+      tutte.forEach(el => el.onclick = null);
 
-        function verificaRisposta(elemento, rispostaUtente) {
-            const tutte = document.querySelectorAll('.risposta');
-            tutte.forEach(el => el.onclick = null);
+      let corretto = false;
+      if (rispostaUtente === rispostaCorretta) {
+        elemento.classList.add('corretta');
+        document.getElementById('feedback').textContent = "✅ Corretto!";
+        punteggio += 1;
+        corretto = true;
+      } else {
+        elemento.classList.add('sbagliata');
+        document.getElementById('feedback').textContent = "❌ Sbagliato!";
+        tutte.forEach(el => {
+          if (el.textContent === rispostaCorretta) el.classList.add('corretta');
+        });
+      }
 
-            if (rispostaUtente === rispostaCorretta) {
-                elemento.classList.add('corretta');
-                document.getElementById('feedback').textContent = "✅ Corretto!";
-                punteggio++;
-            } else {
-                elemento.classList.add('sbagliata');
-                document.getElementById('feedback').textContent = "❌ Sbagliato!";
-                tutte.forEach(el => {
-                    if (el.textContent === rispostaCorretta) el.classList.add('corretta');
-                });
-            }
+      document.getElementById('punteggio').textContent = punteggio;
+      risposteUtente.push({
+        domanda: ultimaDomanda.domanda,
+        rispostaUtente,
+        corretta: rispostaCorretta,
+        esito: corretto
+      });
+    }
 
-            document.getElementById('punteggio').textContent = punteggio;
-            risposteUtente.push({
-                domanda: ultimaDomanda.domanda,
-                rispostaUtente,
-                corretta: rispostaCorretta,
-                esito: rispostaUtente === rispostaCorretta
-            });
-        }
+    function mostraRecap() {
+      const tempoFine = Date.now();
+      const secondi = Math.floor((tempoFine - tempoInizio) / 1000);
+      const minuti = Math.floor(secondi / 60);
+      const sec = secondi % 60;
+      const tempoTrascorso = `⏱️ Tempo impiegato: ${minuti} min ${sec} sec`;
+      const corretteTot = risposteUtente.filter(r => r.esito).length;
+      const sbagliateTot = risposteUtente.length - corretteTot;
+      const punteggioFinale = `🏁 Risposte corrette: ${corretteTot} | ❌ Sbagliate: ${sbagliateTot}`;
 
-        function mostraRecap() {
-            document.getElementById('domanda').textContent = "📊 Test completato!";
-            document.getElementById('risposte').innerHTML = "";
-            document.getElementById('feedback').textContent = "";
+      document.getElementById('domanda').textContent = "📊 Test completato!";
+      document.getElementById('risposte').innerHTML = "";
+      document.getElementById('feedback').textContent = "";
 
-            let recapHTML = "<h2>Riepilogo Risposte</h2>";
-            risposteUtente.forEach((item, i) => {
-                recapHTML += `
-                    <div class='domandaRecap'>
-                        <div><strong>${i + 1}. ${item.domanda}</strong></div>
-                        <div><strong>Tua risposta:</strong> ${item.rispostaUtente}</div>
-                        <div><strong>Corretta:</strong> ${item.corretta}</div>
-                        <div><strong>Esito:</strong> ${item.esito ? "✅" : "❌"}</div>
-                    </div>
-                `;
-            });
-            document.getElementById('recap').innerHTML = recapHTML;
-        }
+      let recapHTML = "<h2>Riepilogo Risposte</h2>";
+      risposteUtente.forEach((item, i) => {
+        const corretta = item.rispostaUtente === item.corretta;
+        recapHTML += `
+          <div class='domandaRecap'>
+            <div><strong>${i + 1}. ${item.domanda}</strong></div>
+            ${!corretta ? `<div><strong>Tua risposta:</strong> <span class="risposta-testuale sbagliata">✏️ ${item.rispostaUtente}</span></div>` : ``}
+            <div><strong>Risposta corretta:</strong> <span class="risposta-testuale corretta">✅ ${item.corretta}</span></div>
+            <div><strong>Esito:</strong> <span style="color:${item.esito ? 'green' : 'red'}">${item.esito ? '✅ Corretto' : '❌ Sbagliato'}</span></div>
+          </div>
+        `;
+      });
+      document.getElementById('recap').innerHTML = `<p>${tempoTrascorso}</p><p>${punteggioFinale}</p>` + recapHTML;
+    }
 
-        function ricomincia() {
-            punteggio = 0;
-            risposteUtente = [];
-            document.getElementById('punteggio').textContent = "0";
-            document.getElementById('recap').innerHTML = "";
-            fetchTutteDomande();
-        }
+    function ricomincia() {
+      punteggio = 0;
+      domandeFatte.clear();
+      risposteUtente = [];
+      document.getElementById('punteggio').textContent = "0";
+      document.getElementById('recap').innerHTML = "";
+      fetchTutteDomande();
+    }
 
-        function terminaTest() {
-            risposteUtente = domandeEstratte.map(d => ({
-                domanda: d.domanda,
-                rispostaUtente: "Non risposto",
-                corretta: d.corretta,
-                esito: false
-            }));
-            mostraRecap();
-        }
+    function terminaTest() {
+      domandeFatte = new Set(Array.from(domandeEstratte.map(d => d.domanda)));
+      mostraRecap();
+    }
 
-        function iniziaQuiz() {
-            document.getElementById('start-container').style.display = 'none';
-            document.getElementById('titolo-quiz').style.display = 'block';
-            document.getElementById('stats-container').style.display = 'flex';
-            document.getElementById('card-container').style.display = 'block';
-            document.getElementById('controls-container').style.display = 'flex';
-            fetchTutteDomande();
-        }
-    </script>
+    function iniziaQuiz() {
+      tempoInizio = Date.now();
+      document.getElementById('start-container').style.display = 'none';
+      document.getElementById('titolo-quiz').style.display = 'block';
+      document.getElementById('stats-container').style.display = 'flex';
+      document.getElementById('progress-wrapper').style.display = 'block';
+      document.getElementById('card-container').style.display = 'block';
+      document.getElementById('controls-container').style.display = 'block';
+      fetchTutteDomande();
+    }
+  </script>
 </body>
 </html>
