@@ -1,10 +1,12 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from fastapi.responses import HTMLResponse
+from fastapi.templating import Jinja2Templates
 import json
-import random
 from pathlib import Path
+import random
 
 app = FastAPI()
+templates = Jinja2Templates(directory=".")
 
 qa_data = []
 
@@ -17,6 +19,10 @@ def load_qa():
             qa_data.extend(json.load(f))
 
 load_qa()
+
+# ----------------------------
+# Rotte per QA base
+# ----------------------------
 
 @app.get("/domande")
 def get_all_qa():
@@ -33,13 +39,21 @@ def get_random_qa():
     return random.choice(qa_data)
 
 # ----------------------------
-# NUOVE ROTTE PER GESTIONE QUIZ MULTIPLI
+# Rotte per quiz multipli
 # ----------------------------
 
-@app.get("/quiz/{quiz_name}")
-def get_quiz(quiz_name: str):
-    """Carica un quiz in base al nome (es: /quiz/pompiere -> multiple_choice_pompiere.json)."""
-    file_path = Path(f"multiple_choice_{quiz_name}.json")
+@app.get("/quiz/{quiz_name}", response_class=HTMLResponse)
+def get_quiz_page(request: Request, quiz_name: str):
+    """Mostra il template interattivo per il quiz scelto"""
+    return templates.TemplateResponse("template.html", {
+        "request": request,
+        "quiz_name": quiz_name
+    })
+
+@app.get("/quiz/{quiz_name}/data")
+def get_quiz_data(quiz_name: str):
+    """Restituisce i dati del quiz (JSON)"""
+    file_path = Path("quiz") / f"multiple_choice_{quiz_name}.json"
     if not file_path.exists():
         return {"errore": f"Quiz '{quiz_name}' non trovato."}
     with open(file_path, "r", encoding="utf-8") as f:
@@ -47,7 +61,7 @@ def get_quiz(quiz_name: str):
 
 @app.get("/menu", response_class=HTMLResponse)
 def menu():
-    """Mostra una pagina di menu per scegliere il quiz."""
+    """Menu di scelta quiz"""
     html = """
     <!DOCTYPE html>
     <html lang="it">
@@ -58,21 +72,19 @@ def menu():
     <body>
       <h1>Scegli il tuo quiz</h1>
       <ul>
-            <li><a href="/quiz/pompiere">Quiz Pompiere</a></li>
-             <li><a href="/quiz/generale">Quiz Generale</a></li>
-            <li><a href="/quiz/primo_soccorso">Quiz Primo Soccorso</a></li>
-             <li><a href="/quiz/competenze">Quiz Competenze Digitali</a></li>
+        <li><a href="/quiz/pompiere">Quiz Pompiere</a></li>
+        <li><a href="/quiz/generale">Quiz Generale</a></li>
+        <li><a href="/quiz/primo_soccorso">Quiz Primo Soccorso</a></li>
+        <li><a href="/quiz/competenze">Quiz Competenze Digitali</a></li>
       </ul>
     </body>
     </html>
     """
     return HTMLResponse(content=html)
 
-# ----------------------------
-# HOME PAGE (vecchia index)
-# ----------------------------
-
 @app.get("/", response_class=HTMLResponse)
-def index():
-    with open("template.html", encoding="utf-8") as f:
-        return f.read()
+def index(request: Request):
+    return templates.TemplateResponse("template.html", {
+        "request": request,
+        "quiz_name": "generale"  # default
+    })
