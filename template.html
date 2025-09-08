@@ -85,8 +85,14 @@
   </style>
 </head>
 <body>
+  <!-- SCHERMATA INIZIALE -->
   <div id="start-container" style="text-align: center; margin-bottom: 30px;">
-    <button onclick="iniziaQuiz()">🎤 Avvia Quiz</button>
+    <h1>Seleziona un quiz</h1>
+    <button onclick="iniziaQuiz(1)">🎤 Quiz 2 - Competenze Digitali Base </button>
+    <button onclick="iniziaQuiz(2)">🎤 Quiz 2 - Internet, Email e PEC</button>
+    <button onclick="iniziaQuiz(3)">🎤 Quiz 3 - SPID,Cybersecurity e GDPR</button>
+    <button onclick="iniziaQuiz(4)">🎤 Quiz 4 - Social Media</button>
+    <button onclick="iniziaQuiz(5)">🎤 Quiz 5 - Produttività,Cyberbullismo e Tecnologia</button>
   </div>
 
   <h1 style="display:none;" id="titolo-quiz">Quiz a Scelta Multipla</h1>
@@ -120,10 +126,11 @@
     let ultimaDomanda = null;
     let risposteUtente = [];
     let indexDomanda = 0;
+    let quizCorrente = 1; // quiz selezionato
     const MAX_DOMANDE = 20;
 
     async function fetchDomanda(index) {
-      const res = await fetch(`/sequenza/${index}`);
+      const res = await fetch(`/quiz/${quizCorrente}/${index}`);
       return await res.json();
     }
 
@@ -134,8 +141,12 @@
       }
 
       const domandaData = await fetchDomanda(indexDomanda);
-      ultimaDomanda = domandaData;
+      if (domandaData.errore) {
+        mostraRecap();
+        return;
+      }
 
+      ultimaDomanda = domandaData;
       document.getElementById('domanda').textContent = domandaData.domanda;
       document.getElementById('contatore').textContent = indexDomanda + 1;
       document.getElementById('progress-bar').style.width = Math.floor(((indexDomanda + 1) / MAX_DOMANDE) * 100) + "%";
@@ -220,7 +231,13 @@
       mostraRecap();
     }
 
-    function iniziaQuiz() {
+    function iniziaQuiz(quizId) {
+      quizCorrente = quizId; // salvo il quiz selezionato
+      punteggio = 0;
+      indexDomanda = 0;
+      risposteUtente = [];
+      document.getElementById('punteggio').textContent = "0";
+      document.getElementById('recap').innerHTML = "";
       document.getElementById('start-container').style.display = 'none';
       document.getElementById('titolo-quiz').style.display = 'block';
       document.getElementById('stats-container').style.display = 'flex';
