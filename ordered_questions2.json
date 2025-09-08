@@ -1,0 +1,182 @@
+[
+  {
+    "domanda": "Che cos’è Internet?",
+    "risposte": [
+      "Un insieme di server privati con accesso limitato",
+      "Una rete mondiale che collega dispositivi tramite protocolli comuni (TCP/IP)",
+      "Un programma installato sul computer per navigare online"
+    ],
+    "corretta": "Una rete mondiale che collega dispositivi tramite protocolli comuni (TCP/IP)"
+  },
+  {
+    "domanda": "Qual è la differenza tra Internet e World Wide Web (WWW)?",
+    "risposte": [
+      "Internet è la rete globale, il WWW è un servizio che utilizza Internet",
+      "WWW è l’infrastruttura fisica, Internet è il contenuto delle pagine web",
+      "Non esiste differenza: sono sinonimi"
+    ],
+    "corretta": "Internet è la rete globale, il WWW è un servizio che utilizza Internet"
+  },
+  {
+    "domanda": "Qual è la funzione dei protocolli TCP/IP?",
+    "risposte": [
+      "Gestire la trasmissione dei dati tra dispositivi connessi in rete",
+      "Proteggere la connessione da virus e malware",
+      "Salvare i dati dell’utente durante la navigazione"
+    ],
+    "corretta": "Gestire la trasmissione dei dati tra dispositivi connessi in rete"
+  },
+  {
+    "domanda": "Perché Internet è considerato una rivoluzione degli anni ’90?",
+    "risposte": [
+      "Ha introdotto i primi sistemi di pagamento digitale",
+      "Ha permesso la comunicazione e la condivisione di dati su scala globale",
+      "Ha sostituito completamente la rete telefonica tradizionale"
+    ],
+    "corretta": "Ha permesso la comunicazione e la condivisione di dati su scala globale"
+  },
+  {
+    "domanda": "Che cos’è un motore di ricerca?",
+    "risposte": [
+      "Un programma che analizza dati e restituisce risultati in base a parole chiave",
+      "Un dispositivo che accelera la connessione a Internet",
+      "Un browser specializzato per siti web indicizzati"
+    ],
+    "corretta": "Un programma che analizza dati e restituisce risultati in base a parole chiave"
+  },
+  {
+    "domanda": "Qual è la differenza tra browser e motore di ricerca?",
+    "risposte": [
+      "Il browser consente di visualizzare i siti, il motore di ricerca aiuta a trovarli",
+      "Il browser elabora i dati, il motore di ricerca li memorizza",
+      "Non c’è differenza: svolgono la stessa funzione"
+    ],
+    "corretta": "Il browser consente di visualizzare i siti, il motore di ricerca aiuta a trovarli"
+  },
+  {
+    "domanda": "Quale di questi è un browser?",
+    "risposte": [
+      "Mozilla Firefox",
+      "Yahoo",
+      "Google"
+    ],
+    "corretta": "Mozilla Firefox"
+  },
+  {
+    "domanda": "Quale di questi è un motore di ricerca?",
+    "risposte": [
+      "Bing",
+      "Microsoft Edge",
+      "Opera"
+    ],
+    "corretta": "Bing"
+  },
+  {
+    "domanda": "Come si può verificare la sicurezza di un sito web?",
+    "risposte": [
+      "Controllando se utilizza il protocollo HTTPS e un certificato valido",
+      "Aprendolo solo tramite dispositivi mobili",
+      "Analizzando la lunghezza dell’indirizzo web"
+    ],
+    "corretta": "Controllando se utilizza il protocollo HTTPS e un certificato valido"
+  },
+  {
+    "domanda": "Che cos’è un certificato SSL?",
+    "risposte": [
+      "Un sistema per crittografare i dati trasmessi tra utente e sito",
+      "Un antivirus che protegge i siti web dai malware",
+      "Un file temporaneo che accelera il caricamento delle pagine"
+    ],
+    "corretta": "Un sistema per crittografare i dati trasmessi tra utente e sito"
+  },
+  {
+    "domanda": "Qual è la funzione principale della posta elettronica?",
+    "risposte": [
+      "Scambiare messaggi e allegati tramite Internet",
+      "Navigare tra siti sicuri",
+      "Memorizzare dati di navigazione"
+    ],
+    "corretta": "Scambiare messaggi e allegati tramite Internet"
+  },
+  {
+    "domanda": "Come è strutturato un indirizzo email?",
+    "risposte": [
+      "Dominio seguito da “/” e nome utente",
+      "Nome utente seguito da “@” e dominio",
+      "Nome utente seguito da “#” e percorso di rete"
+    ],
+    "corretta": "Nome utente seguito da “@” e dominio"
+  },
+  {
+    "domanda": "Qual è il significato del campo CC in una email?",
+    "risposte": [
+      "Inviare una copia visibile ad altri destinatari oltre al principale",
+      "Nascondere il messaggio agli altri destinatari",
+      "Impedire la risposta automatica del destinatario"
+    ],
+    "corretta": "Inviare una copia visibile ad altri destinatari oltre al principale"
+  },
+  {
+    "domanda": "Qual è il significato del campo CCN in una email?",
+    "risposte": [
+      "Inviare una copia a destinatari nascosti",
+      "Inviare il messaggio solo al mittente originale",
+      "Condividere l’email su più dispositivi"
+    ],
+    "corretta": "Inviare una copia a destinatari nascosti"
+  },
+  {
+    "domanda": "Che cos’è la PEC?",
+    "risposte": [
+      "Una casella email con spazio illimitato",
+      "Un sistema di posta elettronica che certifica l’invio e la ricezione con valore legale",
+      "Un protocollo Internet usato solo per comunicazioni aziendali"
+    ],
+    "corretta": "Un sistema di posta elettronica che certifica l’invio e la ricezione con valore legale"
+  },
+  {
+    "domanda": "Quale di questi è un vantaggio della PEC?",
+    "risposte": [
+      "Garantisce la prova legale di invio e consegna dei messaggi",
+      "Cripta automaticamente tutti gli allegati in formato PDF",
+      "Funziona anche senza connessione a Internet"
+    ],
+    "corretta": "Garantisce la prova legale di invio e consegna dei messaggi"
+  },
+  {
+    "domanda": "Qual è uno svantaggio della PEC?",
+    "risposte": [
+      "Ha costi di gestione e non è riconosciuta come standard internazionale",
+      "Non permette di inviare allegati di grandi dimensioni",
+      "Cancella automaticamente i messaggi dopo 7 giorni"
+    ],
+    "corretta": "Ha costi di gestione e non è riconosciuta come standard internazionale"
+  },
+  {
+    "domanda": "Chi gestisce e controlla i fornitori PEC in Italia?",
+    "risposte": [
+      "Agenzia per l’Italia Digitale (AGID)",
+      "Ministero delle Comunicazioni",
+      "Camera di Commercio"
+    ],
+    "corretta": "Agenzia per l’Italia Digitale (AGID)"
+  },
+  {
+    "domanda": "Qual è la validità di una PEC inviata a una casella email ordinaria?",
+    "risposte": [
+      "Non ha pieno valore legale come una PEC-PEC",
+      "Ha lo stesso valore se l’email ordinaria conferma la ricezione",
+      "Vale solo se il destinatario accetta la notifica"
+    ],
+    "corretta": "Non ha pieno valore legale come una PEC-PEC"
+  },
+  {
+    "domanda": "Perché la posta elettronica tradizionale è ancora molto usata?",
+    "risposte": [
+      "È gratuita, veloce e sufficiente per la maggior parte delle comunicazioni",
+      "È l’unico modo per inviare documenti ufficiali",
+      "Offre sempre una prova legale della consegna"
+    ],
+    "corretta": "È gratuita, veloce e sufficiente per la maggior parte delle comunicazioni"
+  }
+]
