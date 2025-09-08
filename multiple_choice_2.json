@@ -1,0 +1,181 @@
+    {
+        "domanda": "Che cos’è l’informatica?",
+        "risposte": [
+            "La disciplina che progetta solo applicazioni per dispositivi mobili",
+            "La scienza che gestisce dati tramite raccolta, elaborazione e trasmissione",
+            "L’insieme di dispositivi elettronici presenti in una rete aziendale"
+        ],
+        "corretta": "La scienza che gestisce dati tramite raccolta, elaborazione e trasmissione"
+    },
+    {
+        "domanda": "Qual è uno dei principali vantaggi dell’informatica nella vita quotidiana?",
+        "risposte": [
+            "Automatizzare attività e rendere più rapido l’accesso alle informazioni",
+            "Ridurre il consumo di memoria dei dispositivi elettronici",
+            "Impedire la connessione ai servizi online non autorizzati"
+        ],
+        "corretta": "Automatizzare attività e rendere più rapido l’accesso alle informazioni"
+    },
+    {
+        "domanda": "Che cos’è un computer?",
+        "risposte": [
+            "Un apparecchio che memorizza file multimediali senza elaborarli",
+            "Una macchina elettronica capace di ricevere, elaborare e restituire dati",
+            "Un programma che gestisce la connessione a Internet"
+        ],
+        "corretta": "Una macchina elettronica capace di ricevere, elaborare e restituire dati"
+    },
+    {
+        "domanda": "Cosa si intende per hardware e software?",
+        "risposte": [
+            "Componenti visibili e invisibili che permettono il funzionamento di un sistema informatico",
+            "Due tipi di dispositivi di archiviazione per dati digitali",
+            "Due protocolli di comunicazione tra computer in rete"
+        ],
+        "corretta": "Componenti visibili e invisibili che permettono il funzionamento di un sistema informatico"
+    },
+    {
+        "domanda": "Qual è la funzione principale della CPU?",
+        "risposte": [
+            "Coordinare le periferiche di rete esterne",
+            "Eseguire le istruzioni dei programmi e gestire l’elaborazione dei dati",
+            "Archiviare file in modo permanente"
+        ],
+        "corretta": "Eseguire le istruzioni dei programmi e gestire l’elaborazione dei dati"
+    },
+    {
+        "domanda": "Quale tra i seguenti è un dispositivo di input?",
+        "risposte": [
+            "Stampante",
+            "Monitor",
+            "Scanner"
+        ],
+        "corretta": "Scanner"
+    },
+    {
+        "domanda": "Quale tra i seguenti è un dispositivo di output?",
+        "risposte": [
+            "Tastiera",
+            "Stampante",
+            "Joystick"
+        ],
+        "corretta": "Stampante"
+    },
+    {
+        "domanda": "Che cos’è il software?",
+        "risposte": [
+            "L’insieme dei componenti fisici del computer",
+            "L’insieme delle istruzioni che indicano al computer come operare",
+            "Un tipo di memoria RAM dedicata ai programmi"
+        ],
+        "corretta": "L’insieme delle istruzioni che indicano al computer come operare"
+    },
+    {
+        "domanda": "In cosa differiscono sistema operativo e software applicativo?",
+        "risposte": [
+            "Il sistema operativo gestisce risorse hardware e supporta gli applicativi, mentre gli applicativi risolvono funzioni specifiche",
+            "Gli applicativi funzionano solo offline, i sistemi operativi solo online",
+            "Non esiste alcuna distinzione, sono sinonimi"
+        ],
+        "corretta": "Il sistema operativo gestisce risorse hardware e supporta gli applicativi, mentre gli applicativi risolvono funzioni specifiche"
+    },
+    {
+        "domanda": "Quale di questi è un esempio di sistema operativo?",
+        "risposte": [
+            "Google Chrome",
+            "Microsoft Windows",
+            "Adobe Acrobat Reader"
+        ],
+        "corretta": "Microsoft Windows"
+    },
+    {
+        "domanda": "Quale di questi è un software applicativo?",
+        "risposte": [
+            "Linux Ubuntu",
+            "Microsoft PowerPoint",
+            "BIOS"
+        ],
+        "corretta": "Microsoft PowerPoint"
+    },
+    {
+        "domanda": "Che cos’è Microsoft Word?",
+        "risposte": [
+            "Un programma per creare e formattare documenti di testo",
+            "Un foglio elettronico per eseguire calcoli e grafici",
+            "Un’applicazione per gestire database relazionali"
+        ],
+        "corretta": "Un programma per creare e formattare documenti di testo"
+    },
+    {
+        "domanda": "Quale combinazione da tastiera consente di incollare un testo in Word?",
+        "risposte": [
+            "CTRL + V",
+            "CTRL + C",
+            "CTRL + X"
+        ],
+        "corretta": "CTRL + V"
+    },
+    {
+        "domanda": "A cosa serve principalmente Microsoft Excel?",
+        "risposte": [
+            "A elaborare immagini e creare presentazioni",
+            "A gestire dati numerici, effettuare calcoli e creare tabelle",
+            "A installare aggiornamenti di sistema operativo"
+        ],
+        "corretta": "A gestire dati numerici, effettuare calcoli e creare tabelle"
+    },
+    {
+        "domanda": "La funzione CONCATENA in Excel serve per:",
+        "risposte": [
+            "Sommare numeri in un intervallo",
+            "Unire più testi o valori in un’unica cella",
+            "Ordinare i dati in ordine alfabetico"
+        ],
+        "corretta": "Unire più testi o valori in un’unica cella"
+    },
+    {
+        "domanda": "Qual è la differenza tra USB e HDMI?",
+        "risposte": [
+            "USB trasmette dati e alimentazione, HDMI trasmette audio e video",
+            "HDMI gestisce file di sistema, USB solo applicazioni",
+            "Entrambi servono solo per ricaricare dispositivi mobili"
+        ],
+        "corretta": "USB trasmette dati e alimentazione, HDMI trasmette audio e video"
+    },
+    {
+        "domanda": "Quale di questi è un dispositivo di memoria permanente?",
+        "risposte": [
+            "RAM",
+            "SSD",
+            "Cache L1"
+        ],
+        "corretta": "SSD"
+    },
+    {
+        "domanda": "Che cos’è un software open source?",
+        "risposte": [
+            "Un programma che può essere modificato e distribuito liberamente dagli utenti",
+            "Un programma disponibile solo su abbonamento annuale",
+            "Un software che funziona esclusivamente su sistemi Windows"
+        ],
+        "corretta": "Un programma che può essere modificato e distribuito liberamente dagli utenti"
+    },
+    {
+        "domanda": "Che ruolo ha il compilatore nello sviluppo software?",
+        "risposte": [
+            "Convertire il codice sorgente in linguaggio macchina eseguibile",
+            "Analizzare i file per rimuovere virus e malware",
+            "Gestire l’avvio automatico del sistema operativo"
+        ],
+        "corretta": "Convertire il codice sorgente in linguaggio macchina eseguibile"
+    },
+    {
+        "domanda": "Qual è la funzione principale di un motore di ricerca?",
+        "risposte": [
+            "Conservare file multimediali online",
+            "Individuare e mostrare risultati pertinenti in base a parole chiave",
+            "Bloccare siti non sicuri durante la navigazione"
+        ],
+        "corretta": "Individuare e mostrare risultati pertinenti in base a parole chiave"
+    }
+]
