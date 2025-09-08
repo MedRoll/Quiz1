@@ -1,8 +1,6 @@
-
 from fastapi import FastAPI
 from fastapi.responses import HTMLResponse
 import json
-import random
 from pathlib import Path
 
 app = FastAPI()
@@ -10,14 +8,20 @@ app = FastAPI()
 qa_data = []
 quiz_data = []
 
+# nuova lista ordinata che userai al posto del random
+ordered_questions = []
+
 def load_data():
-    global qa_data, quiz_data
+    global qa_data, quiz_data, ordered_questions
     for filename, target in [("qa.json", qa_data), ("multiple_choice.json", quiz_data)]:
         path = Path(filename)
         if path.exists():
             with open(path, "r", encoding="utf-8") as f:
                 target.clear()
                 target.extend(json.load(f))
+
+    # qui puoi sostituire ordered_questions con la lista che mi darai
+    ordered_questions = qa_data[:]  # copia qa_data in ordine
 
 load_data()
 
@@ -31,13 +35,18 @@ def get_qa(index: int):
         return qa_data[index]
     return {"errore": "Indice non valido"}
 
-@app.get("/random")
-def get_random_qa():
-    return random.choice(qa_data)
+# invece di random, restituiamo sequenzialmente dalla lista ordinata
+@app.get("/sequenza/{index}")
+def get_sequenza(index: int):
+    if 0 <= index < len(ordered_questions):
+        return ordered_questions[index]
+    return {"errore": "Indice non valido"}
 
-@app.get("/quiz_data")
-def get_quiz_data():
-    return random.choice(quiz_data)
+@app.get("/quiz_data/{index}")
+def get_quiz_data(index: int):
+    if 0 <= index < len(quiz_data):
+        return quiz_data[index]
+    return {"errore": "Indice non valido"}
 
 @app.get("/quiz_all")
 def get_all_quiz_data():
