@@ -5,11 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Quiz Interattivo</title>
   <style>
-    /* --- STILI --- */
-    html {
-      font-size: 16px;
-      scroll-behavior: smooth;
-    }
     body {
       font-family: 'Segoe UI', sans-serif;
       background-color: #1c1f2b;
@@ -30,10 +25,8 @@
     }
     .card {
       background-color: #2a2e3d;
-      color: white;
       padding: 25px;
       border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
       margin-bottom: 20px;
     }
     .risposta {
@@ -78,10 +71,6 @@
     .btn-danger:hover {
       background-color: #b5271b;
     }
-    #risposte {
-      display: grid;
-      gap: 1rem;
-    }
   </style>
 </head>
 <body>
@@ -93,7 +82,7 @@
 
   <div class="stats" id="stats-container" style="display:none;">
     <div><strong>Punteggio:</strong> <span id="punteggio">0</span></div>
-    <div><strong>Domanda:</strong> <span id="contatore">0</span>/15</div>
+    <div><strong>Domanda:</strong> <span id="contatore">0</span>/<span id="totale">0</span></div>
   </div>
 
   <div class="progress-container" style="background-color: #444; border-radius: 30px; margin-bottom: 20px; overflow: hidden;">
@@ -101,7 +90,7 @@
   </div>
 
   <div class="card" id="card-container" style="display:none;">
-    <div id="domanda" style="font-size: 1.4em; font-weight: bold; border: 2px solid #007bff; padding: 20px; border-radius: 10px; background-color: #2a2e3d; color: white; margin-bottom: 20px;">Caricamento...</div>
+    <div id="domanda" style="font-size: 1.4em; font-weight: bold; border: 2px solid #007bff; padding: 20px; border-radius: 10px; margin-bottom: 20px;">Caricamento...</div>
     <div id="risposte"></div>
     <div id="feedback" style="margin-top: 15px;"></div>
   </div>
@@ -115,33 +104,33 @@
   <div id="recap"></div>
 
   <script>
-    let rispostaCorretta = "";
     let punteggio = 0;
-    let ultimaDomanda = null;
-    let risposteUtente = [];
+    let tutteDomande = [];
     let indexDomanda = 0;
-    const MAX_DOMANDE = 15;
+    let risposteUtente = [];
+    let ultimaDomanda = null;
 
-    async function fetchDomanda(index) {
-      const res = await fetch(`/sequenza/${index}`);
+    async function fetchDomande() {
+      // ⚠️ Se vuoi pescare da quiz_all cambia qui
+      const res = await fetch('/domande');
       return await res.json();
     }
 
     async function caricaDomanda() {
-      if (indexDomanda >= MAX_DOMANDE) {
+      if (indexDomanda >= tutteDomande.length) {
         mostraRecap();
         return;
       }
 
-      const domandaData = await fetchDomanda(indexDomanda);
-      ultimaDomanda = domandaData;
-
-      document.getElementById('domanda').textContent = domandaData.domanda;
+      ultimaDomanda = tutteDomande[indexDomanda];
+      document.getElementById('domanda').textContent = ultimaDomanda.domanda;
       document.getElementById('contatore').textContent = indexDomanda + 1;
-      document.getElementById('progress-bar').style.width = Math.floor(((indexDomanda + 1) / MAX_DOMANDE) * 100) + "%";
-      rispostaCorretta = domandaData.corretta;
+      document.getElementById('totale').textContent = tutteDomande.length;
 
-      const risposte = [...domandaData.risposte].sort(() => Math.random() - 0.5);
+      document.getElementById('progress-bar').style.width =
+        Math.floor(((indexDomanda + 1) / tutteDomande.length) * 100) + "%";
+
+      const risposte = [...ultimaDomanda.risposte].sort(() => Math.random() - 0.5);
       const container = document.getElementById('risposte');
       container.innerHTML = "";
       document.getElementById('feedback').textContent = "";
@@ -159,7 +148,7 @@
       const tutte = document.querySelectorAll('.risposta');
       tutte.forEach(el => el.onclick = null);
 
-      if (rispostaUtente === rispostaCorretta) {
+      if (rispostaUtente === ultimaDomanda.corretta) {
         elemento.classList.add('corretta');
         document.getElementById('feedback').textContent = "✅ Corretto!";
         punteggio++;
@@ -167,7 +156,7 @@
         elemento.classList.add('sbagliata');
         document.getElementById('feedback').textContent = "❌ Sbagliato!";
         tutte.forEach(el => {
-          if (el.textContent === rispostaCorretta) el.classList.add('corretta');
+          if (el.textContent === ultimaDomanda.corretta) el.classList.add('corretta');
         });
       }
 
@@ -175,8 +164,8 @@
       risposteUtente.push({
         domanda: ultimaDomanda.domanda,
         rispostaUtente,
-        corretta: rispostaCorretta,
-        esito: rispostaUtente === rispostaCorretta
+        corretta: ultimaDomanda.corretta,
+        esito: rispostaUtente === ultimaDomanda.corretta
       });
     }
 
@@ -191,13 +180,11 @@
       document.getElementById('feedback').textContent = "";
 
       let recapHTML = "<h2>Riepilogo Risposte</h2>";
-      recapHTML += "<div>";
       risposteUtente.forEach((item, i) => {
-        const corretta = item.rispostaUtente === item.corretta;
         recapHTML += `
           <div class='domandaRecap'>
             <div><strong>${i + 1}. ${item.domanda}</strong></div>
-            ${!corretta ? `<div><strong>Tua risposta:</strong> <span style="color:red;">${item.rispostaUtente}</span></div>` : ``}
+            ${!item.esito ? `<div><strong>Tua risposta:</strong> <span style="color:red;">${item.rispostaUtente}</span></div>` : ``}
             <div><strong>Risposta corretta:</strong> <span style="color:green;">${item.corretta}</span></div>
             <div><strong>Esito:</strong> ${item.esito ? '✅ Corretto' : '❌ Sbagliato'}</div>
           </div>
@@ -216,16 +203,18 @@
     }
 
     function terminaTest() {
-      indexDomanda = MAX_DOMANDE;
+      indexDomanda = tutteDomande.length;
       mostraRecap();
     }
 
-    function iniziaQuiz() {
+    async function iniziaQuiz() {
       document.getElementById('start-container').style.display = 'none';
       document.getElementById('titolo-quiz').style.display = 'block';
       document.getElementById('stats-container').style.display = 'flex';
       document.getElementById('card-container').style.display = 'block';
       document.getElementById('controls-container').style.display = 'block';
+
+      tutteDomande = await fetchDomande();
       caricaDomanda();
     }
   </script>
