@@ -6,146 +6,86 @@
   <title>Quiz Interattivo</title>
   <style>
     /* --- STILI --- */
-    html {
-      font-size: 16px;
-      scroll-behavior: smooth;
-    }
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #1c1f2b;
-      color: #fff;
-      padding: 20px;
-      max-width: 900px;
-      margin: auto;
-    }
-    h1 {
-      text-align: center;
-      color: #1a73e8;
-      margin-bottom: 30px;
-    }
-    .stats {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 15px;
-    }
-    .card {
-      background-color: #2a2e3d;
-      color: white;
-      padding: 25px;
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      margin-bottom: 20px;
-    }
-    .risposta {
-      background-color: #ffffff;
-      color: #000;
-      border: 2px solid #ccc;
-      margin: 10px 0;
-      padding: 15px 20px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 1.2rem;
-      font-weight: bold;
-      transition: 0.3s;
-    }
-    .corretta {
-      background-color: #28a745;
-      color: white;
-      border-color: #28a745;
-    }
-    .sbagliata {
-      background-color: #dc3545;
-      color: white;
-      border-color: #dc3545;
-    }
-    button {
-      padding: 10px 16px;
-      margin: 5px;
-      border: none;
-      border-radius: 6px;
-      background-color: #1a73e8;
-      color: white;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background-color 0.2s;
-    }
-    button:hover {
-      background-color: #155ab6;
-    }
-    .btn-danger {
-      background-color: #d93025;
-    }
-    .btn-danger:hover {
-      background-color: #b5271b;
-    }
-    #risposte {
-      display: grid;
-      gap: 1rem;
-    }
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body { font-family: 'Segoe UI', sans-serif; background-color: #1c1f2b; color: #fff; padding: 20px; max-width: 900px; margin: auto; }
+    h1 { text-align: center; color: #1a73e8; margin-bottom: 30px; }
+    .stats { display: flex; justify-content: space-between; margin-bottom: 15px; }
+    .card { background-color: #2a2e3d; color: white; padding: 25px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin-bottom: 20px; }
+    .risposta { background-color: #ffffff; color: #000; border: 2px solid #ccc; margin: 10px 0; padding: 15px 20px; border-radius: 8px; font-size: 1.2rem; font-weight: bold; }
+    .corretta { background-color: #28a745; color: white; border-color: #28a745; }
+    .sbagliata { background-color: #dc3545; color: white; border-color: #dc3545; }
+    button { padding: 10px 16px; margin: 5px; border: none; border-radius: 6px; background-color: #1a73e8; color: white; font-weight: bold; cursor: pointer; transition: background-color 0.2s; }
+    button:hover { background-color: #155ab6; }
+    .btn-danger { background-color: #d93025; }
+    .btn-danger:hover { background-color: #b5271b; }
+    #risposte { display: grid; gap: 1rem; }
     /* --- RECAP --- */
-    .domandaRecap {
-      background-color: #2f3347;
-      padding: 15px;
-      border-radius: 10px;
-      margin-bottom: 20px;
-      border: 1px solid #444;
-    }
-    .domandaRecap strong {
-      display: block;
-      margin-bottom: 6px;
-      font-size: 1.1em;
-      color: #1a73e8;
-    }
-    .domandaRecap div {
-      margin: 4px 0;
-    }
+    .domandaRecap { background-color: #2f3347; padding: 15px; border-radius: 10px; margin-bottom: 20px; border: 1px solid #444; }
+    .domandaRecap strong { display: block; margin-bottom: 6px; font-size: 1.1em; color: #1a73e8; }
+    .domandaRecap div { margin: 4px 0; }
   </style>
 </head>
 <body>
-  <!-- SCHERMATA INIZIALE -->
+  <!-- MENU INIZIALE -->
   <div id="start-container" style="text-align: center; margin-bottom: 30px;">
-    <h1>Seleziona un quiz</h1>
-    <button onclick="iniziaQuiz(1)">🎤 Quiz 1 - Competenze Digitali Base</button>
-    <button onclick="iniziaQuiz(2)">📧 Quiz 2 - Internet, Email e PEC</button>
-    <button onclick="iniziaQuiz(3)">🔐 Quiz 3 - SPID, Cybersecurity e GDPR</button>
-    <button onclick="iniziaQuiz(4)">💬 Quiz 4 - Social Media</button>
-    <button onclick="iniziaQuiz(5)">💻 Quiz 5 - Produttività, Cyberbullismo e Tecnologia</button>
+    <h1>Benvenuto!</h1>
+    <button onclick="setDocenteMode(false)">📝 Modalità Quiz</button>
+    <button onclick="setDocenteMode(true)">👩‍🏫 Modalità Docente</button>
+    <div id="quiz-buttons" style="margin-top:20px; display:none;">
+      <h2>Seleziona un quiz</h2>
+      <button onclick="iniziaQuiz(1)">🎤 Quiz 1 - Competenze Digitali Base</button>
+      <button onclick="iniziaQuiz(2)">📧 Quiz 2 - Internet, Email e PEC</button>
+      <button onclick="iniziaQuiz(3)">🔐 Quiz 3 - SPID, Cybersecurity e GDPR</button>
+      <button onclick="iniziaQuiz(4)">💬 Quiz 4 - Social Media</button>
+      <button onclick="iniziaQuiz(5)">💻 Quiz 5 - Produttività, Cyberbullismo e Tecnologia</button>
+    </div>
   </div>
 
+  <!-- QUIZ CLASSICO -->
   <h1 style="display:none;" id="titolo-quiz">Quiz a Scelta Multipla</h1>
-
   <div class="stats" id="stats-container" style="display:none;">
     <div><strong>Punteggio:</strong> <span id="punteggio">0</span></div>
     <div><strong>Domanda:</strong> <span id="contatore">0</span></div>
   </div>
-
   <div class="progress-container" style="background-color: #444; border-radius: 30px; margin-bottom: 20px; overflow: hidden;">
     <div id="progress-bar" style="width: 0%; height: 14px; background: linear-gradient(to right, #ff416c, #ff4b2b); transition: width 0.4s;"></div>
   </div>
-
   <div class="card" id="card-container" style="display:none;">
     <div id="domanda" style="font-size: 1.4em; font-weight: bold; border: 2px solid #007bff; padding: 20px; border-radius: 10px; background-color: #2a2e3d; color: white; margin-bottom: 20px;">Caricamento...</div>
     <div id="risposte"></div>
     <div id="feedback" style="margin-top: 15px;"></div>
   </div>
-
   <div class="controls" id="controls-container" style="display:none; text-align:center;">
     <button onclick="prossimaDomanda()">➡️ Avanti</button>
     <button class="btn-danger" onclick="terminaTest()">🛑 Termina Test</button>
     <button onclick="ricomincia()">🔄 Ricomincia</button>
     <button onclick="tornaAlMenu()">⬅️ Torna al Menu</button>
   </div>
-
   <div id="recap"></div>
 
+  <!-- MODALITÀ DOCENTE -->
+  <div id="docente-container" style="display:none;">
+    <h1>Modalità Docente</h1>
+    <div id="lista-docente"></div>
+    <div style="text-align:center;">
+      <button onclick="tornaAlMenu()">⬅️ Torna al Menu</button>
+    </div>
+  </div>
+
   <script>
+    let docenteMode = false;
     let rispostaCorretta = "";
     let punteggio = 0;
     let ultimaDomanda = null;
     let risposteUtente = [];
     let indexDomanda = 0;
-    let quizCorrente = 1; // quiz selezionato
-    let MAX_DOMANDE = 0; // aggiornato dinamicamente
+    let quizCorrente = 1;
+    let MAX_DOMANDE = 0;
+
+    function setDocenteMode(mode) {
+      docenteMode = mode;
+      document.getElementById("quiz-buttons").style.display = "block";
+    }
 
     async function fetchDomanda(index) {
       const res = await fetch(`/quiz/${quizCorrente}/${index}`);
@@ -162,16 +102,9 @@
         }
       }
 
-      if (indexDomanda >= MAX_DOMANDE) {
-        mostraRecap();
-        return;
-      }
-
+      if (indexDomanda >= MAX_DOMANDE) { mostraRecap(); return; }
       const domandaData = await fetchDomanda(indexDomanda);
-      if (domandaData.errore) {
-        mostraRecap();
-        return;
-      }
+      if (domandaData.errore) { mostraRecap(); return; }
 
       ultimaDomanda = domandaData;
       document.getElementById('domanda').textContent = domandaData.domanda;
@@ -204,9 +137,7 @@
       } else {
         elemento.classList.add('sbagliata');
         document.getElementById('feedback').textContent = "❌ Sbagliato!";
-        tutte.forEach(el => {
-          if (el.textContent === rispostaCorretta) el.classList.add('corretta');
-        });
+        tutte.forEach(el => { if (el.textContent === rispostaCorretta) el.classList.add('corretta'); });
       }
 
       document.getElementById('punteggio').textContent = punteggio;
@@ -218,18 +149,14 @@
       });
     }
 
-    function prossimaDomanda() {
-      indexDomanda++;
-      caricaDomanda();
-    }
+    function prossimaDomanda() { indexDomanda++; caricaDomanda(); }
 
     function mostraRecap() {
       document.getElementById('domanda').textContent = "📊 Test completato!";
       document.getElementById('risposte').innerHTML = "";
       document.getElementById('feedback').textContent = "";
 
-      let recapHTML = "<h2 style='margin-bottom:20px;'>Riepilogo Risposte</h2>";
-      recapHTML += "<div>";
+      let recapHTML = "<h2 style='margin-bottom:20px;'>Riepilogo Risposte</h2><div>";
       risposteUtente.forEach((item, i) => {
         const corretta = item.rispostaUtente === item.corretta;
         recapHTML += `
@@ -238,56 +165,72 @@
             ${!corretta ? `<div><strong>Tua risposta:</strong> <span style="color:red;">${item.rispostaUtente}</span></div>` : ``}
             <div><strong>Risposta corretta:</strong> <span style="color:lightgreen;">${item.corretta}</span></div>
             <div><strong>Esito:</strong> ${item.esito ? '✅ Corretto' : '❌ Sbagliato'}</div>
-          </div>
-        `;
+          </div>`;
       });
 
       recapHTML += `</div>
         <div style="margin-top:20px; text-align:center;">
           <button onclick="ricomincia()">🔄 Rifai questo Quiz</button>
           <button onclick="tornaAlMenu()">⬅️ Torna al Menu</button>
-        </div>
-      `;
-
+        </div>`;
       document.getElementById('recap').innerHTML = recapHTML;
     }
 
     function ricomincia() {
-      punteggio = 0;
-      indexDomanda = 0;
-      risposteUtente = [];
+      punteggio = 0; indexDomanda = 0; risposteUtente = [];
       document.getElementById('punteggio').textContent = "0";
       document.getElementById('recap').innerHTML = "";
       caricaDomanda();
     }
 
-    function terminaTest() {
-      indexDomanda = MAX_DOMANDE;
-      mostraRecap();
-    }
+    function terminaTest() { indexDomanda = MAX_DOMANDE; mostraRecap(); }
 
-    function iniziaQuiz(quizId) {
+    async function iniziaQuiz(quizId) {
       quizCorrente = quizId;
-      punteggio = 0;
-      indexDomanda = 0;
-      risposteUtente = [];
-      MAX_DOMANDE = 0;
-      document.getElementById('punteggio').textContent = "0";
-      document.getElementById('recap').innerHTML = "";
       document.getElementById('start-container').style.display = 'none';
-      document.getElementById('titolo-quiz').style.display = 'block';
-      document.getElementById('stats-container').style.display = 'flex';
-      document.getElementById('card-container').style.display = 'block';
-      document.getElementById('controls-container').style.display = 'block';
-      caricaDomanda();
+
+      if (docenteMode) {
+        document.getElementById('docente-container').style.display = 'block';
+        caricaModalitaDocente();
+      } else {
+        punteggio = 0; indexDomanda = 0; risposteUtente = []; MAX_DOMANDE = 0;
+        document.getElementById('punteggio').textContent = "0";
+        document.getElementById('recap').innerHTML = "";
+        document.getElementById('titolo-quiz').style.display = 'block';
+        document.getElementById('stats-container').style.display = 'flex';
+        document.getElementById('card-container').style.display = 'block';
+        document.getElementById('controls-container').style.display = 'block';
+        caricaDomanda();
+      }
+    }
+
+    async function caricaModalitaDocente() {
+      const res = await fetch(`/quiz_all/${quizCorrente}`);
+      const domande = await res.json();
+      const container = document.getElementById("lista-docente");
+      container.innerHTML = "";
+      domande.forEach((d, i) => {
+        let html = `<div class="card"><div style="font-size:1.2em; margin-bottom:10px;"><strong>${i+1}. ${d.domanda}</strong></div>`;
+        d.risposte.forEach(r => {
+          if (r === d.corretta) {
+            html += `<div class="risposta corretta">✔️ ${r}</div>`;
+          } else {
+            html += `<div class="risposta">${r}</div>`;
+          }
+        });
+        html += "</div>";
+        container.innerHTML += html;
+      });
     }
 
     function tornaAlMenu() {
       document.getElementById('start-container').style.display = 'block';
+      document.getElementById('quiz-buttons').style.display = 'none';
       document.getElementById('titolo-quiz').style.display = 'none';
       document.getElementById('stats-container').style.display = 'none';
       document.getElementById('card-container').style.display = 'none';
       document.getElementById('controls-container').style.display = 'none';
+      document.getElementById('docente-container').style.display = 'none';
       document.getElementById('recap').innerHTML = "";
     }
   </script>
