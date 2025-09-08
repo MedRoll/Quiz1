@@ -3,258 +3,117 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quiz Interattivo</title>
+  <title>Quiz Informatica</title>
   <style>
-    /* --- STILI --- */
-    html {
-      font-size: 16px;
-      scroll-behavior: smooth;
-    }
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #1c1f2b;
-      color: #fff;
-      padding: 20px;
-      max-width: 900px;
-      margin: auto;
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background: #f5f5f5;
     }
     h1 {
       text-align: center;
-      color: #1a73e8;
-      margin-bottom: 30px;
     }
-    .stats {
+    .button-container {
       display: flex;
-      justify-content: space-between;
-      margin-bottom: 15px;
-    }
-    .card {
-      background-color: #2a2e3d;
-      color: white;
-      padding: 25px;
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-      margin-bottom: 20px;
-    }
-    .risposta {
-      background-color: #ffffff;
-      color: #000;
-      border: 2px solid #ccc;
-      margin: 10px 0;
-      padding: 15px 20px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 1.2rem;
-      font-weight: bold;
-      transition: 0.3s;
-    }
-    .corretta {
-      background-color: #28a745;
-      color: white;
-      border-color: #28a745;
-    }
-    .sbagliata {
-      background-color: #dc3545;
-      color: white;
-      border-color: #dc3545;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      margin-top: 20px;
     }
     button {
-      padding: 10px 16px;
-      margin: 5px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
       border: none;
       border-radius: 6px;
-      background-color: #1a73e8;
+      background: #007bff;
       color: white;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background-color 0.2s;
     }
     button:hover {
-      background-color: #155ab6;
+      background: #0056b3;
     }
-    .btn-danger {
-      background-color: #d93025;
+    #quiz-container {
+      display: none;
+      margin-top: 20px;
     }
-    .btn-danger:hover {
-      background-color: #b5271b;
+    .question {
+      font-weight: bold;
+      margin-bottom: 10px;
     }
-    #risposte {
-      display: grid;
-      gap: 1rem;
+    .answers button {
+      display: block;
+      margin: 5px 0;
+      width: 100%;
+      text-align: left;
+      background: #e0e0e0;
+      color: black;
+    }
+    .answers button:hover {
+      background: #d5d5d5;
     }
   </style>
 </head>
 <body>
-  <!-- SCHERMATA INIZIALE -->
-  <div id="start-container" style="text-align: center; margin-bottom: 30px;">
-    <h1>Seleziona un quiz</h1>
-    <button onclick="iniziaQuiz(1)">🎤 Quiz 1 - Competenze Digitali Base</button>
-    <button onclick="iniziaQuiz(2)">📧 Quiz 2 - Internet, Email e PEC</button>
-    <button onclick="iniziaQuiz(3)">🔐 Quiz 3 - SPID, Cybersecurity e GDPR</button>
-    <button onclick="iniziaQuiz(4)">💬 Quiz 4 - Social Media</button>
-    <button onclick="iniziaQuiz(5)">💻 Quiz 5 - Produttività, Cyberbullismo e Tecnologia</button>
+  <h1>Quiz di Informatica</h1>
+
+  <!-- Menu principale -->
+  <div id="menu" class="button-container">
+    <button onclick="startQuiz('ordered_questions.json')">Test 1 - Informatica di base</button>
+    <button onclick="startQuiz('ordered_questions2.json')">Test 2 - Internet e Posta elettronica</button>
+    <button onclick="startQuiz('ordered_questions3.json')">Test 3 - SPID e Cybersecurity</button>
+    <button onclick="startQuiz('ordered_questions4.json')">Test 4 - Social Media ed E-commerce</button>
+    <button onclick="startQuiz('ordered_questions5.json')">Test 5 - Produttività e Tecnologie digitali</button>
   </div>
 
-  <h1 style="display:none;" id="titolo-quiz">Quiz a Scelta Multipla</h1>
-
-  <div class="stats" id="stats-container" style="display:none;">
-    <div><strong>Punteggio:</strong> <span id="punteggio">0</span></div>
-    <div><strong>Domanda:</strong> <span id="contatore">0</span></div>
+  <!-- Contenitore quiz -->
+  <div id="quiz-container">
+    <button onclick="goBackToMenu()" style="margin-bottom: 20px; background:#6c757d;">⬅️ Torna al Menu</button>
+    <div id="quiz-content"></div>
   </div>
-
-  <div class="progress-container" style="background-color: #444; border-radius: 30px; margin-bottom: 20px; overflow: hidden;">
-    <div id="progress-bar" style="width: 0%; height: 14px; background: linear-gradient(to right, #ff416c, #ff4b2b); transition: width 0.4s;"></div>
-  </div>
-
-  <div class="card" id="card-container" style="display:none;">
-    <div id="domanda" style="font-size: 1.4em; font-weight: bold; border: 2px solid #007bff; padding: 20px; border-radius: 10px; background-color: #2a2e3d; color: white; margin-bottom: 20px;">Caricamento...</div>
-    <div id="risposte"></div>
-    <div id="feedback" style="margin-top: 15px;"></div>
-  </div>
-
-  <div class="controls" id="controls-container" style="display:none; text-align:center;">
-    <button onclick="prossimaDomanda()">➡️ Avanti</button>
-    <button class="btn-danger" onclick="terminaTest()">🛑 Termina Test</button>
-    <button onclick="ricomincia()">🔄 Ricomincia</button>
-  </div>
-
-  <div id="recap"></div>
 
   <script>
-    let rispostaCorretta = "";
-    let punteggio = 0;
-    let ultimaDomanda = null;
-    let risposteUtente = [];
-    let indexDomanda = 0;
-    let quizCorrente = 1; // quiz selezionato
-    let MAX_DOMANDE = 0; // aggiornato dinamicamente
+    let questions = [];
+    let currentQuestion = 0;
+    let score = 0;
 
-    async function fetchDomanda(index) {
-      const res = await fetch(`/quiz/${quizCorrente}/${index}`);
-      return await res.json();
+    async function startQuiz(file) {
+      const response = await fetch(file);
+      questions = await response.json();
+      currentQuestion = 0;
+      score = 0;
+
+      document.getElementById("menu").style.display = "none";
+      document.getElementById("quiz-container").style.display = "block";
+      showQuestion();
     }
 
-    async function caricaDomanda() {
-      // Recupero numero totale di domande al primo caricamento
-      if (MAX_DOMANDE === 0) {
-        const res = await fetch(`/quiz_all/${quizCorrente}`);
-        const tutte = await res.json();
-        if (!tutte.errore) {
-          MAX_DOMANDE = tutte.length;
-          document.getElementById("contatore").textContent = `0/${MAX_DOMANDE}`;
-        }
-      }
-
-      if (indexDomanda >= MAX_DOMANDE) {
-        mostraRecap();
+    function showQuestion() {
+      if (currentQuestion >= questions.length) {
+        document.getElementById("quiz-content").innerHTML =
+          `<h2>Quiz terminato!</h2><p>Punteggio: ${score} / ${questions.length}</p>`;
         return;
       }
 
-      const domandaData = await fetchDomanda(indexDomanda);
-      if (domandaData.errore) {
-        mostraRecap();
-        return;
-      }
+      const q = questions[currentQuestion];
+      let html = `<div class="question">${q.domanda}</div><div class="answers">`;
 
-      ultimaDomanda = domandaData;
-      document.getElementById('domanda').textContent = domandaData.domanda;
-      document.getElementById('contatore').textContent = `${indexDomanda + 1}/${MAX_DOMANDE}`;
-      document.getElementById('progress-bar').style.width = Math.floor(((indexDomanda + 1) / MAX_DOMANDE) * 100) + "%";
-      rispostaCorretta = domandaData.corretta;
-
-      const risposte = [...domandaData.risposte].sort(() => Math.random() - 0.5);
-      const container = document.getElementById('risposte');
-      container.innerHTML = "";
-      document.getElementById('feedback').textContent = "";
-
-      risposte.forEach(r => {
-        const btn = document.createElement('div');
-        btn.className = 'risposta';
-        btn.textContent = r;
-        btn.onclick = () => verificaRisposta(btn, r);
-        container.appendChild(btn);
+      q.risposte.forEach(r => {
+        html += `<button onclick="checkAnswer('${r}', '${q.corretta}')">${r}</button>`;
       });
+
+      html += `</div>`;
+      document.getElementById("quiz-content").innerHTML = html;
     }
 
-    function verificaRisposta(elemento, rispostaUtente) {
-      const tutte = document.querySelectorAll('.risposta');
-      tutte.forEach(el => el.onclick = null);
-
-      if (rispostaUtente === rispostaCorretta) {
-        elemento.classList.add('corretta');
-        document.getElementById('feedback').textContent = "✅ Corretto!";
-        punteggio++;
-      } else {
-        elemento.classList.add('sbagliata');
-        document.getElementById('feedback').textContent = "❌ Sbagliato!";
-        tutte.forEach(el => {
-          if (el.textContent === rispostaCorretta) el.classList.add('corretta');
-        });
-      }
-
-      document.getElementById('punteggio').textContent = punteggio;
-      risposteUtente.push({
-        domanda: ultimaDomanda.domanda,
-        rispostaUtente,
-        corretta: rispostaCorretta,
-        esito: rispostaUtente === rispostaCorretta
-      });
+    function checkAnswer(answer, correct) {
+      if (answer === correct) score++;
+      currentQuestion++;
+      showQuestion();
     }
 
-    function prossimaDomanda() {
-      indexDomanda++;
-      caricaDomanda();
-    }
-
-    function mostraRecap() {
-      document.getElementById('domanda').textContent = "📊 Test completato!";
-      document.getElementById('risposte').innerHTML = "";
-      document.getElementById('feedback').textContent = "";
-
-      let recapHTML = "<h2>Riepilogo Risposte</h2>";
-      recapHTML += "<div>";
-      risposteUtente.forEach((item, i) => {
-        const corretta = item.rispostaUtente === item.corretta;
-        recapHTML += `
-          <div class='domandaRecap'>
-            <div><strong>${i + 1}. ${item.domanda}</strong></div>
-            ${!corretta ? `<div><strong>Tua risposta:</strong> <span style="color:red;">${item.rispostaUtente}</span></div>` : ``}
-            <div><strong>Risposta corretta:</strong> <span style="color:green;">${item.corretta}</span></div>
-            <div><strong>Esito:</strong> ${item.esito ? '✅ Corretto' : '❌ Sbagliato'}</div>
-          </div>
-        `;
-      });
-      document.getElementById('recap').innerHTML = recapHTML;
-    }
-
-    function ricomincia() {
-      punteggio = 0;
-      indexDomanda = 0;
-      risposteUtente = [];
-      document.getElementById('punteggio').textContent = "0";
-      document.getElementById('recap').innerHTML = "";
-      caricaDomanda();
-    }
-
-    function terminaTest() {
-      indexDomanda = MAX_DOMANDE;
-      mostraRecap();
-    }
-
-    function iniziaQuiz(quizId) {
-      quizCorrente = quizId; // salvo il quiz selezionato
-      punteggio = 0;
-      indexDomanda = 0;
-      risposteUtente = [];
-      MAX_DOMANDE = 0; // reset, sarà ricalcolato
-      document.getElementById('punteggio').textContent = "0";
-      document.getElementById('recap').innerHTML = "";
-      document.getElementById('start-container').style.display = 'none';
-      document.getElementById('titolo-quiz').style.display = 'block';
-      document.getElementById('stats-container').style.display = 'flex';
-      document.getElementById('card-container').style.display = 'block';
-      document.getElementById('controls-container').style.display = 'block';
-      caricaDomanda();
+    function goBackToMenu() {
+      document.getElementById("quiz-container").style.display = "none";
+      document.getElementById("menu").style.display = "block";
     }
   </script>
 </body>
