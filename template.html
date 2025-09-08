@@ -88,18 +88,18 @@
   <!-- SCHERMATA INIZIALE -->
   <div id="start-container" style="text-align: center; margin-bottom: 30px;">
     <h1>Seleziona un quiz</h1>
-    <button onclick="iniziaQuiz(1)">🎤 Quiz 2 - Competenze Digitali Base </button>
-    <button onclick="iniziaQuiz(2)">🎤 Quiz 2 - Internet, Email e PEC</button>
-    <button onclick="iniziaQuiz(3)">🎤 Quiz 3 - SPID,Cybersecurity e GDPR</button>
-    <button onclick="iniziaQuiz(4)">🎤 Quiz 4 - Social Media</button>
-    <button onclick="iniziaQuiz(5)">🎤 Quiz 5 - Produttività,Cyberbullismo e Tecnologia</button>
+    <button onclick="iniziaQuiz(1)">🎤 Quiz 1 - Competenze Digitali Base</button>
+    <button onclick="iniziaQuiz(2)">📧 Quiz 2 - Internet, Email e PEC</button>
+    <button onclick="iniziaQuiz(3)">🔐 Quiz 3 - SPID, Cybersecurity e GDPR</button>
+    <button onclick="iniziaQuiz(4)">💬 Quiz 4 - Social Media</button>
+    <button onclick="iniziaQuiz(5)">💻 Quiz 5 - Produttività, Cyberbullismo e Tecnologia</button>
   </div>
 
   <h1 style="display:none;" id="titolo-quiz">Quiz a Scelta Multipla</h1>
 
   <div class="stats" id="stats-container" style="display:none;">
     <div><strong>Punteggio:</strong> <span id="punteggio">0</span></div>
-    <div><strong>Domanda:</strong> <span id="contatore">0</span>/20</div>
+    <div><strong>Domanda:</strong> <span id="contatore">0</span></div>
   </div>
 
   <div class="progress-container" style="background-color: #444; border-radius: 30px; margin-bottom: 20px; overflow: hidden;">
@@ -127,7 +127,7 @@
     let risposteUtente = [];
     let indexDomanda = 0;
     let quizCorrente = 1; // quiz selezionato
-    const MAX_DOMANDE = 20;
+    let MAX_DOMANDE = 0; // aggiornato dinamicamente
 
     async function fetchDomanda(index) {
       const res = await fetch(`/quiz/${quizCorrente}/${index}`);
@@ -135,6 +135,16 @@
     }
 
     async function caricaDomanda() {
+      // Recupero numero totale di domande al primo caricamento
+      if (MAX_DOMANDE === 0) {
+        const res = await fetch(`/quiz_all/${quizCorrente}`);
+        const tutte = await res.json();
+        if (!tutte.errore) {
+          MAX_DOMANDE = tutte.length;
+          document.getElementById("contatore").textContent = `0/${MAX_DOMANDE}`;
+        }
+      }
+
       if (indexDomanda >= MAX_DOMANDE) {
         mostraRecap();
         return;
@@ -148,7 +158,7 @@
 
       ultimaDomanda = domandaData;
       document.getElementById('domanda').textContent = domandaData.domanda;
-      document.getElementById('contatore').textContent = indexDomanda + 1;
+      document.getElementById('contatore').textContent = `${indexDomanda + 1}/${MAX_DOMANDE}`;
       document.getElementById('progress-bar').style.width = Math.floor(((indexDomanda + 1) / MAX_DOMANDE) * 100) + "%";
       rispostaCorretta = domandaData.corretta;
 
@@ -236,6 +246,7 @@
       punteggio = 0;
       indexDomanda = 0;
       risposteUtente = [];
+      MAX_DOMANDE = 0; // reset, sarà ricalcolato
       document.getElementById('punteggio').textContent = "0";
       document.getElementById('recap').innerHTML = "";
       document.getElementById('start-container').style.display = 'none';
