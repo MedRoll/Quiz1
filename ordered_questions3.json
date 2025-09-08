@@ -1,0 +1,182 @@
+[
+  {
+    "domanda": "Che cos’è lo SPID e a cosa serve?",
+    "risposte": [
+      "Un’applicazione bancaria per i pagamenti online",
+      "Un sistema di identità digitale per accedere ai servizi online della Pubblica Amministrazione",
+      "Un programma per proteggere i dispositivi da virus"
+    ],
+    "corretta": "Un sistema di identità digitale per accedere ai servizi online della Pubblica Amministrazione"
+  },
+  {
+    "domanda": "Quali sono i vantaggi principali nell’utilizzo dello SPID per i cittadini?",
+    "risposte": [
+      "Possibilità di accedere con un’unica identità digitale a diversi servizi pubblici e privati",
+      "Navigare in rete in modo più veloce e sicuro",
+      "Scaricare applicazioni gratuite senza registrazione"
+    ],
+    "corretta": "Possibilità di accedere con un’unica identità digitale a diversi servizi pubblici e privati"
+  },
+  {
+    "domanda": "Come si ottiene lo SPID?",
+    "risposte": [
+      "Registrandosi con un account social personale",
+      "Rivolgendosi a un gestore di identità digitale autorizzato",
+      "Installando un software fornito dal Ministero"
+    ],
+    "corretta": "Rivolgendosi a un gestore di identità digitale autorizzato"
+  },
+  {
+    "domanda": "Quali sono i livelli di sicurezza previsti dallo SPID?",
+    "risposte": [
+      "Tre livelli, con autenticazione crescente (password, OTP, app dedicata)",
+      "Due livelli, uno con username e password e uno con impronta digitale",
+      "Quattro livelli, con scelta libera tra i cittadini"
+    ],
+    "corretta": "Tre livelli, con autenticazione crescente (password, OTP, app dedicata)"
+  },
+  {
+    "domanda": "Qual è la differenza tra SPID e Carta d’Identità Elettronica (CIE)?",
+    "risposte": [
+      "SPID è un servizio digitale, la CIE è un documento fisico con microchip",
+      "SPID è gratuito mentre la CIE è sempre a pagamento",
+      "SPID è valido solo in Italia, la CIE in tutta Europa"
+    ],
+    "corretta": "SPID è un servizio digitale, la CIE è un documento fisico con microchip"
+  },
+  {
+    "domanda": "Che cosa significa il termine “cybersecurity”?",
+    "risposte": [
+      "Una tecnica per migliorare la velocità delle reti",
+      "L’insieme di pratiche e strumenti per proteggere sistemi e dati digitali",
+      "Un software che blocca automaticamente i contenuti non sicuri"
+    ],
+    "corretta": "L’insieme di pratiche e strumenti per proteggere sistemi e dati digitali"
+  },
+  {
+    "domanda": "Qual è lo scopo principale della cybersecurity per individui e aziende?",
+    "risposte": [
+      "Creare siti web più accattivanti graficamente",
+      "Proteggere i dati e ridurre i rischi di attacchi informatici",
+      "Rendere più rapidi i processi di produzione industriale"
+    ],
+    "corretta": "Proteggere i dati e ridurre i rischi di attacchi informatici"
+  },
+  {
+    "domanda": "Quali sono i rischi più comuni legati a un attacco informatico?",
+    "risposte": [
+      "Perdita di dati, furto di informazioni e interruzione dei servizi",
+      "Maggior consumo di batteria e spazio di memoria",
+      "Difficoltà di aggiornare i sistemi operativi"
+    ],
+    "corretta": "Perdita di dati, furto di informazioni e interruzione dei servizi"
+  },
+  {
+    "domanda": "Che cos’è un malware e quali forme può assumere?",
+    "risposte": [
+      "Un programma utile per comprimere file di grandi dimensioni",
+      "Un software dannoso come virus, worm, trojan o ransomware",
+      "Un’applicazione che aumenta la velocità del computer"
+    ],
+    "corretta": "Un software dannoso come virus, worm, trojan o ransomware"
+  },
+  {
+    "domanda": "Qual è la differenza tra virus, worm e trojan?",
+    "risposte": [
+      "Virus si diffonde nei file, worm si replica autonomamente, trojan si maschera da software legittimo",
+      "Virus colpisce solo i social, worm solo le email, trojan solo i giochi online",
+      "Non ci sono differenze significative, sono sinonimi"
+    ],
+    "corretta": "Virus si diffonde nei file, worm si replica autonomamente, trojan si maschera da software legittimo"
+  },
+  {
+    "domanda": "Che cos’è un ransomware e perché è pericoloso?",
+    "risposte": [
+      "Un malware che cripta i dati e richiede un pagamento per sbloccarli",
+      "Un programma che elimina automaticamente file inutili",
+      "Un software che consente di scaricare musica e video gratuitamente"
+    ],
+    "corretta": "Un malware che cripta i dati e richiede un pagamento per sbloccarli"
+  },
+  {
+    "domanda": "In cosa consiste un attacco di tipo phishing?",
+    "risposte": [
+      "Nell’invio di email o messaggi ingannevoli per rubare dati personali o bancari",
+      "Nell’uso di virus che bloccano fisicamente il computer",
+      "Nella diffusione di spam pubblicitario attraverso i social"
+    ],
+    "corretta": "Nell’invio di email o messaggi ingannevoli per rubare dati personali o bancari"
+  },
+  {
+    "domanda": "Qual è l’obiettivo principale dell’ingegneria sociale negli attacchi informatici?",
+    "risposte": [
+      "Migliorare la comunicazione aziendale",
+      "Ingannare le persone per ottenere informazioni riservate",
+      "Creare reti informatiche più veloci"
+    ],
+    "corretta": "Ingannare le persone per ottenere informazioni riservate"
+  },
+  {
+    "domanda": "Perché è importante scegliere password complesse e uniche?",
+    "risposte": [
+      "Per ridurre il rischio che vengano indovinate o rubate",
+      "Per accedere più velocemente ai siti web",
+      "Per non dover usare sistemi di backup dei dati"
+    ],
+    "corretta": "Per ridurre il rischio che vengano indovinate o rubate"
+  },
+  {
+    "domanda": "Qual è il ruolo dell’autenticazione a due fattori (2FA)?",
+    "risposte": [
+      "Consentire di usare due password diverse per ogni servizio",
+      "Offrire un secondo livello di sicurezza oltre alla password principale",
+      "Memorizzare automaticamente i dati dell’utente su cloud"
+    ],
+    "corretta": "Offrire un secondo livello di sicurezza oltre alla password principale"
+  },
+  {
+    "domanda": "Qual è la funzione principale di un antivirus?",
+    "risposte": [
+      "Rilevare e bloccare software dannosi prima che infettino il sistema",
+      "Aumentare la velocità di caricamento delle pagine web",
+      "Espandere la capacità di archiviazione del computer"
+    ],
+    "corretta": "Rilevare e bloccare software dannosi prima che infettino il sistema"
+  },
+  {
+    "domanda": "Perché è fondamentale aggiornare sistemi e software con patch di sicurezza?",
+    "risposte": [
+      "Per ridurre il consumo di energia elettrica",
+      "Per correggere vulnerabilità ed evitare sfruttamenti da parte degli hacker",
+      "Per aumentare la memoria disponibile sul dispositivo"
+    ],
+    "corretta": "Per correggere vulnerabilità ed evitare sfruttamenti da parte degli hacker"
+  },
+  {
+    "domanda": "A cosa serve il backup dei dati e quali tipologie esistono?",
+    "risposte": [
+      "A salvare copie di sicurezza dei dati, su supporti locali o in cloud",
+      "A duplicare automaticamente le password su più dispositivi",
+      "A ridurre le dimensioni dei file compressi"
+    ],
+    "corretta": "A salvare copie di sicurezza dei dati, su supporti locali o in cloud"
+  },
+  {
+    "domanda": "Che cos’è il GDPR e quale obiettivo ha?",
+    "risposte": [
+      "Un regolamento europeo per proteggere i dati personali dei cittadini",
+      "Un software per crittografare le comunicazioni aziendali",
+      "Un servizio online per archiviare documenti legali"
+    ],
+    "corretta": "Un regolamento europeo per proteggere i dati personali dei cittadini"
+  },
+  {
+    "domanda": "Quali diritti garantisce il GDPR ai cittadini in relazione ai propri dati personali?",
+    "risposte": [
+      "Accesso, rettifica, cancellazione e portabilità dei dati",
+      "Utilizzo gratuito di social media e piattaforme di streaming",
+      "Accesso illimitato a reti Wi-Fi pubbliche"
+    ],
+    "corretta": "Accesso, rettifica, cancellazione e portabilità dei dati"
+  }
+]

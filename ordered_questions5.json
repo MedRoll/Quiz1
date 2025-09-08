@@ -1,0 +1,182 @@
+[
+  {
+    "domanda": "Cosa significa “produttività digitale”?",
+    "risposte": [
+      "Creare contenuti digitali per i social media",
+      "Navigare su internet per cercare informazioni",
+      "Utilizzare strumenti digitali per organizzare e semplificare attività quotidiane"
+    ],
+    "corretta": "Utilizzare strumenti digitali per organizzare e semplificare attività quotidiane"
+  },
+  {
+    "domanda": "A cosa servono le app per prendere appunti digitali?",
+    "risposte": [
+      "Per scrivere documenti lunghi e complessi come libri o tesi",
+      "Per registrare, organizzare e ritrovare facilmente le informazioni",
+      "Per modificare immagini e creare grafiche"
+    ],
+    "corretta": "Per registrare, organizzare e ritrovare facilmente le informazioni"
+  },
+  {
+    "domanda": "Qual è il vantaggio principale dei task manager digitali?",
+    "risposte": [
+      "Consentono di pianificare attività e monitorare le scadenze",
+      "Permettono di proteggere il computer da virus",
+      "Servono a condividere file multimediali in rete"
+    ],
+    "corretta": "Consentono di pianificare attività e monitorare le scadenze"
+  },
+  {
+    "domanda": "A cosa servono i diagrammi e le infografiche?",
+    "risposte": [
+      "A rendere più veloce la connessione a internet",
+      "A comprimere file di grandi dimensioni",
+      "A presentare concetti e dati in modo visivo e immediato"
+    ],
+    "corretta": "A presentare concetti e dati in modo visivo e immediato"
+  },
+  {
+    "domanda": "Qual è una caratteristica della gestione di progetti digitali?",
+    "risposte": [
+      "Archiviare documenti offline senza accesso a internet",
+      "Coordinare compiti e comunicare con il team in un’unica piattaforma",
+      "Creare giochi o applicazioni per dispositivi mobili"
+    ],
+    "corretta": "Coordinare compiti e comunicare con il team in un’unica piattaforma"
+  },
+  {
+    "domanda": "Qual è l’utilità delle note vocali e dei promemoria digitali?",
+    "risposte": [
+      "Aumentare la velocità di connessione di uno smartphone",
+      "Inviare automaticamente messaggi pubblicitari",
+      "Registrare informazioni o ricevere avvisi per attività importanti"
+    ],
+    "corretta": "Registrare informazioni o ricevere avvisi per attività importanti"
+  },
+  {
+    "domanda": "Cos’è il design digitale?",
+    "risposte": [
+      "La gestione delle impostazioni di sicurezza di un computer",
+      "La progettazione di contenuti visivi con strumenti informatici",
+      "La creazione di software di programmazione avanzata"
+    ],
+    "corretta": "La progettazione di contenuti visivi con strumenti informatici"
+  },
+  {
+    "domanda": "Quale principio è importante per un contenuto visivo efficace?",
+    "risposte": [
+      "Utilizzare solo testi lunghi e descrittivi",
+      "Semplicità e chiarezza per facilitare la lettura",
+      "Aggiungere il maggior numero possibile di dettagli tecnici"
+    ],
+    "corretta": "Semplicità e chiarezza per facilitare la lettura"
+  },
+  {
+    "domanda": "Perché è importante usare immagini libere da diritti?",
+    "risposte": [
+      "Per ottenere sempre immagini di qualità professionale",
+      "Perché non richiedono mai l’uso di internet per essere scaricate",
+      "Per rispettare la legge e evitare problemi di copyright"
+    ],
+    "corretta": "Per rispettare la legge e evitare problemi di copyright"
+  },
+  {
+    "domanda": "A cosa servono i video digitali nella comunicazione?",
+    "risposte": [
+      "A memorizzare dati e archiviare documenti in cloud",
+      "A coinvolgere il pubblico con messaggi dinamici e immediati",
+      "A sostituire completamente le fotografie tradizionali"
+    ],
+    "corretta": "A coinvolgere il pubblico con messaggi dinamici e immediati"
+  },
+  {
+    "domanda": "Cos’è l’Internet delle Cose (IoT)?",
+    "risposte": [
+      "Una rete di oggetti connessi che raccolgono e scambiano dati",
+      "Una piattaforma di messaggistica istantanea",
+      "Un motore di ricerca per informazioni scientifiche"
+    ],
+    "corretta": "Una rete di oggetti connessi che raccolgono e scambiano dati"
+  },
+  {
+    "domanda": "Cos’è la Blockchain?",
+    "risposte": [
+      "Un metodo per velocizzare il caricamento delle pagine web",
+      "Un sistema digitale che registra transazioni in modo sicuro e immutabile",
+      "Un programma per creare catene di immagini e grafici"
+    ],
+    "corretta": "Un sistema digitale che registra transazioni in modo sicuro e immutabile"
+  },
+  {
+    "domanda": "Qual è la differenza tra Realtà Aumentata (AR) e Realtà Virtuale (VR)?",
+    "risposte": [
+      "L’AR integra elementi digitali nel mondo reale, la VR crea ambienti simulati",
+      "L’AR è gratuita, la VR è sempre a pagamento",
+      "L’AR funziona solo con smartphone, la VR solo con computer fissi"
+    ],
+    "corretta": "L’AR integra elementi digitali nel mondo reale, la VR crea ambienti simulati"
+  },
+  {
+    "domanda": "In che modo l’Intelligenza Artificiale viene usata nella vita quotidiana?",
+    "risposte": [
+      "Programmi che controllano esclusivamente il funzionamento dei satelliti",
+      "Assistenti vocali e sistemi che analizzano dati per semplificare attività",
+      "Tecnologie che sostituiscono la connessione Wi-Fi tradizionale"
+    ],
+    "corretta": "Assistenti vocali e sistemi che analizzano dati per semplificare attività"
+  },
+  {
+    "domanda": "Cosa permette la robotica nel lavoro moderno?",
+    "risposte": [
+      "Creare piattaforme di intrattenimento per smartphone",
+      "Automatizzare processi e collaborare con i lavoratori umani",
+      "Navigare più velocemente su internet durante l’orario di lavoro"
+    ],
+    "corretta": "Automatizzare processi e collaborare con i lavoratori umani"
+  },
+  {
+    "domanda": "Perché è importante la sicurezza nelle transazioni digitali?",
+    "risposte": [
+      "Per aumentare la durata della batteria dei dispositivi",
+      "Per avere accesso gratuito a tutti i siti web",
+      "Per proteggere i dati personali e prevenire truffe online"
+    ],
+    "corretta": "Per proteggere i dati personali e prevenire truffe online"
+  },
+  {
+    "domanda": "Cos’è una Smart Home?",
+    "risposte": [
+      "Una modalità di risparmio energetico degli smartphone",
+      "Una piattaforma online per acquistare prodotti di arredamento",
+      "Una casa con dispositivi connessi e controllabili tramite internet"
+    ],
+    "corretta": "Una casa con dispositivi connessi e controllabili tramite internet"
+  },
+  {
+    "domanda": "Come possono le tecnologie digitali aiutare la salute?",
+    "risposte": [
+      "Con software che aumentano la qualità delle immagini fotografiche",
+      "Con dispositivi che monitorano parametri vitali e app per il benessere",
+      "Con programmi che eliminano automaticamente i virus dal PC"
+    ],
+    "corretta": "Con dispositivi che monitorano parametri vitali e app per il benessere"
+  },
+  {
+    "domanda": "Cosa significa etica digitale?",
+    "risposte": [
+      "Evitare di installare nuove applicazioni sugli smartphone",
+      "Utilizzare le tecnologie in modo rispettoso e responsabile verso gli altri",
+      "Usare internet soltanto per scopi lavorativi e scolastici"
+    ],
+    "corretta": "Utilizzare le tecnologie in modo rispettoso e responsabile verso gli altri"
+  },
+  {
+    "domanda": "Cos’è il cyberbullismo?",
+    "risposte": [
+      "Una tecnica digitale per rendere più sicuri i pagamenti online",
+      "Un comportamento aggressivo e ripetuto tramite internet o social media",
+      "Un metodo di protezione dei dati attraverso password complesse"
+    ],
+    "corretta": "Un comportamento aggressivo e ripetuto tramite internet o social media"
+  }
+]

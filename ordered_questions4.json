@@ -1,0 +1,182 @@
+[
+  {
+    "domanda": "Cosa sono i Social Media?",
+    "risposte": [
+      "Strumenti digitali per gestire documenti aziendali",
+      "Piattaforme digitali per connettersi, condividere e interagire",
+      "Servizi di cloud storage per archiviare file"
+    ],
+    "corretta": "Piattaforme digitali per connettersi, condividere e interagire"
+  },
+  {
+    "domanda": "In quale periodo sono nati i primi Social Media come MySpace e Friendster?",
+    "risposte": [
+      "Metà anni ’90",
+      "Fine anni ’90",
+      "Inizio anni 2000"
+    ],
+    "corretta": "Inizio anni 2000"
+  },
+  {
+    "domanda": "Quale social ha segnato la crescita esplosiva dei social media dal 2004?",
+    "risposte": [
+      "Orkut",
+      "Facebook",
+      "Hi5"
+    ],
+    "corretta": "Facebook"
+  },
+  {
+    "domanda": "Quale tra i seguenti NON è un Social Media?",
+    "risposte": [
+      "Instagram",
+      "TikTok",
+      "TripAdvisor"
+    ],
+    "corretta": "TripAdvisor"
+  },
+  {
+    "domanda": "Qual è la fascia d’età che rappresenta oltre il 60% degli utenti di Instagram?",
+    "risposte": [
+      "18-34 anni",
+      "35-44 anni",
+      "13-17 anni"
+    ],
+    "corretta": "18-34 anni"
+  },
+  {
+    "domanda": "Quale funzionalità di Instagram permette la pubblicazione di contenuti temporanei che durano 24 ore?",
+    "risposte": [
+      "Post",
+      "Stories",
+      "Highlights"
+    ],
+    "corretta": "Stories"
+  },
+  {
+    "domanda": "Qual è il rischio legato all’uso eccessivo di Instagram?",
+    "risposte": [
+      "Dipendenza, ansia e bassa autostima",
+      "Maggiore esposizione a pubblicità mirata",
+      "Perdita di memoria del dispositivo"
+    ],
+    "corretta": "Dipendenza, ansia e bassa autostima"
+  },
+  {
+    "domanda": "Qual è la caratteristica principale dei video di TikTok?",
+    "risposte": [
+      "Sono ottimizzati per la realtà aumentata",
+      "Sono brevi, creativi e spesso legati a trend musicali",
+      "Sono visibili solo agli amici più stretti"
+    ],
+    "corretta": "Sono brevi, creativi e spesso legati a trend musicali"
+  },
+  {
+    "domanda": "Quale fascia d’età rappresenta la maggior parte degli utenti di TikTok?",
+    "risposte": [
+      "13-24 anni",
+      "25-34 anni",
+      "45-54 anni"
+    ],
+    "corretta": "13-24 anni"
+  },
+  {
+    "domanda": "Quale tra queste è una tipologia di contenuto pubblicitario su TikTok?",
+    "risposte": [
+      "Hashtag Challenge sponsorizzata",
+      "Product Placement in serie TV",
+      "Banner display su siti esterni"
+    ],
+    "corretta": "Hashtag Challenge sponsorizzata"
+  },
+  {
+    "domanda": "In che anno è stato fondato Facebook da Mark Zuckerberg ad Harvard?",
+    "risposte": [
+      "2004",
+      "2008",
+      "2012"
+    ],
+    "corretta": "2004"
+  },
+  {
+    "domanda": "Quale società ha acquistato YouTube nel 2006?",
+    "risposte": [
+      "Yahoo",
+      "Google",
+      "Meta"
+    ],
+    "corretta": "Google"
+  },
+  {
+    "domanda": "Qual è la funzione principale di YouTube Live?",
+    "risposte": [
+      "Monetizzare con le pubblicità in streaming",
+      "Trasmettere eventi in diretta con interazione del pubblico",
+      "Condividere playlist musicali private"
+    ],
+    "corretta": "Trasmettere eventi in diretta con interazione del pubblico"
+  },
+  {
+    "domanda": "Quale tra i seguenti è un pericolo di YouTube?",
+    "risposte": [
+      "Contenuti inappropriati e problemi di copyright",
+      "Sovraccarico della banda Internet",
+      "Necessità di un account premium per accedere"
+    ],
+    "corretta": "Contenuti inappropriati e problemi di copyright"
+  },
+  {
+    "domanda": "Che cos’è un sito web?",
+    "risposte": [
+      "Una raccolta di pagine web accessibili tramite un URL",
+      "Una piattaforma interattiva riservata ai soli iscritti",
+      "Un software installabile solo su server dedicati"
+    ],
+    "corretta": "Una raccolta di pagine web accessibili tramite un URL"
+  },
+  {
+    "domanda": "Qual è la principale differenza tra sito web ed e-commerce?",
+    "risposte": [
+      "L’e-commerce permette vendite online, il sito web informazione e presenza online",
+      "Il sito web è sempre istituzionale, l’e-commerce sempre commerciale",
+      "L’e-commerce è accessibile solo da mobile, il sito web anche da desktop"
+    ],
+    "corretta": "L’e-commerce permette vendite online, il sito web informazione e presenza online"
+  },
+  {
+    "domanda": "Quale tra le seguenti è una tipologia di e-commerce?",
+    "risposte": [
+      "B2B (Business to Business)",
+      "API (Application Programming Interface)",
+      "SaaS (Software as a Service)"
+    ],
+    "corretta": "B2B (Business to Business)"
+  },
+  {
+    "domanda": "Quale tipologia di e-commerce indica la vendita diretta dal produttore al consumatore, senza intermediari?",
+    "risposte": [
+      "B2C",
+      "D2C",
+      "C2C"
+    ],
+    "corretta": "D2C"
+  },
+  {
+    "domanda": "Cosa significa SEO?",
+    "risposte": [
+      "Social Engagement Optimization",
+      "Search Engine Optimization",
+      "Strategy for E-commerce Optimization"
+    ],
+    "corretta": "Search Engine Optimization"
+  },
+  {
+    "domanda": "Qual è la differenza principale tra SEO e SEM?",
+    "risposte": [
+      "SEO è organico, SEM è basato su annunci a pagamento",
+      "SEO riguarda solo i contenuti, SEM solo i social media",
+      "SEM è una tecnica avanzata di SEO tecnico"
+    ],
+    "corretta": "SEO è organico, SEM è basato su annunci a pagamento"
+  }
+]
