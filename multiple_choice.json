@@ -12,8 +12,8 @@
     "domanda": "Qual è uno dei principali vantaggi dell’informatica nella vita quotidiana?",
     "risposte": [
       "Automatizzare attività e rendere più rapido l’accesso alle informazioni",
-      "Ridurre il consumo di memoria dei dispositivi elettronici",
-      "Impedire la connessione ai servizi online non autorizzati"
+      "Impedire la connessione ai servizi online non autorizzati",
+      "Ridurre il consumo di memoria dei dispositivi elettronici"
     ],
     "corretta": "Automatizzare attività e rendere più rapido l’accesso alle informazioni"
   },
@@ -30,17 +30,17 @@
     "domanda": "Cosa si intende per hardware e software?",
     "risposte": [
       "Componenti visibili e invisibili che permettono il funzionamento di un sistema informatico",
-      "Due tipi di dispositivi di archiviazione per dati digitali",
-      "Due protocolli di comunicazione tra computer in rete"
+      "Due protocolli di comunicazione tra computer in rete",
+      "Due tipi di dispositivi di archiviazione per dati digitali"
     ],
     "corretta": "Componenti visibili e invisibili che permettono il funzionamento di un sistema informatico"
   },
   {
     "domanda": "Qual è la funzione principale della CPU?",
     "risposte": [
+      "Archiviare file in modo permanente",
       "Coordinare le periferiche di rete esterne",
-      "Eseguire le istruzioni dei programmi e gestire l’elaborazione dei dati",
-      "Archiviare file in modo permanente"
+      "Eseguire le istruzioni dei programmi e gestire l’elaborazione dei dati"
     ],
     "corretta": "Eseguire le istruzioni dei programmi e gestire l’elaborazione dei dati"
   },
@@ -56,18 +56,18 @@
   {
     "domanda": "Quale tra i seguenti è un dispositivo di output?",
     "risposte": [
-      "Tastiera",
       "Stampante",
-      "Joystick"
+      "Joystick",
+      "Tastiera"
     ],
     "corretta": "Stampante"
   },
   {
     "domanda": "Che cos’è il software?",
     "risposte": [
-      "L’insieme dei componenti fisici del computer",
+      "Un tipo di memoria RAM dedicata ai programmi",
       "L’insieme delle istruzioni che indicano al computer come operare",
-      "Un tipo di memoria RAM dedicata ai programmi"
+      "L’insieme dei componenti fisici del computer"
     ],
     "corretta": "L’insieme delle istruzioni che indicano al computer come operare"
   },
@@ -84,26 +84,26 @@
     "domanda": "Quale di questi è un esempio di sistema operativo?",
     "risposte": [
       "Google Chrome",
-      "Microsoft Windows",
-      "Adobe Acrobat Reader"
+      "Adobe Acrobat Reader",
+      "Microsoft Windows"
     ],
     "corretta": "Microsoft Windows"
   },
   {
     "domanda": "Quale di questi è un software applicativo?",
     "risposte": [
+      "BIOS",
       "Linux Ubuntu",
-      "Microsoft PowerPoint",
-      "BIOS"
+      "Microsoft PowerPoint"
     ],
     "corretta": "Microsoft PowerPoint"
   },
   {
     "domanda": "Che cos’è Microsoft Word?",
     "risposte": [
-      "Un programma per creare e formattare documenti di testo",
+      "Un’applicazione per gestire database relazionali",
       "Un foglio elettronico per eseguire calcoli e grafici",
-      "Un’applicazione per gestire database relazionali"
+      "Un programma per creare e formattare documenti di testo"
     ],
     "corretta": "Un programma per creare e formattare documenti di testo"
   },
@@ -119,17 +119,17 @@
   {
     "domanda": "A cosa serve principalmente Microsoft Excel?",
     "risposte": [
+      "A installare aggiornamenti di sistema operativo",
       "A elaborare immagini e creare presentazioni",
-      "A gestire dati numerici, effettuare calcoli e creare tabelle",
-      "A installare aggiornamenti di sistema operativo"
+      "A gestire dati numerici, effettuare calcoli e creare tabelle"
     ],
     "corretta": "A gestire dati numerici, effettuare calcoli e creare tabelle"
   },
   {
     "domanda": "La funzione CONCATENA in Excel serve per:",
     "risposte": [
-      "Sommare numeri in un intervallo",
       "Unire più testi o valori in un’unica cella",
+      "Sommare numeri in un intervallo",
       "Ordinare i dati in ordine alfabetico"
     ],
     "corretta": "Unire più testi o valori in un’unica cella"
@@ -137,9 +137,9 @@
   {
     "domanda": "Qual è la differenza tra USB e HDMI?",
     "risposte": [
+      "Entrambi servono solo per ricaricare dispositivi mobili",
       "USB trasmette dati e alimentazione, HDMI trasmette audio e video",
-      "HDMI gestisce file di sistema, USB solo applicazioni",
-      "Entrambi servono solo per ricaricare dispositivi mobili"
+      "HDMI gestisce file di sistema, USB solo applicazioni"
     ],
     "corretta": "USB trasmette dati e alimentazione, HDMI trasmette audio e video"
   },
@@ -147,25 +147,25 @@
     "domanda": "Quale di questi è un dispositivo di memoria permanente?",
     "risposte": [
       "RAM",
-      "SSD",
-      "Cache L1"
+      "Cache L1",
+      "SSD"
     ],
     "corretta": "SSD"
   },
   {
     "domanda": "Che cos’è un software open source?",
     "risposte": [
+      "Un software che funziona esclusivamente su sistemi Windows",
       "Un programma che può essere modificato e distribuito liberamente dagli utenti",
-      "Un programma disponibile solo su abbonamento annuale",
-      "Un software che funziona esclusivamente su sistemi Windows"
+      "Un programma disponibile solo su abbonamento annuale"
     ],
     "corretta": "Un programma che può essere modificato e distribuito liberamente dagli utenti"
   },
   {
     "domanda": "Che ruolo ha il compilatore nello sviluppo software?",
     "risposte": [
-      "Convertire il codice sorgente in linguaggio macchina eseguibile",
       "Analizzare i file per rimuovere virus e malware",
+      "Convertire il codice sorgente in linguaggio macchina eseguibile",
       "Gestire l’avvio automatico del sistema operativo"
     ],
     "corretta": "Convertire il codice sorgente in linguaggio macchina eseguibile"
@@ -174,9 +174,279 @@
     "domanda": "Qual è la funzione principale di un motore di ricerca?",
     "risposte": [
       "Conservare file multimediali online",
-      "Individuare e mostrare risultati pertinenti in base a parole chiave",
-      "Bloccare siti non sicuri durante la navigazione"
+      "Bloccare siti non sicuri durante la navigazione",
+      "Individuare e mostrare risultati pertinenti in base a parole chiave"
     ],
     "corretta": "Individuare e mostrare risultati pertinenti in base a parole chiave"
+  },
+  {
+    "domanda": "Che cos’è Internet?",
+    "risposte": [
+      "Un protocollo per inviare immagini",
+      "Un software per la scrittura di documenti",
+      "Una rete globale di computer interconnessi"
+    ],
+    "corretta": "Una rete globale di computer interconnessi"
+  },
+  {
+    "domanda": "Che cos’è un browser?",
+    "risposte": [
+      "Un’applicazione che consente di navigare sul web",
+      "Un protocollo di sicurezza",
+      "Un dispositivo di archiviazione dati"
+    ],
+    "corretta": "Un’applicazione che consente di navigare sul web"
+  },
+  {
+    "domanda": "Quale tra i seguenti è un browser?",
+    "risposte": [
+      "Mozilla Firefox",
+      "WhatsApp",
+      "Microsoft Excel"
+    ],
+    "corretta": "Mozilla Firefox"
+  },
+  {
+    "domanda": "Che cos’è una e-mail?",
+    "risposte": [
+      "Un protocollo per criptare file",
+      "Un’applicazione per modificare foto",
+      "Una comunicazione elettronica inviata tramite Internet"
+    ],
+    "corretta": "Una comunicazione elettronica inviata tramite Internet"
+  },
+  {
+    "domanda": "Quale di questi è un servizio di cloud storage?",
+    "risposte": [
+      "Google Drive",
+      "VLC Media Player",
+      "Paint"
+    ],
+    "corretta": "Google Drive"
+  },
+  {
+    "domanda": "Che cos’è un virus informatico?",
+    "risposte": [
+      "Un programma malevolo che può danneggiare o rubare dati",
+      "Un firewall hardware",
+      "Un aggiornamento di sistema"
+    ],
+    "corretta": "Un programma malevolo che può danneggiare o rubare dati"
+  },
+  {
+    "domanda": "Che cos’è un firewall?",
+    "risposte": [
+      "Un programma di videoscrittura",
+      "Un sistema che controlla e filtra il traffico di rete",
+      "Un dispositivo di input"
+    ],
+    "corretta": "Un sistema che controlla e filtra il traffico di rete"
+  },
+  {
+    "domanda": "Qual è una buona pratica di sicurezza informatica?",
+    "risposte": [
+      "Disattivare sempre l’antivirus",
+      "Usare password complesse",
+      "Condividere password con i colleghi"
+    ],
+    "corretta": "Usare password complesse"
+  },
+  {
+    "domanda": "Che cos’è il phishing?",
+    "risposte": [
+      "Un tentativo fraudolento di ottenere dati personali tramite messaggi ingannevoli",
+      "Una tecnica di compressione file",
+      "Un metodo di backup dei dati"
+    ],
+    "corretta": "Un tentativo fraudolento di ottenere dati personali tramite messaggi ingannevoli"
+  },
+  {
+    "domanda": "Che cos’è un backup?",
+    "risposte": [
+      "Un tipo di memoria volatile",
+      "Una copia di sicurezza dei dati",
+      "Un protocollo di connessione a Internet"
+    ],
+    "corretta": "Una copia di sicurezza dei dati"
+  },
+  {
+    "domanda": "Che cos’è la RAM?",
+    "risposte": [
+      "Una memoria permanente di archiviazione",
+      "Una memoria volatile che supporta l’elaborazione del computer",
+      "Una periferica di input"
+    ],
+    "corretta": "Una memoria volatile che supporta l’elaborazione del computer"
+  },
+  {
+    "domanda": "Che cos’è la ROM?",
+    "risposte": [
+      "Una memoria volatile",
+      "Una memoria che contiene istruzioni permanenti di avvio",
+      "Un software di videoscrittura"
+    ],
+    "corretta": "Una memoria che contiene istruzioni permanenti di avvio"
+  },
+  {
+    "domanda": "Che cos’è la scheda madre?",
+    "risposte": [
+      "La principale scheda che collega tutti i componenti del computer",
+      "Una memoria secondaria",
+      "Un’applicazione di sistema operativo"
+    ],
+    "corretta": "La principale scheda che collega tutti i componenti del computer"
+  },
+  {
+    "domanda": "Che cos’è un sistema operativo?",
+    "risposte": [
+      "Un linguaggio di programmazione",
+      "Un programma per creare grafici",
+      "Il software che gestisce le risorse del computer"
+    ],
+    "corretta": "Il software che gestisce le risorse del computer"
+  },
+  {
+    "domanda": "Che cos’è un’applicazione mobile?",
+    "risposte": [
+      "Un driver per stampanti",
+      "Un software progettato per dispositivi mobili",
+      "Una memoria RAM speciale"
+    ],
+    "corretta": "Un software progettato per dispositivi mobili"
+  },
+  {
+    "domanda": "Che cos’è un driver?",
+    "risposte": [
+      "Una periferica di input",
+      "Un software che permette al sistema operativo di comunicare con l’hardware",
+      "Un’app per gestire file musicali"
+    ],
+    "corretta": "Un software che permette al sistema operativo di comunicare con l’hardware"
+  },
+  {
+    "domanda": "Che cos’è la rete LAN?",
+    "risposte": [
+      "Una rete locale che collega dispositivi in un’area ristretta",
+      "Un protocollo di sicurezza",
+      "Una rete geografica mondiale"
+    ],
+    "corretta": "Una rete locale che collega dispositivi in un’area ristretta"
+  },
+  {
+    "domanda": "Che cos’è la rete WAN?",
+    "risposte": [
+      "Una rete geografica estesa",
+      "Una rete domestica",
+      "Una memoria volatile"
+    ],
+    "corretta": "Una rete geografica estesa"
+  },
+  {
+    "domanda": "Che cos’è il Wi-Fi?",
+    "risposte": [
+      "Un antivirus gratuito",
+      "Un protocollo per crittografare i dati",
+      "Una tecnologia di rete senza fili"
+    ],
+    "corretta": "Una tecnologia di rete senza fili"
+  },
+  {
+    "domanda": "Che cos’è il Bluetooth?",
+    "risposte": [
+      "Un linguaggio di programmazione",
+      "Una tecnologia per collegamenti wireless a corto raggio",
+      "Un protocollo di posta elettronica"
+    ],
+    "corretta": "Una tecnologia per collegamenti wireless a corto raggio"
+  },
+  {
+    "domanda": "Che cos’è un file PDF?",
+    "risposte": [
+      "Un tipo di memoria RAM",
+      "Un formato di documento portabile",
+      "Un protocollo di rete"
+    ],
+    "corretta": "Un formato di documento portabile"
+  },
+  {
+    "domanda": "Che cos’è un file ZIP?",
+    "risposte": [
+      "Un programma di grafica",
+      "Un file compresso che può contenere più documenti",
+      "Un tipo di virus"
+    ],
+    "corretta": "Un file compresso che può contenere più documenti"
+  },
+  {
+    "domanda": "Che cos’è la crittografia?",
+    "risposte": [
+      "Una memoria volatile",
+      "Una tecnica per proteggere i dati rendendoli illeggibili senza chiave",
+      "Un formato di file"
+    ],
+    "corretta": "Una tecnica per proteggere i dati rendendoli illeggibili senza chiave"
+  },
+  {
+    "domanda": "Che cos’è un database?",
+    "risposte": [
+      "Un linguaggio di programmazione",
+      "Un protocollo di rete",
+      "Un insieme organizzato di dati"
+    ],
+    "corretta": "Un insieme organizzato di dati"
+  },
+  {
+    "domanda": "Che cos’è SQL?",
+    "risposte": [
+      "Un browser",
+      "Un sistema operativo",
+      "Un linguaggio per interrogare e gestire database"
+    ],
+    "corretta": "Un linguaggio per interrogare e gestire database"
+  },
+  {
+    "domanda": "Che cos’è HTML?",
+    "risposte": [
+      "Un formato di immagine",
+      "Un linguaggio di markup per creare pagine web",
+      "Un protocollo di posta elettronica"
+    ],
+    "corretta": "Un linguaggio di markup per creare pagine web"
+  },
+  {
+    "domanda": "Che cos’è un foglio di calcolo?",
+    "risposte": [
+      "Un sistema operativo",
+      "Un’applicazione per gestire dati numerici in tabelle",
+      "Un file di testo"
+    ],
+    "corretta": "Un’applicazione per gestire dati numerici in tabelle"
+  },
+  {
+    "domanda": "Che cos’è PowerPoint?",
+    "risposte": [
+      "Un antivirus",
+      "Un database",
+      "Un programma per creare presentazioni multimediali"
+    ],
+    "corretta": "Un programma per creare presentazioni multimediali"
+  },
+  {
+    "domanda": "Che cos’è un’app di messaggistica istantanea?",
+    "risposte": [
+      "Un driver per stampanti",
+      "Un browser web",
+      "Un software che consente di inviare e ricevere messaggi in tempo reale"
+    ],
+    "corretta": "Un software che consente di inviare e ricevere messaggi in tempo reale"
+  },
+  {
+    "domanda": "Che cos’è l’intelligenza artificiale?",
+    "risposte": [
+      "Un linguaggio di programmazione",
+      "Un software per la scrittura di testi",
+      "L’insieme di tecniche che permettono ai computer di simulare capacità umane di apprendimento e ragionamento"
+    ],
+    "corretta": "L’insieme di tecniche che permettono ai computer di simulare capacità umane di apprendimento e ragionamento"
   }
 ]
