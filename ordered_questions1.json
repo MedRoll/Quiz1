@@ -180,3 +180,96 @@
     "corretta": "Individuare e mostrare risultati pertinenti in base a parole chiave"
   }
 ]
+[
+  {
+    "domanda": "Quale tra le seguenti è una caratteristica della realtà aumentata (AR)?",
+    "risposte": [
+      "Sostituisce completamente il mondo reale con uno virtuale",
+      "Integra elementi digitali all’interno dell’ambiente reale",
+      "È un software di calcolo per l’analisi dei dati"
+    ],
+    "corretta": "Integra elementi digitali all’interno dell’ambiente reale"
+  },
+  {
+    "domanda": "Che cos’è il linguaggio binario utilizzato dal computer?",
+    "risposte": [
+      "Un linguaggio formato da sole due cifre: 0 e 1",
+      "Un codice composto da lettere dell’alfabeto",
+      "Un sistema di programmazione grafica"
+    ],
+    "corretta": "Un linguaggio formato da sole due cifre: 0 e 1"
+  },
+  {
+    "domanda": "Quale tra i seguenti è un dispositivo di input/output?",
+    "risposte": [
+      "Tastiera",
+      "Stampante",
+      "Schermo touch"
+    ],
+    "corretta": "Schermo touch"
+  },
+  {
+    "domanda": "A cosa serve principalmente la memoria RAM?",
+    "risposte": [
+      "A conservare dati in modo permanente",
+      "A memorizzare temporaneamente i dati e i programmi in uso",
+      "A gestire l’avvio del sistema operativo"
+    ],
+    "corretta": "A memorizzare temporaneamente i dati e i programmi in uso"
+  },
+  {
+    "domanda": "Qual è la funzione principale di un dispositivo di archiviazione come un SSD?",
+    "risposte": [
+      "Fornire memoria temporanea alla CPU",
+      "Conservare dati e programmi in modo permanente",
+      "Elaborare istruzioni logiche"
+    ],
+    "corretta": "Conservare dati e programmi in modo permanente"
+  },
+  {
+    "domanda": "Quale tra i seguenti non è un sistema operativo?",
+    "risposte": [
+      "Android",
+      "iOS",
+      "Google Chrome"
+    ],
+    "corretta": "Google Chrome"
+  },
+  {
+    "domanda": "Che cos’è un videogioco multipiattaforma?",
+    "risposte": [
+      "Un gioco che funziona solo su PC",
+      "Un gioco che funziona sia su PC che su console",
+      "Un gioco disponibile solo su dispositivi mobili"
+    ],
+    "corretta": "Un gioco che funziona sia su PC che su console"
+  },
+  {
+    "domanda": "Quale tra i seguenti è un esempio di linguaggio di programmazione?",
+    "risposte": [
+      "Microsoft Excel",
+      "Java",
+      "Adobe Reader"
+    ],
+    "corretta": "Java"
+  },
+  {
+    "domanda": "Che differenza c’è tra file sorgente e file eseguibile?",
+    "risposte": [
+      "Il sorgente è leggibile e modificabile dallo sviluppatore, l’eseguibile è avviabile dall’utente",
+      "Il sorgente è avviabile dall’utente, l’eseguibile serve solo agli sviluppatori",
+      "Non esiste alcuna differenza, sono sinonimi"
+    ],
+    "corretta": "Il sorgente è leggibile e modificabile dallo sviluppatore, l’eseguibile è avviabile dall’utente"
+  },
+  {
+    "domanda": "Quale tra i seguenti software appartiene alla suite Microsoft Office?",
+    "risposte": [
+      "Photoshop",
+      "PowerPoint",
+      "Eclipse"
+    ],
+    "corretta": "PowerPoint"
+  }
+]
+
