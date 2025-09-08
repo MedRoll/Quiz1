@@ -5,14 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Quiz Interattivo</title>
   <style>
-    /* --- STILI --- */
+    /* --- STILI BASE --- */
     html { font-size: 16px; scroll-behavior: smooth; }
     body { font-family: 'Segoe UI', sans-serif; background-color: #1c1f2b; color: #fff; padding: 20px; max-width: 900px; margin: auto; }
     h1 { text-align: center; color: #1a73e8; margin-bottom: 30px; }
     .stats { display: flex; justify-content: space-between; margin-bottom: 15px; }
     .card { background-color: #2a2e3d; color: white; padding: 25px; border-radius: 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin-bottom: 20px; }
-    .risposta { background-color: #ffffff; color: #000; border: 2px solid #ccc; margin: 10px 0; padding: 15px 20px; border-radius: 8px; font-size: 1.2rem; font-weight: bold; cursor: pointer; transition: transform 0.15s; }
-    .risposta:hover { transform: scale(1.02); }
+
+    /* --- RISPOSTE --- */
+    .risposta { 
+      background-color: #ffffff; 
+      color: #000; 
+      border: 2px solid #ccc; 
+      margin: 10px 0; 
+      padding: 15px 20px; 
+      border-radius: 8px; 
+      font-size: 1.2rem; 
+      font-weight: bold; 
+      cursor: pointer; 
+      transition: all 0.25s ease-in-out; 
+      opacity: 0; 
+      transform: translateY(10px); 
+      animation: fadeInUp 0.6s ease forwards; 
+    }
+    .risposta:hover { transform: scale(1.03); box-shadow: 0 0 12px rgba(255,255,255,0.3); }
     .corretta { background-color: #28a745; color: white; border-color: #28a745; }
     .sbagliata { background-color: #dc3545; color: white; border-color: #dc3545; }
 
@@ -26,33 +42,27 @@
       color: white; 
       font-weight: bold; 
       cursor: pointer; 
-      transition: background-color 0.2s, transform 0.1s; 
-      opacity: 0;
-      animation: fadeInUp 0.5s ease forwards;
+      transition: all 0.25s ease-in-out;
+      opacity: 0; 
+      transform: translateY(10px); 
+      animation: fadeInUp 0.6s ease forwards; 
     }
-    button:hover { background-color: #155ab6; }
-    button:active { transform: scale(0.95); }
+    button:hover { background-color: #155ab6; transform: scale(1.07); box-shadow: 0px 0px 15px rgba(26,115,232,0.6); }
+    button:active { transform: scale(0.95); box-shadow: 0px 0px 8px rgba(0,0,0,0.3) inset; }
     .btn-danger { background-color: #d93025; }
     .btn-danger:hover { background-color: #b5271b; }
-    #risposte { display: grid; gap: 1rem; }
 
     /* --- RECAP --- */
+    #risposte { display: grid; gap: 1rem; }
     .domandaRecap { background-color: #2f3347; padding: 15px; border-radius: 10px; margin-bottom: 20px; border: 1px solid #444; }
     .domandaRecap strong { display: block; margin-bottom: 6px; font-size: 1.1em; color: #1a73e8; }
     .domandaRecap div { margin: 4px 0; }
 
     /* --- ANIMAZIONI --- */
     @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(15px); }
+      from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
-
-    /* Ritardo progressivo nei pulsanti quiz */
-    #quiz-buttons button:nth-child(2) { animation-delay: 0.1s; }
-    #quiz-buttons button:nth-child(3) { animation-delay: 0.2s; }
-    #quiz-buttons button:nth-child(4) { animation-delay: 0.3s; }
-    #quiz-buttons button:nth-child(5) { animation-delay: 0.4s; }
-    #quiz-buttons button:nth-child(6) { animation-delay: 0.5s; }
   </style>
 </head>
 <body>
@@ -151,7 +161,10 @@
       if (domandaData.errore) { mostraRecap(); return; }
 
       ultimaDomanda = domandaData;
-      document.getElementById('domanda').textContent = domandaData.domanda;
+      const domandaElem = document.getElementById('domanda');
+      domandaElem.textContent = domandaData.domanda;
+      domandaElem.style.animation = "fadeInUp 0.6s ease";
+
       document.getElementById('contatore').textContent = `${indexDomanda + 1}/${MAX_DOMANDE}`;
       document.getElementById('progress-bar').style.width = Math.floor(((indexDomanda + 1) / MAX_DOMANDE) * 100) + "%";
       rispostaCorretta = domandaData.corretta;
@@ -161,9 +174,10 @@
       container.innerHTML = "";
       document.getElementById('feedback').textContent = "";
 
-      risposte.forEach(r => {
+      risposte.forEach((r, i) => {
         const btn = document.createElement('div');
         btn.className = 'risposta';
+        btn.style.animationDelay = `${i * 0.1}s`; // effetto "a cascata"
         btn.textContent = r;
         btn.onclick = () => verificaRisposta(btn, r);
         container.appendChild(btn);
