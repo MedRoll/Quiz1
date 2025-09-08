@@ -29,15 +29,20 @@
   <!-- MENU INIZIALE -->
   <div id="start-container" style="text-align: center; margin-bottom: 30px;">
     <h1>Benvenuto!</h1>
-    <button onclick="setDocenteMode(false)">📝 Modalità Quiz</button>
+    <button onclick="setDocenteMode(false)">📝 Modalità Studente</button>
     <button onclick="setDocenteMode(true)">👩‍🏫 Modalità Docente</button>
-    <div id="quiz-buttons" style="margin-top:20px; display:none;">
-      <h2>Seleziona un quiz</h2>
-      <button onclick="iniziaQuiz(1)">🎤 Quiz 1 - Competenze Digitali Base</button>
-      <button onclick="iniziaQuiz(2)">📧 Quiz 2 - Internet, Email e PEC</button>
-      <button onclick="iniziaQuiz(3)">🔐 Quiz 3 - SPID, Cybersecurity e GDPR</button>
-      <button onclick="iniziaQuiz(4)">💬 Quiz 4 - Social Media</button>
-      <button onclick="iniziaQuiz(5)">💻 Quiz 5 - Produttività, Cyberbullismo e Tecnologia</button>
+  </div>
+
+  <!-- SELEZIONE QUIZ -->
+  <div id="quiz-buttons" style="margin-top:20px; display:none; text-align:center;">
+    <h2 id="quiz-title"></h2>
+    <button onclick="iniziaQuiz(1)">🎤 Quiz 1 - Competenze Digitali Base</button>
+    <button onclick="iniziaQuiz(2)">📧 Quiz 2 - Internet, Email e PEC</button>
+    <button onclick="iniziaQuiz(3)">🔐 Quiz 3 - SPID, Cybersecurity e GDPR</button>
+    <button onclick="iniziaQuiz(4)">💬 Quiz 4 - Social Media</button>
+    <button onclick="iniziaQuiz(5)">💻 Quiz 5 - Produttività, Cyberbullismo e Tecnologia</button>
+    <div style="margin-top:15px;">
+      <button onclick="tornaAllaModalita()">⬅️ Torna alla scelta modalità</button>
     </div>
   </div>
 
@@ -59,7 +64,7 @@
     <button onclick="prossimaDomanda()">➡️ Avanti</button>
     <button class="btn-danger" onclick="terminaTest()">🛑 Termina Test</button>
     <button onclick="ricomincia()">🔄 Ricomincia</button>
-    <button onclick="tornaAlMenu()">⬅️ Torna al Menu</button>
+    <button onclick="tornaAiQuiz()">⬅️ Torna al Menu</button>
   </div>
   <div id="recap"></div>
 
@@ -68,7 +73,7 @@
     <h1>Modalità Docente</h1>
     <div id="lista-docente"></div>
     <div style="text-align:center;">
-      <button onclick="tornaAlMenu()">⬅️ Torna al Menu</button>
+      <button onclick="tornaAiQuiz()">⬅️ Torna al Menu</button>
     </div>
   </div>
 
@@ -83,8 +88,17 @@
     let MAX_DOMANDE = 0;
 
     function setDocenteMode(mode) {
+      if (mode) {
+        const pwd = prompt("Inserisci la password per accedere alla modalità docente:");
+        if (pwd !== "admin123") {
+          alert("❌ Password errata!");
+          return;
+        }
+      }
       docenteMode = mode;
+      document.getElementById("start-container").style.display = "none";
       document.getElementById("quiz-buttons").style.display = "block";
+      document.getElementById("quiz-title").textContent = mode ? "Seleziona un quiz (Modalità Docente)" : "Seleziona un quiz (Modalità Studente)";
     }
 
     async function fetchDomanda(index) {
@@ -171,7 +185,7 @@
       recapHTML += `</div>
         <div style="margin-top:20px; text-align:center;">
           <button onclick="ricomincia()">🔄 Rifai questo Quiz</button>
-          <button onclick="tornaAlMenu()">⬅️ Torna al Menu</button>
+          <button onclick="tornaAiQuiz()">⬅️ Torna al Menu</button>
         </div>`;
       document.getElementById('recap').innerHTML = recapHTML;
     }
@@ -187,7 +201,7 @@
 
     async function iniziaQuiz(quizId) {
       quizCorrente = quizId;
-      document.getElementById('start-container').style.display = 'none';
+      document.getElementById('quiz-buttons').style.display = 'none';
 
       if (docenteMode) {
         document.getElementById('docente-container').style.display = 'block';
@@ -223,15 +237,19 @@
       });
     }
 
-    function tornaAlMenu() {
-      document.getElementById('start-container').style.display = 'block';
-      document.getElementById('quiz-buttons').style.display = 'none';
+    function tornaAiQuiz() {
       document.getElementById('titolo-quiz').style.display = 'none';
       document.getElementById('stats-container').style.display = 'none';
       document.getElementById('card-container').style.display = 'none';
       document.getElementById('controls-container').style.display = 'none';
       document.getElementById('docente-container').style.display = 'none';
       document.getElementById('recap').innerHTML = "";
+      document.getElementById('quiz-buttons').style.display = 'block';
+    }
+
+    function tornaAllaModalita() {
+      document.getElementById('quiz-buttons').style.display = 'none';
+      document.getElementById('start-container').style.display = 'block';
     }
   </script>
 </body>
