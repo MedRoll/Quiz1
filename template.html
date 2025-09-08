@@ -82,6 +82,23 @@
       display: grid;
       gap: 1rem;
     }
+    /* --- RECAP --- */
+    .domandaRecap {
+      background-color: #2f3347;
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      border: 1px solid #444;
+    }
+    .domandaRecap strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 1.1em;
+      color: #1a73e8;
+    }
+    .domandaRecap div {
+      margin: 4px 0;
+    }
   </style>
 </head>
 <body>
@@ -211,7 +228,7 @@
       document.getElementById('risposte').innerHTML = "";
       document.getElementById('feedback').textContent = "";
 
-      let recapHTML = "<h2>Riepilogo Risposte</h2>";
+      let recapHTML = "<h2 style='margin-bottom:20px;'>Riepilogo Risposte</h2>";
       recapHTML += "<div>";
       risposteUtente.forEach((item, i) => {
         const corretta = item.rispostaUtente === item.corretta;
@@ -219,11 +236,19 @@
           <div class='domandaRecap'>
             <div><strong>${i + 1}. ${item.domanda}</strong></div>
             ${!corretta ? `<div><strong>Tua risposta:</strong> <span style="color:red;">${item.rispostaUtente}</span></div>` : ``}
-            <div><strong>Risposta corretta:</strong> <span style="color:green;">${item.corretta}</span></div>
+            <div><strong>Risposta corretta:</strong> <span style="color:lightgreen;">${item.corretta}</span></div>
             <div><strong>Esito:</strong> ${item.esito ? '✅ Corretto' : '❌ Sbagliato'}</div>
           </div>
         `;
       });
+
+      recapHTML += `</div>
+        <div style="margin-top:20px; text-align:center;">
+          <button onclick="ricomincia()">🔄 Rifai questo Quiz</button>
+          <button onclick="tornaAlMenu()">⬅️ Torna al Menu</button>
+        </div>
+      `;
+
       document.getElementById('recap').innerHTML = recapHTML;
     }
 
@@ -264,13 +289,6 @@
       document.getElementById('card-container').style.display = 'none';
       document.getElementById('controls-container').style.display = 'none';
       document.getElementById('recap').innerHTML = "";
-      punteggio = 0;
-      indexDomanda = 0;
-      risposteUtente = [];
-      MAX_DOMANDE = 0;
-      document.getElementById('punteggio').textContent = "0";
-      document.getElementById('contatore').textContent = "0";
-      document.getElementById('progress-bar').style.width = "0%";
     }
   </script>
 </body>
