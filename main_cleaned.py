@@ -1,90 +1,47 @@
 from fastapi import FastAPI, Request
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, JSONResponse
+from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 import json
-from pathlib import Path
-import random
+import uvicorn
+import os
 
 app = FastAPI()
+
+# Percorsi dei file JSON per i due quiz
+QUIZ_1_PATH = "multiple_choice.json"
+QUIZ_2_PATH = "multiple_choice_2.json"
+
+# Percorso per i template HTML
 templates = Jinja2Templates(directory=".")
 
-qa_data = []
-
-def load_qa():
-    global qa_data
-    path = Path("qa.json")
-    if path.exists():
-        with open(path, "r", encoding="utf-8") as f:
-            qa_data.clear()
-            qa_data.extend(json.load(f))
-
-load_qa()
-
-# ----------------------------
-# Rotte per QA base
-# ----------------------------
-
-@app.get("/domande")
-def get_all_qa():
-    return qa_data
-
-@app.get("/domanda/{index}")
-def get_qa(index: int):
-    if 0 <= index < len(qa_data):
-        return qa_data[index]
-    return {"errore": "Indice non valido"}
-
-@app.get("/random")
-def get_random_qa():
-    return random.choice(qa_data)
-
-# ----------------------------
-# Rotte per quiz multipli
-# ----------------------------
-
-@app.get("/quiz/{quiz_name}", response_class=HTMLResponse)
-def get_quiz_page(request: Request, quiz_name: str):
-    """Mostra il template interattivo per il quiz scelto"""
-    return templates.TemplateResponse("template.html", {
-        "request": request,
-        "quiz_name": quiz_name
-    })
-
-@app.get("/quiz/{quiz_name}/data")
-def get_quiz_data(quiz_name: str):
-    """Restituisce i dati del quiz (JSON)"""
-    file_path = Path("quiz") / f"multiple_choice_{quiz_name}.json"
-    if not file_path.exists():
-        return {"errore": f"Quiz '{quiz_name}' non trovato."}
-    with open(file_path, "r", encoding="utf-8") as f:
-        return json.load(f)
-
-@app.get("/menu", response_class=HTMLResponse)
-def menu():
-    """Menu di scelta quiz"""
-    html = """
-    <!DOCTYPE html>
-    <html lang="it">
-    <head>
-      <meta charset="UTF-8">
-      <title>Seleziona Quiz</title>
-    </head>
-    <body>
-      <h1>Scegli il tuo quiz</h1>
-      <ul>
-        <li><a href="/quiz/pompiere">Quiz Pompiere</a></li>
-        <li><a href="/quiz/generale">Quiz Generale</a></li>
-        <li><a href="/quiz/primo_soccorso">Quiz Primo Soccorso</a></li>
-        <li><a href="/quiz/competenze">Quiz Competenze Digitali</a></li>
-      </ul>
-    </body>
-    </html>
-    """
-    return HTMLResponse(content=html)
-
 @app.get("/", response_class=HTMLResponse)
-def index(request: Request):
+async def home(request: Request):
+    """Schermata iniziale con due pulsanti per i quiz."""
     return templates.TemplateResponse("template.html", {
         "request": request,
-        "quiz_name": "generale"  # default
+        "title": "Seleziona un quiz",
+        "quiz1_label": "Avvia Quiz",
+        "quiz2_label": "Avvia Quiz 2"
     })
+
+@app.get("/quiz", response_class=JSONResponse)
+async def get_quiz():
+    """Restituisce le domande del primo quiz."""
+    if os.path.exists(QUIZ_1_PATH):
+        with open(QUIZ_1_PATH, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        return {"title": "Quiz Originale", "questions": data}
+    return {"error": "File delle domande non trovato."}
+
+@app.get("/quiz2", response_class=JSONResponse)
+async def get_quiz2():
+    """Restituisce le domande del secondo quiz."""
+    if os.path.exists(QUIZ_2_PATH):
+        with open(QUIZ_2_PATH, "r", encoding="utf-8") as f:
+            data = json.load(f)
+        return {"title": "Quiz Competenze Digitali", "questions": data}
+    return {"error": "File delle domande non trovato."}
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=8000)
