@@ -93,7 +93,7 @@
 
   <div class="stats" id="stats-container" style="display:none;">
     <div><strong>Punteggio:</strong> <span id="punteggio">0</span></div>
-    <div><strong>Domanda:</strong> <span id="contatore">0</span>/15</div>
+    <div><strong>Domanda:</strong> <span id="contatore">0</span>/20</div>
   </div>
 
   <div class="progress-container" style="background-color: #444; border-radius: 30px; margin-bottom: 20px; overflow: hidden;">
@@ -120,7 +120,7 @@
     let ultimaDomanda = null;
     let risposteUtente = [];
     let indexDomanda = 0;
-    const MAX_DOMANDE = 15;
+    const MAX_DOMANDE = 20;
 
     async function fetchDomanda(index) {
       const res = await fetch(`/sequenza/${index}`);
