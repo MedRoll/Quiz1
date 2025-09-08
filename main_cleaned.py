@@ -7,12 +7,11 @@ app = FastAPI()
 
 qa_data = []
 quiz_data = []
-
-# nuova lista ordinata che userai al posto del random
 ordered_questions = []
 
 def load_data():
     global qa_data, quiz_data, ordered_questions
+    # carico qa.json e multiple_choice.json
     for filename, target in [("qa.json", qa_data), ("multiple_choice.json", quiz_data)]:
         path = Path(filename)
         if path.exists():
@@ -20,8 +19,12 @@ def load_data():
                 target.clear()
                 target.extend(json.load(f))
 
-    # qui puoi sostituire ordered_questions con la lista che mi darai
-    ordered_questions = qa_data[:]  # copia qa_data in ordine
+    # carico ordered_questions.json separatamente
+    path_ordered = Path("ordered_questions.json")
+    if path_ordered.exists():
+        with open(path_ordered, "r", encoding="utf-8") as f:
+            ordered_questions.clear()
+            ordered_questions.extend(json.load(f))
 
 load_data()
 
@@ -35,7 +38,6 @@ def get_qa(index: int):
         return qa_data[index]
     return {"errore": "Indice non valido"}
 
-# invece di random, restituiamo sequenzialmente dalla lista ordinata
 @app.get("/sequenza/{index}")
 def get_sequenza(index: int):
     if 0 <= index < len(ordered_questions):
