@@ -116,6 +116,7 @@
     <button onclick="prossimaDomanda()">➡️ Avanti</button>
     <button class="btn-danger" onclick="terminaTest()">🛑 Termina Test</button>
     <button onclick="ricomincia()">🔄 Ricomincia</button>
+    <button onclick="tornaAlMenu()">⬅️ Torna al Menu</button>
   </div>
 
   <div id="recap"></div>
@@ -135,7 +136,6 @@
     }
 
     async function caricaDomanda() {
-      // Recupero numero totale di domande al primo caricamento
       if (MAX_DOMANDE === 0) {
         const res = await fetch(`/quiz_all/${quizCorrente}`);
         const tutte = await res.json();
@@ -242,11 +242,11 @@
     }
 
     function iniziaQuiz(quizId) {
-      quizCorrente = quizId; // salvo il quiz selezionato
+      quizCorrente = quizId;
       punteggio = 0;
       indexDomanda = 0;
       risposteUtente = [];
-      MAX_DOMANDE = 0; // reset, sarà ricalcolato
+      MAX_DOMANDE = 0;
       document.getElementById('punteggio').textContent = "0";
       document.getElementById('recap').innerHTML = "";
       document.getElementById('start-container').style.display = 'none';
@@ -255,6 +255,22 @@
       document.getElementById('card-container').style.display = 'block';
       document.getElementById('controls-container').style.display = 'block';
       caricaDomanda();
+    }
+
+    function tornaAlMenu() {
+      document.getElementById('start-container').style.display = 'block';
+      document.getElementById('titolo-quiz').style.display = 'none';
+      document.getElementById('stats-container').style.display = 'none';
+      document.getElementById('card-container').style.display = 'none';
+      document.getElementById('controls-container').style.display = 'none';
+      document.getElementById('recap').innerHTML = "";
+      punteggio = 0;
+      indexDomanda = 0;
+      risposteUtente = [];
+      MAX_DOMANDE = 0;
+      document.getElementById('punteggio').textContent = "0";
+      document.getElementById('contatore').textContent = "0";
+      document.getElementById('progress-bar').style.width = "0%";
     }
   </script>
 </body>
