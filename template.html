@@ -63,6 +63,7 @@
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
+    #chart-container { width: 80%; max-width: 500px; margin: 20px auto; background-color: #2f3347; padding: 20px; border-radius: 10px; }
   </style>
 </head>
 <body>
@@ -92,7 +93,6 @@
     <div><strong>Punteggio:</strong> <span id="punteggio">0</span></div>
     <div><strong>Domanda:</strong> <span id="contatore">0</span></div>
   </div>
-  <!-- Progress bar nascosta inizialmente -->
   <div class="progress-container" id="progress-container" style="display:none; background-color: #444; border-radius: 30px; margin-bottom: 20px; overflow: hidden;">
     <div id="progress-bar" style="width: 0%; height: 14px; background: linear-gradient(to right, #ff416c, #ff4b2b); transition: width 0.4s;"></div>
   </div>
@@ -118,6 +118,9 @@
       <button onclick="tornaAiQuiz()">⬅️ Torna al Menu</button>
     </div>
   </div>
+
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
   <script>
     let docenteMode = false;
@@ -156,7 +159,6 @@
         const tutte = await res.json();
         if (!tutte.errore) { MAX_DOMANDE = tutte.length; document.getElementById("contatore").textContent = `0/${MAX_DOMANDE}`; }
       }
-
       if (indexDomanda >= MAX_DOMANDE) { mostraRecap(); return; }
       const domandaData = await fetchDomanda(indexDomanda);
       if (domandaData.errore) { mostraRecap(); return; }
@@ -188,16 +190,12 @@
       if (salvata) {
         const tutte = document.querySelectorAll('.risposta');
         tutte.forEach(el => { el.onclick = null; el.style.pointerEvents = 'none'; });
-
-        if (salvata.esito) document.getElementById('feedback').textContent = "✅ Corretto!";
-        else document.getElementById('feedback').textContent = "❌ Sbagliato!";
-
+        document.getElementById('feedback').textContent = salvata.esito ? "✅ Corretto!" : "❌ Sbagliato!";
         tutte.forEach(el => {
-          if (el.textContent === salvata.rispostaUtente) { if (salvata.esito) el.classList.add('corretta'); else el.classList.add('sbagliata'); }
+          if (el.textContent === salvata.rispostaUtente) { salvata.esito ? el.classList.add('corretta') : el.classList.add('sbagliata'); }
           if (!salvata.esito && el.textContent === rispostaCorretta) el.classList.add('corretta');
         });
       }
-
       aggiornaPunteggio();
     }
 
@@ -208,14 +206,8 @@
       tutte.forEach(el => el.onclick = null);
 
       const esitoCorretto = rispostaUtenteSelezionata === rispostaCorretta;
-      if (esitoCorretto) { 
-        elemento.classList.add('corretta'); 
-        document.getElementById('feedback').textContent = "✅ Corretto!"; 
-      } else { 
-        elemento.classList.add('sbagliata'); 
-        document.getElementById('feedback').textContent = "❌ Sbagliato!"; 
-        tutte.forEach(el => { if (el.textContent === rispostaCorretta) el.classList.add('corretta'); }); 
-      }
+      if (esitoCorretto) { elemento.classList.add('corretta'); document.getElementById('feedback').textContent = "✅ Corretto!"; }
+      else { elemento.classList.add('sbagliata'); document.getElementById('feedback').textContent = "❌ Sbagliato!"; tutte.forEach(el => { if (el.textContent === rispostaCorretta) el.classList.add('corretta'); }); }
 
       risposteUtente[indexDomanda] = {
         domanda: ultimaDomanda.domanda,
@@ -227,7 +219,7 @@
       aggiornaPunteggio();
 
       // Avanza automaticamente dopo 0,2 secondi
-      setTimeout(() => { prossimaDomanda(); }, 200);
+      setTimeout(() => { indexDomanda++; caricaDomanda(); }, 200);
     }
 
     function prossimaDomanda() { indexDomanda++; caricaDomanda(); }
@@ -239,23 +231,49 @@
       document.getElementById('risposte').innerHTML = "";
       document.getElementById('feedback').textContent = "";
 
+      let corrette = 0, sbagliate = 0, nonDate = MAX_DOMANDE - risposteUtente.length;
       let recapHTML = "<h2 style='margin-bottom:20px;'>Riepilogo Risposte</h2><div>";
       risposteUtente.forEach((item, i) => {
-        if (!item) return;
-        const corretta = item.rispostaUtente === item.corretta;
+        if (!item) { sbagliate++; return; } 
+        if (item.esito) { corrette++; } else { sbagliate++; }
         recapHTML += `
           <div class='domandaRecap'>
             <div><strong>${i + 1}. ${item.domanda}</strong></div>
-            ${!corretta ? `<div><strong>Tua risposta:</strong> <span style="color:red;">${item.rispostaUtente}</span></div>` : ``}
+            ${!item.esito ? `<div><strong>Tua risposta:</strong> <span style="color:red;">${item.rispostaUtente}</span></div>` : ``}
             <div><strong>Risposta corretta:</strong> <span style="color:lightgreen;">${item.corretta}</span></div>
             <div><strong>Esito:</strong> ${item.esito ? '✅ Corretto' : '❌ Sbagliato'}</div>
           </div>`;
       });
-      recapHTML += `</div><div style="margin-top:20px; text-align:center;">
+      recapHTML += `</div>`;
+
+      // Aggiunge il grafico
+      recapHTML += `<div id="chart-container"><canvas id="chart"></canvas></div>`;
+
+      recapHTML += `<div style="margin-top:20px; text-align:center;">
           <button onclick="ricomincia()">🔄 Rifai questo Quiz</button>
           <button onclick="tornaAiQuiz()">⬅️ Torna al Menu</button>
         </div>`;
       document.getElementById('recap').innerHTML = recapHTML;
+
+      // Crea grafico
+      const ctx = document.getElementById('chart').getContext('2d');
+      new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+          labels: ['Corrette', 'Sbagliate', 'Non Risposte'],
+          datasets: [{
+            data: [corrette, sbagliate, MAX_DOMANDE - corrette - sbagliate],
+            backgroundColor: ['#28a745', '#dc3545', '#6c757d'],
+            borderColor: '#1c1f2b',
+            borderWidth: 2
+          }]
+        },
+        options: {
+          plugins: {
+            legend: { labels: { color: 'white' } }
+          }
+        }
+      });
     }
 
     function ricomincia() {
