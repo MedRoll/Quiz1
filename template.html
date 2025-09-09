@@ -92,7 +92,8 @@
     <div><strong>Punteggio:</strong> <span id="punteggio">0</span></div>
     <div><strong>Domanda:</strong> <span id="contatore">0</span></div>
   </div>
-  <div class="progress-container" style="background-color: #444; border-radius: 30px; margin-bottom: 20px; overflow: hidden;">
+  <!-- Progress bar nascosta inizialmente -->
+  <div class="progress-container" id="progress-container" style="display:none; background-color: #444; border-radius: 30px; margin-bottom: 20px; overflow: hidden;">
     <div id="progress-bar" style="width: 0%; height: 14px; background: linear-gradient(to right, #ff416c, #ff4b2b); transition: width 0.4s;"></div>
   </div>
   <div class="card" id="card-container" style="display:none;">
@@ -123,7 +124,7 @@
     let rispostaCorretta = "";
     let punteggio = 0;
     let ultimaDomanda = null;
-    let risposteUtente = []; // ora indicizzato per numero domanda: risposteUtente[index] = { domanda, rispostaUtente, corretta, esito }
+    let risposteUtente = [];
     let indexDomanda = 0;
     let quizCorrente = 1;
     let MAX_DOMANDE = 0;
@@ -131,10 +132,7 @@
     function setDocenteMode(mode) {
       if (mode) {
         const pwd = prompt("Inserisci la password per accedere alla modalità docente:");
-        if (pwd !== "admin123") {
-          alert("❌ Password errata!");
-          return;
-        }
+        if (pwd !== "admin123") { alert("❌ Password errata!"); return; }
       }
       docenteMode = mode;
       document.getElementById("start-container").style.display = "none";
@@ -148,7 +146,6 @@
     }
 
     function aggiornaPunteggio() {
-      // ricalcola il punteggio in base alle risposte salvate (evita doppi incrementi)
       punteggio = risposteUtente.reduce((acc, item) => acc + (item && item.esito ? 1 : 0), 0);
       document.getElementById('punteggio').textContent = punteggio;
     }
@@ -157,10 +154,7 @@
       if (MAX_DOMANDE === 0) {
         const res = await fetch(`/quiz_all/${quizCorrente}`);
         const tutte = await res.json();
-        if (!tutte.errore) {
-          MAX_DOMANDE = tutte.length;
-          document.getElementById("contatore").textContent = `0/${MAX_DOMANDE}`;
-        }
+        if (!tutte.errore) { MAX_DOMANDE = tutte.length; document.getElementById("contatore").textContent = `0/${MAX_DOMANDE}`; }
       }
 
       if (indexDomanda >= MAX_DOMANDE) { mostraRecap(); return; }
@@ -181,7 +175,6 @@
       container.innerHTML = "";
       document.getElementById('feedback').textContent = "";
 
-      // crea i bottoni risposta
       risposte.forEach((r, i) => {
         const btn = document.createElement('div');
         btn.className = 'risposta';
@@ -191,54 +184,33 @@
         container.appendChild(btn);
       });
 
-      // Se la domanda è già stata risposta, ripristina lo stato visivo e blocca i click
       const salvata = risposteUtente[indexDomanda];
       if (salvata) {
         const tutte = document.querySelectorAll('.risposta');
-        // disabilita click
         tutte.forEach(el => { el.onclick = null; el.style.pointerEvents = 'none'; });
 
-        if (salvata.esito) {
-          document.getElementById('feedback').textContent = "✅ Corretto!";
-        } else {
-          document.getElementById('feedback').textContent = "❌ Sbagliato!";
-        }
+        if (salvata.esito) document.getElementById('feedback').textContent = "✅ Corretto!";
+        else document.getElementById('feedback').textContent = "❌ Sbagliato!";
 
-        // applica classi corretta/sbagliata
         tutte.forEach(el => {
-          if (el.textContent === salvata.rispostaUtente) {
-            if (salvata.esito) el.classList.add('corretta');
-            else el.classList.add('sbagliata');
-          }
-          if (!salvata.esito && el.textContent === rispostaCorretta) {
-            el.classList.add('corretta');
-          }
+          if (el.textContent === salvata.rispostaUtente) { if (salvata.esito) el.classList.add('corretta'); else el.classList.add('sbagliata'); }
+          if (!salvata.esito && el.textContent === rispostaCorretta) el.classList.add('corretta');
         });
       }
 
-      // allinea punteggio se si naviga
       aggiornaPunteggio();
     }
 
     function verificaRisposta(elemento, rispostaUtenteSelezionata) {
-      // se già risposto, ignora (ulteriore sicurezza)
       if (risposteUtente[indexDomanda]) return;
 
       const tutte = document.querySelectorAll('.risposta');
       tutte.forEach(el => el.onclick = null);
 
       const esitoCorretto = rispostaUtenteSelezionata === rispostaCorretta;
+      if (esitoCorretto) { elemento.classList.add('corretta'); document.getElementById('feedback').textContent = "✅ Corretto!"; }
+      else { elemento.classList.add('sbagliata'); document.getElementById('feedback').textContent = "❌ Sbagliato!"; tutte.forEach(el => { if (el.textContent === rispostaCorretta) el.classList.add('corretta'); }); }
 
-      if (esitoCorretto) {
-        elemento.classList.add('corretta');
-        document.getElementById('feedback').textContent = "✅ Corretto!";
-      } else {
-        elemento.classList.add('sbagliata');
-        document.getElementById('feedback').textContent = "❌ Sbagliato!";
-        tutte.forEach(el => { if (el.textContent === rispostaCorretta) el.classList.add('corretta'); });
-      }
-
-      // salva risposta alla posizione corretta (indicizzata)
       risposteUtente[indexDomanda] = {
         domanda: ultimaDomanda.domanda,
         rispostaUtente: rispostaUtenteSelezionata,
@@ -250,24 +222,15 @@
     }
 
     function prossimaDomanda() { indexDomanda++; caricaDomanda(); }
-
-    function domandaPrecedente() {
-      if (indexDomanda > 0) {
-        indexDomanda--;
-        caricaDomanda();
-      }
-    }
+    function domandaPrecedente() { if (indexDomanda > 0) { indexDomanda--; caricaDomanda(); } }
 
     function mostraRecap() {
-      // Nasconde i controlli del quiz
       document.getElementById('controls-container').style.display = 'none';
-
       document.getElementById('domanda').textContent = "📊 Test completato!";
       document.getElementById('risposte').innerHTML = "";
       document.getElementById('feedback').textContent = "";
 
       let recapHTML = "<h2 style='margin-bottom:20px;'>Riepilogo Risposte</h2><div>";
-      // mostra solo le domande effettivamente risposte (come prima), evitando errori su voci vuote
       risposteUtente.forEach((item, i) => {
         if (!item) return;
         const corretta = item.rispostaUtente === item.corretta;
@@ -279,9 +242,7 @@
             <div><strong>Esito:</strong> ${item.esito ? '✅ Corretto' : '❌ Sbagliato'}</div>
           </div>`;
       });
-
-      recapHTML += `</div>
-        <div style="margin-top:20px; text-align:center;">
+      recapHTML += `</div><div style="margin-top:20px; text-align:center;">
           <button onclick="ricomincia()">🔄 Rifai questo Quiz</button>
           <button onclick="tornaAiQuiz()">⬅️ Torna al Menu</button>
         </div>`;
@@ -313,6 +274,7 @@
         document.getElementById('stats-container').style.display = 'flex';
         document.getElementById('card-container').style.display = 'block';
         document.getElementById('controls-container').style.display = 'block';
+        document.getElementById('progress-container').style.display = 'block'; // <-- Mostra progress bar solo quando parte il quiz
         caricaDomanda();
       }
     }
@@ -325,11 +287,8 @@
       domande.forEach((d, i) => {
         let html = `<div class="card"><div style="font-size:1.2em; margin-bottom:10px;"><strong>${i+1}. ${d.domanda}</strong></div>`;
         d.risposte.forEach(r => {
-          if (r === d.corretta) {
-            html += `<div class="risposta corretta">✔️ ${r}</div>`;
-          } else {
-            html += `<div class="risposta">${r}</div>`;
-          }
+          if (r === d.corretta) html += `<div class="risposta corretta">✔️ ${r}</div>`;
+          else html += `<div class="risposta">${r}</div>`;
         });
         html += "</div>";
         container.innerHTML += html;
@@ -342,6 +301,7 @@
       document.getElementById('card-container').style.display = 'none';
       document.getElementById('controls-container').style.display = 'none';
       document.getElementById('docente-container').style.display = 'none';
+      document.getElementById('progress-container').style.display = 'none'; // <-- Nasconde progress bar tornando al menu
       document.getElementById('recap').innerHTML = "";
       document.getElementById('quiz-buttons').style.display = 'block';
     }
