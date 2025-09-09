@@ -123,7 +123,7 @@
     let rispostaCorretta = "";
     let punteggio = 0;
     let ultimaDomanda = null;
-    let risposteUtente = [];
+    let risposteUtente = []; // ora indicizzato per numero domanda: risposteUtente[index] = { domanda, rispostaUtente, corretta, esito }
     let indexDomanda = 0;
     let quizCorrente = 1;
     let MAX_DOMANDE = 0;
@@ -145,6 +145,12 @@
     async function fetchDomanda(index) {
       const res = await fetch(`/quiz/${quizCorrente}/${index}`);
       return await res.json();
+    }
+
+    function aggiornaPunteggio() {
+      // ricalcola il punteggio in base alle risposte salvate (evita doppi incrementi)
+      punteggio = risposteUtente.reduce((acc, item) => acc + (item && item.esito ? 1 : 0), 0);
+      document.getElementById('punteggio').textContent = punteggio;
     }
 
     async function caricaDomanda() {
@@ -175,37 +181,72 @@
       container.innerHTML = "";
       document.getElementById('feedback').textContent = "";
 
+      // crea i bottoni risposta
       risposte.forEach((r, i) => {
         const btn = document.createElement('div');
         btn.className = 'risposta';
-        btn.style.animationDelay = `${i * 0.1}s`; // effetto "a cascata"
+        btn.style.animationDelay = `${i * 0.1}s`;
         btn.textContent = r;
         btn.onclick = () => verificaRisposta(btn, r);
         container.appendChild(btn);
       });
+
+      // Se la domanda è già stata risposta, ripristina lo stato visivo e blocca i click
+      const salvata = risposteUtente[indexDomanda];
+      if (salvata) {
+        const tutte = document.querySelectorAll('.risposta');
+        // disabilita click
+        tutte.forEach(el => { el.onclick = null; el.style.pointerEvents = 'none'; });
+
+        if (salvata.esito) {
+          document.getElementById('feedback').textContent = "✅ Corretto!";
+        } else {
+          document.getElementById('feedback').textContent = "❌ Sbagliato!";
+        }
+
+        // applica classi corretta/sbagliata
+        tutte.forEach(el => {
+          if (el.textContent === salvata.rispostaUtente) {
+            if (salvata.esito) el.classList.add('corretta');
+            else el.classList.add('sbagliata');
+          }
+          if (!salvata.esito && el.textContent === rispostaCorretta) {
+            el.classList.add('corretta');
+          }
+        });
+      }
+
+      // allinea punteggio se si naviga
+      aggiornaPunteggio();
     }
 
-    function verificaRisposta(elemento, rispostaUtente) {
+    function verificaRisposta(elemento, rispostaUtenteSelezionata) {
+      // se già risposto, ignora (ulteriore sicurezza)
+      if (risposteUtente[indexDomanda]) return;
+
       const tutte = document.querySelectorAll('.risposta');
       tutte.forEach(el => el.onclick = null);
 
-      if (rispostaUtente === rispostaCorretta) {
+      const esitoCorretto = rispostaUtenteSelezionata === rispostaCorretta;
+
+      if (esitoCorretto) {
         elemento.classList.add('corretta');
         document.getElementById('feedback').textContent = "✅ Corretto!";
-        punteggio++;
       } else {
         elemento.classList.add('sbagliata');
         document.getElementById('feedback').textContent = "❌ Sbagliato!";
         tutte.forEach(el => { if (el.textContent === rispostaCorretta) el.classList.add('corretta'); });
       }
 
-      document.getElementById('punteggio').textContent = punteggio;
-      risposteUtente.push({
+      // salva risposta alla posizione corretta (indicizzata)
+      risposteUtente[indexDomanda] = {
         domanda: ultimaDomanda.domanda,
-        rispostaUtente,
+        rispostaUtente: rispostaUtenteSelezionata,
         corretta: rispostaCorretta,
-        esito: rispostaUtente === rispostaCorretta
-      });
+        esito: esitoCorretto
+      };
+
+      aggiornaPunteggio();
     }
 
     function prossimaDomanda() { indexDomanda++; caricaDomanda(); }
@@ -226,7 +267,9 @@
       document.getElementById('feedback').textContent = "";
 
       let recapHTML = "<h2 style='margin-bottom:20px;'>Riepilogo Risposte</h2><div>";
+      // mostra solo le domande effettivamente risposte (come prima), evitando errori su voci vuote
       risposteUtente.forEach((item, i) => {
+        if (!item) return;
         const corretta = item.rispostaUtente === item.corretta;
         recapHTML += `
           <div class='domandaRecap'>
