@@ -63,6 +63,11 @@
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
+
+    /* --- ANIMAZIONE BARRA --- */
+    #progress-bar {
+      transition: width 0.5s ease-in-out, background 0.5s ease-in-out;
+    }
   </style>
 </head>
 <body>
@@ -92,9 +97,8 @@
     <div><strong>Punteggio:</strong> <span id="punteggio">0</span></div>
     <div><strong>Domanda:</strong> <span id="contatore">0</span></div>
   </div>
-  <!-- Progress bar nascosta inizialmente -->
   <div class="progress-container" id="progress-container" style="display:none; background-color: #444; border-radius: 30px; margin-bottom: 20px; overflow: hidden;">
-    <div id="progress-bar" style="width: 0%; height: 14px; background: linear-gradient(to right, #ff416c, #ff4b2b); transition: width 0.4s;"></div>
+    <div id="progress-bar" style="width: 0%; height: 14px; background: linear-gradient(to right, #ff416c, #ff4b2b);"></div>
   </div>
   <div class="card" id="card-container" style="display:none;">
     <div id="domanda" style="font-size: 1.4em; font-weight: bold; border: 2px solid #007bff; padding: 20px; border-radius: 10px; background-color: #2a2e3d; color: white; margin-bottom: 20px;">Caricamento...</div>
@@ -208,8 +212,14 @@
       tutte.forEach(el => el.onclick = null);
 
       const esitoCorretto = rispostaUtenteSelezionata === rispostaCorretta;
-      if (esitoCorretto) { elemento.classList.add('corretta'); document.getElementById('feedback').textContent = "✅ Corretto!"; }
-      else { elemento.classList.add('sbagliata'); document.getElementById('feedback').textContent = "❌ Sbagliato!"; tutte.forEach(el => { if (el.textContent === rispostaCorretta) el.classList.add('corretta'); }); }
+      if (esitoCorretto) { 
+        elemento.classList.add('corretta'); 
+        document.getElementById('feedback').textContent = "✅ Corretto!"; 
+      } else { 
+        elemento.classList.add('sbagliata'); 
+        document.getElementById('feedback').textContent = "❌ Sbagliato!"; 
+        tutte.forEach(el => { if (el.textContent === rispostaCorretta) el.classList.add('corretta'); }); 
+      }
 
       risposteUtente[indexDomanda] = {
         domanda: ultimaDomanda.domanda,
@@ -219,6 +229,9 @@
       };
 
       aggiornaPunteggio();
+
+      // Avanza automaticamente dopo 0,5 secondi
+      setTimeout(() => { prossimaDomanda(); }, 500);
     }
 
     function prossimaDomanda() { indexDomanda++; caricaDomanda(); }
@@ -274,7 +287,7 @@
         document.getElementById('stats-container').style.display = 'flex';
         document.getElementById('card-container').style.display = 'block';
         document.getElementById('controls-container').style.display = 'block';
-        document.getElementById('progress-container').style.display = 'block'; // <-- Mostra progress bar solo quando parte il quiz
+        document.getElementById('progress-container').style.display = 'block';
         caricaDomanda();
       }
     }
@@ -301,7 +314,7 @@
       document.getElementById('card-container').style.display = 'none';
       document.getElementById('controls-container').style.display = 'none';
       document.getElementById('docente-container').style.display = 'none';
-      document.getElementById('progress-container').style.display = 'none'; // <-- Nasconde progress bar tornando al menu
+      document.getElementById('progress-container').style.display = 'none';
       document.getElementById('recap').innerHTML = "";
       document.getElementById('quiz-buttons').style.display = 'block';
     }
