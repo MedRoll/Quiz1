@@ -63,8 +63,13 @@
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
-    #chart-container { width: 80%; max-width: 500px; margin: 20px auto; background-color: #2f3347; padding: 20px; border-radius: 10px; }
+    .progress-bar-animate {
+      transition: width 0.4s ease-in-out;
+    }
   </style>
+  <!-- Chart.js e DataLabels -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2"></script>
 </head>
 <body>
   <!-- MENU INIZIALE -->
@@ -94,7 +99,7 @@
     <div><strong>Domanda:</strong> <span id="contatore">0</span></div>
   </div>
   <div class="progress-container" id="progress-container" style="display:none; background-color: #444; border-radius: 30px; margin-bottom: 20px; overflow: hidden;">
-    <div id="progress-bar" style="width: 0%; height: 14px; background: linear-gradient(to right, #ff416c, #ff4b2b); transition: width 0.4s;"></div>
+    <div id="progress-bar" class="progress-bar-animate" style="width: 0%; height: 14px; background: linear-gradient(to right, #ff416c, #ff4b2b);"></div>
   </div>
   <div class="card" id="card-container" style="display:none;">
     <div id="domanda" style="font-size: 1.4em; font-weight: bold; border: 2px solid #007bff; padding: 20px; border-radius: 10px; background-color: #2a2e3d; color: white; margin-bottom: 20px;">Caricamento...</div>
@@ -119,9 +124,6 @@
     </div>
   </div>
 
-  <!-- Chart.js CDN -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
   <script>
     let docenteMode = false;
     let rispostaCorretta = "";
@@ -131,11 +133,12 @@
     let indexDomanda = 0;
     let quizCorrente = 1;
     let MAX_DOMANDE = 0;
+    const FEEDBACK_DELAY = 200; // 0,2 secondi
 
     function setDocenteMode(mode) {
-      if (mode) {
+      if(mode){
         const pwd = prompt("Inserisci la password per accedere alla modalità docente:");
-        if (pwd !== "admin123") { alert("❌ Password errata!"); return; }
+        if(pwd !== "admin123"){ alert("❌ Password errata!"); return; }
       }
       docenteMode = mode;
       document.getElementById("start-container").style.display = "none";
@@ -143,71 +146,73 @@
       document.getElementById("quiz-title").textContent = mode ? "Seleziona un quiz (Modalità Docente)" : "Seleziona un quiz (Modalità Studente)";
     }
 
-    async function fetchDomanda(index) {
+    async function fetchDomanda(index){
       const res = await fetch(`/quiz/${quizCorrente}/${index}`);
       return await res.json();
     }
 
-    function aggiornaPunteggio() {
-      punteggio = risposteUtente.reduce((acc, item) => acc + (item && item.esito ? 1 : 0), 0);
+    function aggiornaPunteggio(){
+      punteggio = risposteUtente.reduce((acc,item)=> acc + (item && item.esito ? 1 : 0),0);
       document.getElementById('punteggio').textContent = punteggio;
     }
 
-    async function caricaDomanda() {
-      if (MAX_DOMANDE === 0) {
+    async function caricaDomanda(){
+      if(MAX_DOMANDE===0){
         const res = await fetch(`/quiz_all/${quizCorrente}`);
         const tutte = await res.json();
-        if (!tutte.errore) { MAX_DOMANDE = tutte.length; document.getElementById("contatore").textContent = `0/${MAX_DOMANDE}`; }
+        if(!tutte.errore){ MAX_DOMANDE = tutte.length; document.getElementById("contatore").textContent = `0/${MAX_DOMANDE}`; }
       }
-      if (indexDomanda >= MAX_DOMANDE) { mostraRecap(); return; }
+      if(indexDomanda >= MAX_DOMANDE){ mostraRecap(); return; }
+
       const domandaData = await fetchDomanda(indexDomanda);
-      if (domandaData.errore) { mostraRecap(); return; }
+      if(domandaData.errore){ mostraRecap(); return; }
 
       ultimaDomanda = domandaData;
       const domandaElem = document.getElementById('domanda');
       domandaElem.textContent = domandaData.domanda;
       domandaElem.style.animation = "fadeInUp 0.6s ease";
 
-      document.getElementById('contatore').textContent = `${indexDomanda + 1}/${MAX_DOMANDE}`;
-      document.getElementById('progress-bar').style.width = Math.floor(((indexDomanda + 1) / MAX_DOMANDE) * 100) + "%";
+      document.getElementById('contatore').textContent = `${indexDomanda+1}/${MAX_DOMANDE}`;
+      document.getElementById('progress-bar').style.width = Math.floor(((indexDomanda+1)/MAX_DOMANDE)*100) + "%";
       rispostaCorretta = domandaData.corretta;
 
-      const risposte = [...domandaData.risposte].sort(() => Math.random() - 0.5);
+      const risposte = [...domandaData.risposte].sort(() => Math.random()-0.5);
       const container = document.getElementById('risposte');
       container.innerHTML = "";
       document.getElementById('feedback').textContent = "";
 
-      risposte.forEach((r, i) => {
+      risposte.forEach((r,i)=>{
         const btn = document.createElement('div');
         btn.className = 'risposta';
-        btn.style.animationDelay = `${i * 0.1}s`;
+        btn.style.animationDelay = `${i*0.1}s`;
         btn.textContent = r;
-        btn.onclick = () => verificaRisposta(btn, r);
+        btn.onclick = () => verificaRisposta(btn,r);
         container.appendChild(btn);
       });
 
       const salvata = risposteUtente[indexDomanda];
-      if (salvata) {
+      if(salvata){
         const tutte = document.querySelectorAll('.risposta');
-        tutte.forEach(el => { el.onclick = null; el.style.pointerEvents = 'none'; });
-        document.getElementById('feedback').textContent = salvata.esito ? "✅ Corretto!" : "❌ Sbagliato!";
-        tutte.forEach(el => {
-          if (el.textContent === salvata.rispostaUtente) { salvata.esito ? el.classList.add('corretta') : el.classList.add('sbagliata'); }
-          if (!salvata.esito && el.textContent === rispostaCorretta) el.classList.add('corretta');
+        tutte.forEach(el=>{ el.onclick=null; el.style.pointerEvents='none'; });
+        if(salvata.esito) document.getElementById('feedback').textContent="✅ Corretto!";
+        else document.getElementById('feedback').textContent="❌ Sbagliato!";
+        tutte.forEach(el=>{
+          if(el.textContent===salvata.rispostaUtente){ if(salvata.esito) el.classList.add('corretta'); else el.classList.add('sbagliata'); }
+          if(!salvata.esito && el.textContent===rispostaCorretta) el.classList.add('corretta');
         });
       }
       aggiornaPunteggio();
     }
 
-    function verificaRisposta(elemento, rispostaUtenteSelezionata) {
-      if (risposteUtente[indexDomanda]) return;
+    function verificaRisposta(elemento,rispostaUtenteSelezionata){
+      if(risposteUtente[indexDomanda]) return;
 
       const tutte = document.querySelectorAll('.risposta');
-      tutte.forEach(el => el.onclick = null);
+      tutte.forEach(el=>el.onclick=null);
 
-      const esitoCorretto = rispostaUtenteSelezionata === rispostaCorretta;
-      if (esitoCorretto) { elemento.classList.add('corretta'); document.getElementById('feedback').textContent = "✅ Corretto!"; }
-      else { elemento.classList.add('sbagliata'); document.getElementById('feedback').textContent = "❌ Sbagliato!"; tutte.forEach(el => { if (el.textContent === rispostaCorretta) el.classList.add('corretta'); }); }
+      const esitoCorretto = rispostaUtenteSelezionata===rispostaCorretta;
+      if(esitoCorretto) { elemento.classList.add('corretta'); document.getElementById('feedback').textContent="✅ Corretto!"; }
+      else { elemento.classList.add('sbagliata'); document.getElementById('feedback').textContent="❌ Sbagliato!"; tutte.forEach(el=>{ if(el.textContent===rispostaCorretta) el.classList.add('corretta'); }); }
 
       risposteUtente[indexDomanda] = {
         domanda: ultimaDomanda.domanda,
@@ -217,125 +222,139 @@
       };
 
       aggiornaPunteggio();
-
-      // Avanza automaticamente dopo 0,2 secondi
-      setTimeout(() => { indexDomanda++; caricaDomanda(); }, 200);
+      setTimeout(()=>{ indexDomanda++; caricaDomanda(); }, FEEDBACK_DELAY);
     }
 
-    function prossimaDomanda() { indexDomanda++; caricaDomanda(); }
-    function domandaPrecedente() { if (indexDomanda > 0) { indexDomanda--; caricaDomanda(); } }
+    function prossimaDomanda(){ indexDomanda++; caricaDomanda(); }
+    function domandaPrecedente(){ if(indexDomanda>0){ indexDomanda--; caricaDomanda(); } }
 
-    function mostraRecap() {
-      document.getElementById('controls-container').style.display = 'none';
-      document.getElementById('domanda').textContent = "📊 Test completato!";
-      document.getElementById('risposte').innerHTML = "";
-      document.getElementById('feedback').textContent = "";
+    function mostraRecap(){
+      document.getElementById('controls-container').style.display='none';
+      document.getElementById('domanda').textContent="📊 Test completato!";
+      document.getElementById('risposte').innerHTML="";
+      document.getElementById('feedback').textContent="";
 
-      let corrette = 0, sbagliate = 0, nonDate = MAX_DOMANDE - risposteUtente.length;
-      let recapHTML = "<h2 style='margin-bottom:20px;'>Riepilogo Risposte</h2><div>";
-      risposteUtente.forEach((item, i) => {
-        if (!item) { sbagliate++; return; } 
-        if (item.esito) { corrette++; } else { sbagliate++; }
-        recapHTML += `
+      let recapHTML="<h2 style='margin-bottom:20px;'>Riepilogo Risposte</h2><div>";
+      risposteUtente.forEach((item,i)=>{
+        if(!item) return;
+        const corretta = item.rispostaUtente===item.corretta;
+        recapHTML+=`
           <div class='domandaRecap'>
-            <div><strong>${i + 1}. ${item.domanda}</strong></div>
-            ${!item.esito ? `<div><strong>Tua risposta:</strong> <span style="color:red;">${item.rispostaUtente}</span></div>` : ``}
+            <div><strong>${i+1}. ${item.domanda}</strong></div>
+            ${!corretta? `<div><strong>Tua risposta:</strong> <span style="color:red;">${item.rispostaUtente}</span></div>` :``}
             <div><strong>Risposta corretta:</strong> <span style="color:lightgreen;">${item.corretta}</span></div>
             <div><strong>Esito:</strong> ${item.esito ? '✅ Corretto' : '❌ Sbagliato'}</div>
           </div>`;
       });
-      recapHTML += `</div>`;
+      recapHTML+="</div>";
 
-      // Aggiunge il grafico
-      recapHTML += `<div id="chart-container"><canvas id="chart"></canvas></div>`;
+      // Conteggio corrette, sbagliate, non date
+      const corrette = risposteUtente.filter(r=>r && r.esito).length;
+      const sbagliate = risposteUtente.filter(r=>r && !r.esito).length;
+      const nonDate = MAX_DOMANDE - risposteUtente.length;
 
-      recapHTML += `<div style="margin-top:20px; text-align:center;">
+      recapHTML+=`<h3 style="margin-top:20px; text-align:center;">Statistiche Risposte</h3>
+        <canvas id="graficoRiepilogo" style="max-width:500px; margin:auto; display:block;"></canvas>
+        <div style="margin-top:20px; text-align:center;">
           <button onclick="ricomincia()">🔄 Rifai questo Quiz</button>
           <button onclick="tornaAiQuiz()">⬅️ Torna al Menu</button>
         </div>`;
-      document.getElementById('recap').innerHTML = recapHTML;
 
-      // Crea grafico
-      const ctx = document.getElementById('chart').getContext('2d');
-      new Chart(ctx, {
-        type: 'doughnut',
-        data: {
-          labels: ['Corrette', 'Sbagliate', 'Non Risposte'],
-          datasets: [{
-            data: [corrette, sbagliate, MAX_DOMANDE - corrette - sbagliate],
-            backgroundColor: ['#28a745', '#dc3545', '#6c757d'],
-            borderColor: '#1c1f2b',
-            borderWidth: 2
+      document.getElementById('recap').innerHTML=recapHTML;
+
+      // Creazione grafico
+      const ctx=document.getElementById('graficoRiepilogo').getContext('2d');
+      new Chart(ctx,{
+        type:'bar',
+        data:{
+          labels:['Corrette','Sbagliate','Non Risposte'],
+          datasets:[{
+            label:'Risposte',
+            data:[corrette,sbagliate,nonDate],
+            backgroundColor:['#28a745','#dc3545','#6c757d']
           }]
         },
-        options: {
-          plugins: {
-            legend: { labels: { color: 'white' } }
+        options:{
+          responsive:true,
+          plugins:{
+            legend:{display:false},
+            datalabels:{
+              anchor:'end',
+              align:'end',
+              color:'white',
+              font:{weight:'bold',size:14},
+              formatter: function(value){ return value; }
+            }
+          },
+          scales:{
+            x:{ ticks:{ color:'white' } },
+            y:{ beginAtZero:true, ticks:{ color:'white', stepSize:1 } }
           }
-        }
+        },
+        plugins:[ChartDataLabels]
       });
     }
 
-    function ricomincia() {
-      punteggio = 0; indexDomanda = 0; risposteUtente = [];
-      document.getElementById('punteggio').textContent = "0";
-      document.getElementById('recap').innerHTML = "";
-      document.getElementById('controls-container').style.display = 'block';
+    function ricomincia(){
+      punteggio=0; indexDomanda=0; risposteUtente=[];
+      document.getElementById('punteggio').textContent="0";
+      document.getElementById('recap').innerHTML="";
+      document.getElementById('controls-container').style.display='block';
+      document.getElementById('progress-container').style.display='block';
       caricaDomanda();
     }
 
-    function terminaTest() { indexDomanda = MAX_DOMANDE; mostraRecap(); }
+    function terminaTest(){ indexDomanda=MAX_DOMANDE; mostraRecap(); }
 
-    async function iniziaQuiz(quizId) {
-      quizCorrente = quizId;
-      document.getElementById('quiz-buttons').style.display = 'none';
-
-      if (docenteMode) {
-        document.getElementById('docente-container').style.display = 'block';
+    async function iniziaQuiz(quizId){
+      quizCorrente=quizId;
+      document.getElementById('quiz-buttons').style.display='none';
+      if(docenteMode){
+        document.getElementById('docente-container').style.display='block';
         caricaModalitaDocente();
       } else {
-        punteggio = 0; indexDomanda = 0; risposteUtente = []; MAX_DOMANDE = 0;
-        document.getElementById('punteggio').textContent = "0";
-        document.getElementById('recap').innerHTML = "";
-        document.getElementById('titolo-quiz').style.display = 'block';
-        document.getElementById('stats-container').style.display = 'flex';
-        document.getElementById('card-container').style.display = 'block';
-        document.getElementById('controls-container').style.display = 'block';
-        document.getElementById('progress-container').style.display = 'block';
+        punteggio=0; indexDomanda=0; risposteUtente=[]; MAX_DOMANDE=0;
+        document.getElementById('punteggio').textContent='0';
+        document.getElementById('recap').innerHTML='';
+        document.getElementById('titolo-quiz').style.display='block';
+        document.getElementById('stats-container').style.display='flex';
+        document.getElementById('card-container').style.display='block';
+        document.getElementById('controls-container').style.display='block';
+        document.getElementById('progress-container').style.display='block';
         caricaDomanda();
       }
     }
 
-    async function caricaModalitaDocente() {
-      const res = await fetch(`/quiz_all/${quizCorrente}`);
-      const domande = await res.json();
-      const container = document.getElementById("lista-docente");
-      container.innerHTML = "";
-      domande.forEach((d, i) => {
-        let html = `<div class="card"><div style="font-size:1.2em; margin-bottom:10px;"><strong>${i+1}. ${d.domanda}</strong></div>`;
-        d.risposte.forEach(r => {
-          if (r === d.corretta) html += `<div class="risposta corretta">✔️ ${r}</div>`;
-          else html += `<div class="risposta">${r}</div>`;
+    async function caricaModalitaDocente(){
+      const res=await fetch(`/quiz_all/${quizCorrente}`);
+      const domande=await res.json();
+      const container=document.getElementById("lista-docente");
+      container.innerHTML="";
+      domande.forEach((d,i)=>{
+        let html=`<div class="card"><div style="font-size:1.2em; margin-bottom:10px;"><strong>${i+1}. ${d.domanda}</strong></div>`;
+        d.risposte.forEach(r=>{
+          if(r===d.corretta) html+=`<div class="risposta corretta">✔️ ${r}</div>`;
+          else html+=`<div class="risposta">${r}</div>`;
         });
-        html += "</div>";
-        container.innerHTML += html;
+        html+="</div>";
+        container.innerHTML+=html;
       });
     }
 
-    function tornaAiQuiz() {
-      document.getElementById('titolo-quiz').style.display = 'none';
-      document.getElementById('stats-container').style.display = 'none';
-      document.getElementById('card-container').style.display = 'none';
-      document.getElementById('controls-container').style.display = 'none';
-      document.getElementById('docente-container').style.display = 'none';
-      document.getElementById('progress-container').style.display = 'none';
-      document.getElementById('recap').innerHTML = "";
-      document.getElementById('quiz-buttons').style.display = 'block';
+    function tornaAiQuiz(){
+      document.getElementById('titolo-quiz').style.display='none';
+      document.getElementById('stats-container').style.display='none';
+      document.getElementById('card-container').style.display='none';
+      document.getElementById('controls-container').style.display='none';
+      document.getElementById('docente-container').style.display='none';
+      document.getElementById('progress-container').style.display='none';
+      document.getElementById('recap').innerHTML='';
+      document.getElementById('quiz-buttons').style.display='block';
     }
 
-    function tornaAllaModalita() {
-      document.getElementById('quiz-buttons').style.display = 'none';
-      document.getElementById('start-container').style.display = 'block';
+    function tornaAllaModalita(){
+      document.getElementById('quiz-buttons').style.display='none';
+      document.getElementById('start-container').style.display='block';
     }
   </script>
 </body>
