@@ -101,6 +101,7 @@
     <div id="feedback" style="margin-top: 15px;"></div>
   </div>
   <div class="controls" id="controls-container" style="display:none; text-align:center;">
+    <button onclick="domandaPrecedente()">⬅️ Indietro</button>
     <button onclick="prossimaDomanda()">➡️ Avanti</button>
     <button class="btn-danger" onclick="terminaTest()">🛑 Termina Test</button>
     <button onclick="ricomincia()">🔄 Ricomincia</button>
@@ -209,7 +210,17 @@
 
     function prossimaDomanda() { indexDomanda++; caricaDomanda(); }
 
+    function domandaPrecedente() {
+      if (indexDomanda > 0) {
+        indexDomanda--;
+        caricaDomanda();
+      }
+    }
+
     function mostraRecap() {
+      // Nasconde i controlli del quiz
+      document.getElementById('controls-container').style.display = 'none';
+
       document.getElementById('domanda').textContent = "📊 Test completato!";
       document.getElementById('risposte').innerHTML = "";
       document.getElementById('feedback').textContent = "";
@@ -238,6 +249,7 @@
       punteggio = 0; indexDomanda = 0; risposteUtente = [];
       document.getElementById('punteggio').textContent = "0";
       document.getElementById('recap').innerHTML = "";
+      document.getElementById('controls-container').style.display = 'block';
       caricaDomanda();
     }
 
