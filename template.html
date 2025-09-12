@@ -85,6 +85,8 @@
     <button onclick="iniziaQuiz(1)">🎤 Quiz 1 - Competenze Digitali Base</button>
     <button onclick="iniziaQuiz(2)">📧 Quiz 2 - Internet, Email e PEC</button>
     <button onclick="iniziaQuiz(3)">🔐 Quiz 3 - SPID, Cybersecurity e GDPR</button>
+    <!-- 🔽 NUOVO PULSANTE -->
+    <button onclick="iniziaQuiz('3-2')">🛡️ Quiz 3-2 - Approfondimento Cybersecurity/GDPR</button>
     <button onclick="iniziaQuiz(4)">💬 Quiz 4 - Social Media</button>
     <button onclick="iniziaQuiz(5)">💻 Quiz 5 - Produttività, Cyberbullismo e Tecnologia</button>
     <div style="margin-top:15px;">
@@ -133,7 +135,7 @@
     let indexDomanda = 0;
     let quizCorrente = 1;
     let MAX_DOMANDE = 0;
-    const FEEDBACK_DELAY = 200; // 0,2 secondi
+    const FEEDBACK_DELAY = 200;
 
     function setDocenteMode(mode) {
       if(mode){
@@ -248,7 +250,6 @@
       });
       recapHTML+="</div>";
 
-      // Conteggio corrette, sbagliate, non date
       const corrette = risposteUtente.filter(r=>r && r.esito).length;
       const sbagliate = risposteUtente.filter(r=>r && !r.esito).length;
       const nonDate = MAX_DOMANDE - risposteUtente.length;
@@ -262,7 +263,6 @@
 
       document.getElementById('recap').innerHTML=recapHTML;
 
-      // Creazione grafico
       const ctx=document.getElementById('graficoRiepilogo').getContext('2d');
       new Chart(ctx,{
         type:'bar',
@@ -307,7 +307,7 @@
     function terminaTest(){ indexDomanda=MAX_DOMANDE; mostraRecap(); }
 
     async function iniziaQuiz(quizId){
-      quizCorrente=quizId;
+      quizCorrente=quizId; // può essere numero o stringa
       document.getElementById('quiz-buttons').style.display='none';
       if(docenteMode){
         document.getElementById('docente-container').style.display='block';
