@@ -1,0 +1,272 @@
+[
+  {
+    "domanda": "Quale obiettivo principale aveva l’AgID con l’introduzione dello SPID?",
+    "risposte": [
+      "Facilitare l’uso dei servizi online da parte di cittadini e imprese",
+      "Sostituire completamente la Carta di Identità cartacea",
+      "Limitare l’accesso ai servizi pubblici solo agli enti governativi"
+    ],
+    "corretta": "Facilitare l’uso dei servizi online da parte di cittadini e imprese"
+  },
+  {
+    "domanda": "In che anno è stato emanato il decreto che ha dato avvio al progetto SPID?",
+    "risposte": [
+      "2012",
+      "2014",
+      "2017"
+    ],
+    "corretta": "2014"
+  },
+  {
+    "domanda": "Qual è stato uno dei principali effetti della pandemia sulla diffusione di SPID?",
+    "risposte": [
+      "Un calo di utilizzo dovuto alla chiusura degli uffici",
+      "Un boom di identità digitali richieste per accedere ai bonus statali",
+      "La sospensione del rilascio delle nuove identità digitali"
+    ],
+    "corretta": "Un boom di identità digitali richieste per accedere ai bonus statali"
+  },
+  {
+    "domanda": "Quale fascia d’età ha la percentuale più alta di cittadini con SPID?",
+    "risposte": [
+      "18-24 anni",
+      "35-50 anni",
+      "Over 75"
+    ],
+    "corretta": "18-24 anni"
+  },
+  {
+    "domanda": "Che cosa rappresenta una ‘botnet’ negli attacchi informatici?",
+    "risposte": [
+      "Un insieme di dispositivi compromessi usati per lanciare attacchi",
+      "Un software di difesa contro i malware",
+      "Una rete privata virtuale utilizzata per la crittografia"
+    ],
+    "corretta": "Un insieme di dispositivi compromessi usati per lanciare attacchi"
+  },
+  {
+    "domanda": "Quale minaccia informatica si basa sul sovraccarico di un server con traffico eccessivo?",
+    "risposte": [
+      "Phishing",
+      "DDoS",
+      "Ransomware"
+    ],
+    "corretta": "DDoS"
+  },
+  {
+    "domanda": "Qual è il principale vantaggio di un backup su cloud rispetto a uno locale?",
+    "risposte": [
+      "Non richiede connessione Internet",
+      "Offre maggiore sicurezza e accessibilità da qualsiasi luogo",
+      "È sempre gratuito e illimitato"
+    ],
+    "corretta": "Offre maggiore sicurezza e accessibilità da qualsiasi luogo"
+  },
+  {
+    "domanda": "Che cos’è un ‘password manager’?",
+    "risposte": [
+      "Un software che genera, memorizza e gestisce password in modo sicuro",
+      "Un antivirus che protegge le credenziali di accesso",
+      "Un servizio online che recupera password dimenticate"
+    ],
+    "corretta": "Un software che genera, memorizza e gestisce password in modo sicuro"
+  },
+  {
+    "domanda": "Perché il principio di ‘accountability’ del GDPR è rilevante?",
+    "risposte": [
+      "Obbliga le organizzazioni a dimostrare il rispetto delle norme",
+      "Stabilisce che i dati possono essere conservati a tempo indeterminato",
+      "Consente alle aziende di trasferire dati senza consenso"
+    ],
+    "corretta": "Obbliga le organizzazioni a dimostrare il rispetto delle norme"
+  },
+  {
+    "domanda": "Quale dei seguenti NON è un metodo valido di riconoscimento per ottenere SPID?",
+    "risposte": [
+      "Bonifico bancario da conto intestato al richiedente",
+      "Registrazione video guidata",
+      "Telefonata al call center dell’AgID"
+    ],
+    "corretta": "Telefonata al call center dell’AgID"
+  },
+  {
+    "domanda": "Cosa significa il diritto alla ‘limitazione del trattamento’ previsto dal GDPR?",
+    "risposte": [
+      "Bloccare temporaneamente l’uso dei dati in determinate circostanze",
+      "Eliminare tutti i dati personali memorizzati",
+      "Trasferire i dati a un altro titolare"
+    ],
+    "corretta": "Bloccare temporaneamente l’uso dei dati in determinate circostanze"
+  },
+  {
+    "domanda": "Qual è il ruolo del Responsabile del trattamento dei dati?",
+    "risposte": [
+      "Stabilire le finalità del trattamento",
+      "Gestire i dati per conto del titolare secondo le sue istruzioni",
+      "Erogare sanzioni in caso di violazioni"
+    ],
+    "corretta": "Gestire i dati per conto del titolare secondo le sue istruzioni"
+  },
+  {
+    "domanda": "Perché gli aggiornamenti software sono fondamentali per la sicurezza?",
+    "risposte": [
+      "Aumentano la velocità di caricamento delle pagine web",
+      "Correggono vulnerabilità che potrebbero essere sfruttate dagli hacker",
+      "Garantiscono spazio di archiviazione aggiuntivo"
+    ],
+    "corretta": "Correggono vulnerabilità che potrebbero essere sfruttate dagli hacker"
+  },
+  {
+    "domanda": "Quale esempio rappresenta una ‘decisione automatizzata’ vietata dal GDPR?",
+    "risposte": [
+      "Un sistema che assegna automaticamente prestiti basandosi solo su algoritmi",
+      "La firma digitale di un documento",
+      "La ricezione di notifiche da un’app di messaggistica"
+    ],
+    "corretta": "Un sistema che assegna automaticamente prestiti basandosi solo su algoritmi"
+  },
+  {
+    "domanda": "Qual è la funzione principale della crittografia in cybersecurity?",
+    "risposte": [
+      "Rendere i dati illeggibili a chi non è autorizzato",
+      "Accelerare la connessione Internet",
+      "Ottimizzare lo spazio su disco"
+    ],
+    "corretta": "Rendere i dati illeggibili a chi non è autorizzato"
+  },
+  {
+    "domanda": "Quale tra questi è un esempio di ingegneria sociale?",
+    "risposte": [
+      "Un tecnico falso che chiama fingendosi dell’assistenza",
+      "Un aggiornamento software di sicurezza",
+      "L’uso di un firewall aziendale"
+    ],
+    "corretta": "Un tecnico falso che chiama fingendosi dell’assistenza"
+  },
+  {
+    "domanda": "Quale base giuridica del GDPR consente il trattamento per obblighi legali?",
+    "risposte": [
+      "Consenso",
+      "Obbligo legale",
+      "Interessi vitali"
+    ],
+    "corretta": "Obbligo legale"
+  },
+  {
+    "domanda": "Quale vantaggio ha l’autenticazione a due fattori (2FA) rispetto alla sola password?",
+    "risposte": [
+      "Riduce drasticamente il rischio di accessi non autorizzati",
+      "Permette l’uso di password più brevi",
+      "Rende inutile l’uso del backup"
+    ],
+    "corretta": "Riduce drasticamente il rischio di accessi non autorizzati"
+  },
+  {
+    "domanda": "Quale vulnerabilità è stata sfruttata nel caso Zerologon (2020)?",
+    "risposte": [
+      "Un bug nel protocollo Netlogon che permetteva accesso senza credenziali",
+      "Un errore nel sistema di backup che cancellava file sensibili",
+      "Una falla nei sistemi di posta elettronica PEC"
+    ],
+    "corretta": "Un bug nel protocollo Netlogon che permetteva accesso senza credenziali"
+  },
+  {
+    "domanda": "Che differenza c’è tra antivirus e antimalware?",
+    "risposte": [
+      "Gli antivirus rilevano solo virus e worm, gli antimalware coprono più minacce",
+      "Gli antivirus funzionano solo su Windows, gli antimalware su tutti i sistemi",
+      "Gli antivirus eliminano minacce note, gli antimalware solo sconosciute"
+    ],
+    "corretta": "Gli antivirus rilevano solo virus e worm, gli antimalware coprono più minacce"
+  },
+  {
+    "domanda": "Cosa significa ‘minimizzazione dei dati’ nel GDPR?",
+    "risposte": [
+      "Raccogliere solo i dati strettamente necessari alla finalità dichiarata",
+      "Conservare i dati per un tempo illimitato",
+      "Convertire i dati in formato compresso per risparmiare spazio"
+    ],
+    "corretta": "Raccogliere solo i dati strettamente necessari alla finalità dichiarata"
+  },
+  {
+    "domanda": "Qual è uno svantaggio del backup locale rispetto al cloud?",
+    "risposte": [
+      "Maggior rischio di perdita fisica o danni hardware",
+      "Accessibilità da qualsiasi luogo",
+      "Richiede sempre una connessione Internet"
+    ],
+    "corretta": "Maggior rischio di perdita fisica o danni hardware"
+  },
+  {
+    "domanda": "Che cos’è un trojan?",
+    "risposte": [
+      "Un malware che si maschera da software legittimo",
+      "Un virus che infetta solo email",
+      "Un worm che si replica autonomamente"
+    ],
+    "corretta": "Un malware che si maschera da software legittimo"
+  },
+  {
+    "domanda": "Cosa prevede il GDPR in caso di violazione dei dati personali?",
+    "risposte": [
+      "Notifica alle autorità di controllo e, se necessario, agli interessati",
+      "Cancellazione automatica di tutti i dati conservati",
+      "Sospensione obbligatoria del servizio online"
+    ],
+    "corretta": "Notifica alle autorità di controllo e, se necessario, agli interessati"
+  },
+  {
+    "domanda": "Che cos’è il consenso ‘double opt-in’ nel marketing digitale?",
+    "risposte": [
+      "Una conferma tramite email per validare l’iscrizione",
+      "Un consenso raccolto solo tramite SMS",
+      "Una procedura automatica che attiva il consenso senza conferma"
+    ],
+    "corretta": "Una conferma tramite email per validare l’iscrizione"
+  },
+  {
+    "domanda": "Quale tra questi NON è un vantaggio della 2FA?",
+    "risposte": [
+      "Doppia verifica dell’identità",
+      "Riduzione del rischio di accessi fraudolenti",
+      "Eliminazione definitiva della necessità di password"
+    ],
+    "corretta": "Eliminazione definitiva della necessità di password"
+  },
+  {
+    "domanda": "Quale principio del GDPR richiede che i dati siano accurati e aggiornati?",
+    "risposte": [
+      "Esattezza",
+      "Limitazione delle finalità",
+      "Legittimo interesse"
+    ],
+    "corretta": "Esattezza"
+  },
+  {
+    "domanda": "Che cos’è il diritto di opposizione previsto dal GDPR?",
+    "risposte": [
+      "Il diritto di rifiutare trattamenti per motivi legittimi, come il marketing diretto",
+      "Il diritto di ricevere una copia dei propri dati",
+      "Il diritto di trasferire i dati a un altro fornitore"
+    ],
+    "corretta": "Il diritto di rifiutare trattamenti per motivi legittimi, come il marketing diretto"
+  },
+  {
+    "domanda": "Qual è la funzione principale di un firewall?",
+    "risposte": [
+      "Filtrare il traffico di rete per bloccare accessi non autorizzati",
+      "Aumentare la velocità di connessione",
+      "Rimuovere virus già presenti nel sistema"
+    ],
+    "corretta": "Filtrare il traffico di rete per bloccare accessi non autorizzati"
+  },
+  {
+    "domanda": "Che cosa prevede il GDPR riguardo ai cookie?",
+    "risposte": [
+      "L’utente deve esprimere un consenso esplicito per i cookie non essenziali",
+      "I cookie possono essere sempre installati senza informare l’utente",
+      "È sufficiente informare l’utente senza possibilità di scelta"
+    ],
+    "corretta": "L’utente deve esprimere un consenso esplicito per i cookie non essenziali"
+  }
+]
