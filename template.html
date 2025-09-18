@@ -105,7 +105,17 @@
       </div>
     </div>
 
-    <button onclick="iniziaQuiz(5)">💻 Quiz 5 - Produttività, Cyberbullismo e Tecnologia</button>
+    <!-- 🔽 Raggruppamento Quiz 5 -->
+    <button onclick="mostraSottomenuQuiz5()">💻 Quiz 5 - Produttività, Cyberbullismo e Tecnologia</button>
+    <div id="submenu-quiz5" style="display:none; margin-top:10px;">
+      <button onclick="iniziaQuiz(5)">📘 Quiz 5 - Base</button>
+      <button onclick="iniziaQuiz('5-2')">🛡️ Quiz 5-2 - Approfondimento</button>
+      <button onclick="iniziaQuiz('5-3')">🧪 Quiz 5-3 - Vero/Falso</button>
+      <div style="margin-top:10px;">
+        <button onclick="nascondiSottomenuQuiz5()">⬅️ Indietro</button>
+      </div>
+    </div>
+
     <div style="margin-top:15px;">
       <button onclick="tornaAllaModalita()">⬅️ Torna alla scelta modalità</button>
     </div>
@@ -324,6 +334,8 @@
     function nascondiSottomenuQuiz3(){ document.getElementById('submenu-quiz3').style.display='none'; }
     function mostraSottomenuQuiz4(){ document.getElementById('submenu-quiz4').style.display='block'; }
     function nascondiSottomenuQuiz4(){ document.getElementById('submenu-quiz4').style.display='none'; }
+    function mostraSottomenuQuiz5(){ document.getElementById('submenu-quiz5').style.display='block'; }
+    function nascondiSottomenuQuiz5(){ document.getElementById('submenu-quiz5').style.display='none'; }
 
   </script>
 </body>
