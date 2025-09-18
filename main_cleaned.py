@@ -35,6 +35,17 @@ def load_data():
     if path_extra_3_3.exists():
         with open(path_extra_3_3, "r", encoding="utf-8") as f:
             quizzes["3-3"] = json.load(f)
+    # quiz extra 4-2
+    path_extra_4_2 = Path("ordered_questions4-2.json")
+    if path_extra_4_2.exists():
+        with open(path_extra_4_2, "r", encoding="utf-8") as f:
+            quizzes["4-2"] = json.load(f)
+
+    # quiz extra 4-3
+    path_extra_4_3 = Path("ordered_questions4-3.json")
+    if path_extra_4_3.exists():
+        with open(path_extra_4_3, "r", encoding="utf-8") as f:
+            quizzes["4-3"] = json.load(f)
 
 # carico subito i dati all'avvio
 load_data()
