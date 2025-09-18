@@ -96,7 +96,16 @@
       </div>
     </div>
     
-    <button onclick="iniziaQuiz(4)">💬 Quiz 4 - Social Media</button>
+    <!-- 🔽 Raggruppamento Quiz 4 -->
+<button onclick="mostraSottomenuQuiz4()">💬 Quiz 4 - Social Media</button>
+<div id="submenu-quiz4" style="display:none; margin-top:10px;">
+  <button onclick="iniziaQuiz(4)">📘 Quiz 4 - Base</button>
+  <button onclick="iniziaQuiz('4-2')">🛡️ Quiz 4-2 - Approfondimento</button>
+  <button onclick="iniziaQuiz('4-3')">🧪 Quiz 4-3 - Vero/Falso</button>
+  <div style="margin-top:10px;">
+    <button onclick="nascondiSottomenuQuiz4()">⬅️ Indietro</button>
+  </div>
+</div>
     <button onclick="iniziaQuiz(5)">💻 Quiz 5 - Produttività, Cyberbullismo e Tecnologia</button>
     <div style="margin-top:15px;">
       <button onclick="tornaAllaModalita()">⬅️ Torna alla scelta modalità</button>
@@ -375,6 +384,14 @@
     function nascondiSottomenuQuiz3(){
       document.getElementById('submenu-quiz3').style.display = 'none';
     }
+    // 🔹 Funzioni per gestire sotto-menu Quiz 4
+function mostraSottomenuQuiz4(){
+  document.getElementById('submenu-quiz4').style.display = 'block';
+}
+function nascondiSottomenuQuiz4(){
+  document.getElementById('submenu-quiz4').style.display = 'none';
+}
+
   </script>
 </body>
 </html>
