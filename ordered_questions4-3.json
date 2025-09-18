@@ -1,0 +1,202 @@
+[
+  {
+    "domanda": "Instagram è nato come app per la condivisione di foto con filtri artistici.",
+    "risposte": [
+      "Vero",
+      "Falso"
+    ],
+    "corretta": "Vero"
+  },
+  {
+    "domanda": "Facebook è stato lanciato nel 2012 come piattaforma aperta a tutti.",
+    "risposte": [
+      "Vero",
+      "Falso"
+    ],
+    "corretta": "Falso"
+  },
+  {
+    "domanda": "Le Stories di Instagram scompaiono dopo 48 ore.",
+    "risposte": [
+      "Vero",
+      "Falso"
+    ],
+    "corretta": "Falso"
+  },
+  {
+    "domanda": "I Reels sono nati prima delle Stories.",
+    "risposte": [
+      "Vero",
+      "Falso"
+    ],
+    "corretta": "Falso"
+  },
+  {
+    "domanda": "Instagram è particolarmente diffuso nella fascia 18-34 anni.",
+    "risposte": [
+      "Vero",
+      "Falso"
+    ],
+    "corretta": "Vero"
+  },
+  {
+    "domanda": "Facebook è disponibile in più di 100 lingue.",
+    "risposte": [
+      "Vero",
+      "Falso"
+    ],
+    "corretta": "Vero"
+  },
+  {
+    "domanda": "I gruppi Facebook possono essere pubblici, privati o segreti.",
+    "risposte": [
+      "Vero",
+      "Falso"
+    ],
+    "corretta": "Vero"
+  },
+  {
+    "domanda": "TikTok è stato lanciato nel 2018 in Cina.",
+    "risposte": [
+      "Vero",
+      "Falso"
+    ],
+    "corretta": "Falso"
+  },
+  {
+    "domanda": "TikTok si è fuso con Snapchat nel 2018.",
+    "risposte": [
+      "Vero",
+      "Falso"
+    ],
+    "corretta": "Falso"
+  },
+  {
+    "domanda": "La maggior parte degli utenti TikTok ha tra i 13 e i 24 anni.",
+    "risposte": [
+      "Vero",
+      "Falso"
+    ],
+    "corretta": "Vero"
+  },
+  {
+    "domanda": "TikTok utilizza spesso la musica come elemento chiave dei trend.",
+    "risposte": [
+      "Vero",
+      "Falso"
+    ],
+    "corretta": "Vero"
+  },
+  {
+    "domanda": "Gli utenti trascorrono in media 10 minuti al giorno su TikTok.",
+    "risposte": [
+      "Vero",
+      "Falso"
+    ],
+    "corretta": "Falso"
+  },
+  {
+    "domanda": "YouTube è stato lanciato nel 2005 da tre ex-dipendenti di PayPal.",
+    "risposte": [
+      "Vero",
+      "Falso"
+    ],
+    "corretta": "Vero"
+  },
+  {
+    "domanda": "Google ha acquistato YouTube nel 2006.",
+    "risposte": [
+      "Vero",
+      "Falso"
+    ],
+    "corretta": "Vero"
+  },
+  {
+    "domanda": "YouTube Live consente di fare dirette streaming.",
+    "risposte": [
+      "Vero",
+      "Falso"
+    ],
+    "corretta": "Vero"
+  },
+  {
+    "domanda": "Un sito web è accessibile solo da dispositivi mobili.",
+    "risposte": [
+      "Vero",
+      "Falso"
+    ],
+    "corretta": "Falso"
+  },
+  {
+    "domanda": "Un e-commerce permette di acquistare prodotti online.",
+    "risposte": [
+      "Vero",
+      "Falso"
+    ],
+    "corretta": "Vero"
+  },
+  {
+    "domanda": "Il modello B2B riguarda le transazioni tra aziende.",
+    "risposte": [
+      "Vero",
+      "Falso"
+    ],
+    "corretta": "Vero"
+  },
+  {
+    "domanda": "C2C significa 'Consumer to Consumer'.",
+    "risposte": [
+      "Vero",
+      "Falso"
+    ],
+    "corretta": "Vero"
+  },
+  {
+    "domanda": "Shopify è una piattaforma di e-commerce facile da usare.",
+    "risposte": [
+      "Vero",
+      "Falso"
+    ],
+    "corretta": "Vero"
+  },
+  {
+    "domanda": "WooCommerce è una piattaforma indipendente, non legata a WordPress.",
+    "risposte": [
+      "Vero",
+      "Falso"
+    ],
+    "corretta": "Falso"
+  },
+  {
+    "domanda": "Il SEO è una strategia di visibilità basata su annunci a pagamento.",
+    "risposte": [
+      "Vero",
+      "Falso"
+    ],
+    "corretta": "Falso"
+  },
+  {
+    "domanda": "Il SEM include campagne pubblicitarie come Google Ads.",
+    "risposte": [
+      "Vero",
+      "Falso"
+    ],
+    "corretta": "Vero"
+  },
+  {
+    "domanda": "I backlink aumentano l’autorità di un sito agli occhi dei motori di ricerca.",
+    "risposte": [
+      "Vero",
+      "Falso"
+    ],
+    "corretta": "Vero"
+  },
+  {
+    "domanda": "Le campagne SEM garantiscono risultati organici nel lungo periodo senza costi.",
+    "risposte": [
+      "Vero",
+      "Falso"
+    ],
+    "corretta": "Falso"
+  }
+]

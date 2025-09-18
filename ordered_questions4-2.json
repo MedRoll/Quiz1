@@ -1,0 +1,182 @@
+[
+  {
+    "domanda": "Qual è stata la prima funzione principale di Instagram?",
+    "risposte": [
+      "Condivisione di foto con filtri artistici",
+      "Creazione di eventi pubblici",
+      "Streaming live di lunga durata"
+    ],
+    "corretta": "Condivisione di foto con filtri artistici"
+  },
+  {
+    "domanda": "In che anno Facebook ha acquisito Instagram?",
+    "risposte": [
+      "2008",
+      "2012",
+      "2016"
+    ],
+    "corretta": "2012"
+  },
+  {
+    "domanda": "Qual è la durata massima dei Reels di Instagram?",
+    "risposte": [
+      "30 secondi",
+      "60 secondi",
+      "90 secondi"
+    ],
+    "corretta": "60 secondi"
+  },
+  {
+    "domanda": "Quale tra questi è un rischio associato a Instagram?",
+    "risposte": [
+      "Perdita di dati bancari",
+      "Dipendenza e FOMO",
+      "Virus informatici"
+    ],
+    "corretta": "Dipendenza e FOMO"
+  },
+  {
+    "domanda": "A cosa serve Facebook Ads Manager?",
+    "risposte": [
+      "Gestire eventi online",
+      "Creare e monitorare annunci pubblicitari",
+      "Moderare i gruppi"
+    ],
+    "corretta": "Creare e monitorare annunci pubblicitari"
+  },
+  {
+    "domanda": "Qual è la fascia d’età più attiva su Facebook?",
+    "risposte": [
+      "13-18 anni",
+      "25-34 anni",
+      "45-54 anni"
+    ],
+    "corretta": "25-34 anni"
+  },
+  {
+    "domanda": "Quale funzione di Facebook permette di riunire persone con interessi comuni?",
+    "risposte": [
+      "Marketplace",
+      "Gruppi",
+      "Pagine"
+    ],
+    "corretta": "Gruppi"
+  },
+  {
+    "domanda": "In che anno è stato lanciato TikTok (come Douyin in Cina)?",
+    "risposte": [
+      "2014",
+      "2016",
+      "2018"
+    ],
+    "corretta": "2016"
+  },
+  {
+    "domanda": "Con quale app si è fuso TikTok nel 2018?",
+    "risposte": [
+      "Snapchat",
+      "Musical.ly",
+      "Vine"
+    ],
+    "corretta": "Musical.ly"
+  },
+  {
+    "domanda": "Qual è la durata media dei video su TikTok?",
+    "risposte": [
+      "5–10 secondi",
+      "15–60 secondi",
+      "2–5 minuti"
+    ],
+    "corretta": "15–60 secondi"
+  },
+  {
+    "domanda": "Quale elemento caratterizza i trend di TikTok?",
+    "risposte": [
+      "Uso di filtri statici",
+      "Coinvolgimento di audio e musica",
+      "Condivisione di documenti PDF"
+    ],
+    "corretta": "Coinvolgimento di audio e musica"
+  },
+  {
+    "domanda": "Qual è il tempo medio giornaliero trascorso su TikTok per utente?",
+    "risposte": [
+      "20 minuti",
+      "35 minuti",
+      "Oltre 50 minuti"
+    ],
+    "corretta": "Oltre 50 minuti"
+  },
+  {
+    "domanda": "In che anno è stato lanciato YouTube?",
+    "risposte": [
+      "2003",
+      "2005",
+      "2007"
+    ],
+    "corretta": "2005"
+  },
+  {
+    "domanda": "Qual è stato il primo video caricato su YouTube?",
+    "risposte": [
+      "Me at the Zoo",
+      "Hello World",
+      "My First Vlog"
+    ],
+    "corretta": "Me at the Zoo"
+  },
+  {
+    "domanda": "Qual è uno dei vantaggi principali di un sito web aziendale?",
+    "risposte": [
+      "Accessibilità continua alle informazioni",
+      "Obbligo di iscrizione a pagamento",
+      "Riduzione dei costi pubblicitari offline"
+    ],
+    "corretta": "Accessibilità continua alle informazioni"
+  },
+  {
+    "domanda": "Quale tipologia di e-commerce rappresenta le transazioni tra privati?",
+    "risposte": [
+      "B2C",
+      "C2C",
+      "B2B"
+    ],
+    "corretta": "C2C"
+  },
+  {
+    "domanda": "Quale piattaforma di e-commerce è un plug-in di WordPress?",
+    "risposte": [
+      "Shopify",
+      "WooCommerce",
+      "Magento"
+    ],
+    "corretta": "WooCommerce"
+  },
+  {
+    "domanda": "Qual è il vantaggio principale del SEO rispetto al SEM?",
+    "risposte": [
+      "Risultati immediati",
+      "Traffico organico senza costi pubblicitari",
+      "Possibilità di targeting avanzato"
+    ],
+    "corretta": "Traffico organico senza costi pubblicitari"
+  },
+  {
+    "domanda": "Qual è lo strumento pubblicitario di Google per annunci a pagamento?",
+    "risposte": [
+      "Google Analytics",
+      "Google Ads",
+      "Google Search Console"
+    ],
+    "corretta": "Google Ads"
+  },
+  {
+    "domanda": "Quale elemento NON appartiene al SEO on-page?",
+    "risposte": [
+      "Tag di titolo e descrizioni",
+      "Velocità di caricamento della pagina",
+      "Budget pubblicitario"
+    ],
+    "corretta": "Budget pubblicitario"
+  }
+]
