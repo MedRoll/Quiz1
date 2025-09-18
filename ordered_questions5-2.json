@@ -1,0 +1,182 @@
+[
+  {
+    "domanda": "Qual è un vantaggio delle app per prendere appunti online?",
+    "risposte": [
+      "Si cancellano automaticamente dopo 24 ore",
+      "Permettono di accedere alle note da più dispositivi",
+      "Funzionano solo senza connessione internet"
+    ],
+    "corretta": "Permettono di accedere alle note da più dispositivi"
+  },
+  {
+    "domanda": "Quale tra questi è un task manager?",
+    "risposte": [
+      "Spotify",
+      "Trello",
+      "Instagram"
+    ],
+    "corretta": "Trello"
+  },
+  {
+    "domanda": "Per cosa viene utilizzata principalmente la piattaforma Lucidchart?",
+    "risposte": [
+      "Per modificare fotografie",
+      "Per creare diagrammi di flusso e mappe concettuali",
+      "Per registrare podcast"
+    ],
+    "corretta": "Per creare diagrammi di flusso e mappe concettuali"
+  },
+  {
+    "domanda": "Qual è un esempio di software per la gestione di progetti digitali?",
+    "risposte": [
+      "Basecamp",
+      "TikTok",
+      "Photoshop"
+    ],
+    "corretta": "Basecamp"
+  },
+  {
+    "domanda": "Qual è una caratteristica dei promemoria digitali?",
+    "risposte": [
+      "Permettono di impostare avvisi per attività importanti",
+      "Creano automaticamente grafici e statistiche",
+      "Funzionano solo su computer fissi"
+    ],
+    "corretta": "Permettono di impostare avvisi per attività importanti"
+  },
+  {
+    "domanda": "Quale piattaforma è utile per creare contenuti visivi senza competenze avanzate di design?",
+    "risposte": [
+      "Canva",
+      "Excel",
+      "Word"
+    ],
+    "corretta": "Canva"
+  },
+  {
+    "domanda": "Quale principio è fondamentale per un contenuto visivo efficace?",
+    "risposte": [
+      "Utilizzare troppo testo",
+      "Mantenere semplicità e chiarezza",
+      "Usare immagini sfocate"
+    ],
+    "corretta": "Mantenere semplicità e chiarezza"
+  },
+  {
+    "domanda": "Quale piattaforma fornisce immagini gratuite e libere da diritti?",
+    "risposte": [
+      "Unsplash",
+      "Facebook",
+      "LinkedIn"
+    ],
+    "corretta": "Unsplash"
+  },
+  {
+    "domanda": "Qual è un software online che permette di montare video facilmente?",
+    "risposte": [
+      "Clipchamp",
+      "Excel",
+      "Slack"
+    ],
+    "corretta": "Clipchamp"
+  },
+  {
+    "domanda": "Quale strumento permette di creare GIF animate?",
+    "risposte": [
+      "GIF Maker",
+      "Word",
+      "PowerPoint"
+    ],
+    "corretta": "GIF Maker"
+  },
+  {
+    "domanda": "Quale software gratuito è spesso usato per registrare podcast?",
+    "risposte": [
+      "Audacity",
+      "Photoshop",
+      "Notion"
+    ],
+    "corretta": "Audacity"
+  },
+  {
+    "domanda": "Cos’è l’Internet delle Cose (IoT)?",
+    "risposte": [
+      "Un tipo di social network",
+      "Una rete di oggetti connessi che scambiano dati",
+      "Un videogioco multiplayer"
+    ],
+    "corretta": "Una rete di oggetti connessi che scambiano dati"
+  },
+  {
+    "domanda": "Quale tecnologia consente di creare registri digitali sicuri e immutabili?",
+    "risposte": [
+      "Blockchain",
+      "Photoshop",
+      "VPN"
+    ],
+    "corretta": "Blockchain"
+  },
+  {
+    "domanda": "Qual è una caratteristica della Realtà Aumentata (AR)?",
+    "risposte": [
+      "Sovrappone elementi digitali al mondo reale",
+      "Funziona solo in spazi bui",
+      "Sostituisce completamente la realtà fisica"
+    ],
+    "corretta": "Sovrappone elementi digitali al mondo reale"
+  },
+  {
+    "domanda": "Quale assistente virtuale utilizza l’Intelligenza Artificiale?",
+    "risposte": [
+      "Siri",
+      "Paint",
+      "Excel"
+    ],
+    "corretta": "Siri"
+  },
+  {
+    "domanda": "Qual è un esempio di robotica collaborativa?",
+    "risposte": [
+      "Un robot che lavora fianco a fianco con un umano",
+      "Un robot che sostituisce completamente il medico",
+      "Un videogioco con avatar digitali"
+    ],
+    "corretta": "Un robot che lavora fianco a fianco con un umano"
+  },
+  {
+    "domanda": "Quale misura di sicurezza è utile per proteggere le transazioni online?",
+    "risposte": [
+      "Autenticazione a due fattori (2FA)",
+      "Scaricare software casuali",
+      "Disattivare gli aggiornamenti"
+    ],
+    "corretta": "Autenticazione a due fattori (2FA)"
+  },
+  {
+    "domanda": "Quale dispositivo appartiene alla Smart Home?",
+    "risposte": [
+      "Termostato intelligente",
+      "Calcolatrice scientifica",
+      "Stampante 3D"
+    ],
+    "corretta": "Termostato intelligente"
+  },
+  {
+    "domanda": "Quale tecnologia digitale è utile per monitorare i parametri vitali?",
+    "risposte": [
+      "Smartwatch",
+      "Word",
+      "Excel"
+    ],
+    "corretta": "Smartwatch"
+  },
+  {
+    "domanda": "Cos’è il cyberbullismo?",
+    "risposte": [
+      "Un comportamento aggressivo online",
+      "Un antivirus avanzato",
+      "Un sistema di crittografia"
+    ],
+    "corretta": "Un comportamento aggressivo online"
+  }
+]

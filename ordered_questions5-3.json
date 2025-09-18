@@ -1,0 +1,202 @@
+[
+  {
+    "domanda": "Le app per appunti digitali permettono di aggiungere immagini e link.",
+    "risposte": [
+      "Vero",
+      "Falso"
+    ],
+    "corretta": "Vero"
+  },
+  {
+    "domanda": "I task manager servono principalmente a proteggere il computer dai virus.",
+    "risposte": [
+      "Vero",
+      "Falso"
+    ],
+    "corretta": "Falso"
+  },
+  {
+    "domanda": "Le infografiche aiutano a rendere più comprensibili concetti complessi.",
+    "risposte": [
+      "Vero",
+      "Falso"
+    ],
+    "corretta": "Vero"
+  },
+  {
+    "domanda": "La gestione di progetti digitali permette il coordinamento tra i membri di un team.",
+    "risposte": [
+      "Vero",
+      "Falso"
+    ],
+    "corretta": "Vero"
+  },
+  {
+    "domanda": "I promemoria digitali possono essere usati solo sugli smartphone più recenti.",
+    "risposte": [
+      "Vero",
+      "Falso"
+    ],
+    "corretta": "Falso"
+  },
+  {
+    "domanda": "Il design digitale richiede sempre competenze avanzate di Photoshop.",
+    "risposte": [
+      "Vero",
+      "Falso"
+    ],
+    "corretta": "Falso"
+  },
+  {
+    "domanda": "La semplicità è un principio importante nel design visivo.",
+    "risposte": [
+      "Vero",
+      "Falso"
+    ],
+    "corretta": "Vero"
+  },
+  {
+    "domanda": "Le immagini libere da diritti evitano problemi legali di copyright.",
+    "risposte": [
+      "Vero",
+      "Falso"
+    ],
+    "corretta": "Vero"
+  },
+  {
+    "domanda": "Il video è uno strumento efficace di comunicazione digitale.",
+    "risposte": [
+      "Vero",
+      "Falso"
+    ],
+    "corretta": "Vero"
+  },
+  {
+    "domanda": "Le GIF sono immagini animate che si ripetono in loop.",
+    "risposte": [
+      "Vero",
+      "Falso"
+    ],
+    "corretta": "Vero"
+  },
+  {
+    "domanda": "Un podcast è un contenuto audio distribuito online.",
+    "risposte": [
+      "Vero",
+      "Falso"
+    ],
+    "corretta": "Vero"
+  },
+  {
+    "domanda": "L’IoT collega dispositivi e oggetti alla rete per scambiare dati.",
+    "risposte": [
+      "Vero",
+      "Falso"
+    ],
+    "corretta": "Vero"
+  },
+  {
+    "domanda": "La blockchain è sempre controllata da un’autorità centrale.",
+    "risposte": [
+      "Vero",
+      "Falso"
+    ],
+    "corretta": "Falso"
+  },
+  {
+    "domanda": "La Realtà Virtuale crea ambienti immersivi simulati.",
+    "risposte": [
+      "Vero",
+      "Falso"
+    ],
+    "corretta": "Vero"
+  },
+  {
+    "domanda": "L’Intelligenza Artificiale non viene mai usata in campo medico.",
+    "risposte": [
+      "Vero",
+      "Falso"
+    ],
+    "corretta": "Falso"
+  },
+  {
+    "domanda": "La robotica collaborativa prevede l’uso di robot insieme agli esseri umani.",
+    "risposte": [
+      "Vero",
+      "Falso"
+    ],
+    "corretta": "Vero"
+  },
+  {
+    "domanda": "L’autenticazione a due fattori aumenta la sicurezza online.",
+    "risposte": [
+      "Vero",
+      "Falso"
+    ],
+    "corretta": "Vero"
+  },
+  {
+    "domanda": "Una Smart Home non può contribuire al risparmio energetico.",
+    "risposte": [
+      "Vero",
+      "Falso"
+    ],
+    "corretta": "Falso"
+  },
+  {
+    "domanda": "Gli smartwatch possono monitorare battito cardiaco e sonno.",
+    "risposte": [
+      "Vero",
+      "Falso"
+    ],
+    "corretta": "Vero"
+  },
+  {
+    "domanda": "Le app di meditazione come Headspace aiutano il benessere psicologico.",
+    "risposte": [
+      "Vero",
+      "Falso"
+    ],
+    "corretta": "Vero"
+  },
+  {
+    "domanda": "Coursera e Udemy sono esempi di piattaforme per l’apprendimento online.",
+    "risposte": [
+      "Vero",
+      "Falso"
+    ],
+    "corretta": "Vero"
+  },
+  {
+    "domanda": "Il cyberbullismo consiste nell’uso positivo dei social media.",
+    "risposte": [
+      "Vero",
+      "Falso"
+    ],
+    "corretta": "Falso"
+  },
+  {
+    "domanda": "Il digital divide riguarda la disparità di accesso alle tecnologie digitali.",
+    "risposte": [
+      "Vero",
+      "Falso"
+    ],
+    "corretta": "Vero"
+  },
+  {
+    "domanda": "L’over-sharing consiste nel condividere troppe informazioni personali online.",
+    "risposte": [
+      "Vero",
+      "Falso"
+    ],
+    "corretta": "Vero"
+  },
+  {
+    "domanda": "La dipendenza digitale può avere impatti negativi sul benessere psicologico.",
+    "risposte": [
+      "Vero",
+      "Falso"
+    ],
+    "corretta": "Vero"
+  }
+]
