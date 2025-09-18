@@ -282,61 +282,48 @@
       });
     }
 
-    function ricomincia(){ punteggio=0; indexDomanda=0; risposteUtente=[]; document.getElementById('punteggio').textContent="0"; document.getElementById('recap').innerHTML=""; document.getElementById('controls-container').style.display='block'; document.getElementById('progress-container').style.display='block'; caricaDomanda(); }
-    function terminaTest(){ indexDomanda=MAX_DOMANDE; mostraRecap(); }
+    function ricomincia(){ punteggio=0; indexDomanda=0; risposteUtente=[]; document.getElementById('punteggio').textContent="0"; document.getElementById('recap').innerHTML=""; document.getElementById('controls-container').style.display="block"; caricaDomanda(); }
+    function tornaAiQuiz(){ document.getElementById("quiz-buttons").style.display="block"; document.getElementById("titolo-quiz").style.display="none"; document.getElementById("stats-container").style.display="none"; document.getElementById("progress-container").style.display="none"; document.getElementById("card-container").style.display="none"; document.getElementById("controls-container").style.display="none"; document.getElementById("recap").innerHTML=""; document.getElementById("docente-container").style.display="none"; }
+    function tornaAllaModalita(){ document.getElementById("start-container").style.display="block"; document.getElementById("quiz-buttons").style.display="none"; }
 
-    async function iniziaQuiz(quizId){
-      quizCorrente=quizId;
-      document.getElementById('quiz-buttons').style.display='none';
-      if(docenteMode){
-        document.getElementById('docente-container').style.display='block';
-        caricaModalitaDocente();
-      } else {
-        punteggio=0; indexDomanda=0; risposteUtente=[]; MAX_DOMANDE=0;
-        document.getElementById('punteggio').textContent='0';
-        document.getElementById('recap').innerHTML='';
-        document.getElementById('titolo-quiz').style.display='block';
-        document.getElementById('stats-container').style.display='flex';
-        document.getElementById('card-container').style.display='block';
-        document.getElementById('controls-container').style.display='block';
-        document.getElementById('progress-container').style.display='block';
-        caricaDomanda();
-      }
+    async function iniziaQuiz(numeroQuiz){
+      quizCorrente=numeroQuiz; indexDomanda=0; punteggio=0; risposteUtente=[]; MAX_DOMANDE=0;
+      document.getElementById("quiz-buttons").style.display="none";
+      document.getElementById("titolo-quiz").style.display="block";
+      document.getElementById("stats-container").style.display="flex";
+      document.getElementById("progress-container").style.display="block";
+      document.getElementById("card-container").style.display="block";
+      document.getElementById("controls-container").style.display="block";
+      document.getElementById("recap").innerHTML="";
+      document.getElementById("punteggio").textContent="0";
+      caricaDomanda();
     }
 
-    async function caricaModalitaDocente(){
-      const res=await fetch(`/quiz_all/${quizCorrente}`);
-      const domande=await res.json();
-      const container=document.getElementById("lista-docente");
-      container.innerHTML="";
-      domande.forEach((d,i)=>{
-        let html=`<div class="card"><div style="font-size:1.2em; margin-bottom:10px;"><strong>${i+1}. ${d.domanda}</strong></div>`;
-        d.risposte.forEach(r=>{ html+=r===d.corretta ? `<div class="risposta corretta">✔️ ${r}</div>` : `<div class="risposta">${r}</div>`; });
-        html+="</div>";
-        container.innerHTML+=html;
+    async function terminaTest(){
+      if(!confirm("Vuoi davvero terminare il test?")) return;
+      mostraRecap();
+    }
+
+    async function mostraDocente(){
+      document.getElementById("quiz-buttons").style.display="none";
+      document.getElementById("docente-container").style.display="block";
+      const res=await fetch(`/docente`);
+      const lista=await res.json();
+      let html="<h3>📑 Risposte di tutti gli studenti</h3><ul>";
+      lista.forEach(studente=>{
+        html+=`<li><strong>${studente.nome}</strong> - Punteggio: ${studente.punteggio}</li>`;
       });
+      html+="</ul>";
+      document.getElementById("lista-docente").innerHTML=html;
     }
 
-    function tornaAiQuiz(){
-      document.getElementById('titolo-quiz').style.display='none';
-      document.getElementById('stats-container').style.display='none';
-      document.getElementById('card-container').style.display='none';
-      document.getElementById('controls-container').style.display='none';
-      document.getElementById('docente-container').style.display='none';
-      document.getElementById('progress-container').style.display='none';
-      document.getElementById('recap').innerHTML='';
-      document.getElementById('quiz-buttons').style.display='block';
-    }
-
-    function tornaAllaModalita(){ document.getElementById('quiz-buttons').style.display='none'; document.getElementById('start-container').style.display='block'; }
-
-    function mostraSottomenuQuiz3(){ document.getElementById('submenu-quiz3').style.display='block'; }
-    function nascondiSottomenuQuiz3(){ document.getElementById('submenu-quiz3').style.display='none'; }
-    function mostraSottomenuQuiz4(){ document.getElementById('submenu-quiz4').style.display='block'; }
-    function nascondiSottomenuQuiz4(){ document.getElementById('submenu-quiz4').style.display='none'; }
-    function mostraSottomenuQuiz5(){ document.getElementById('submenu-quiz5').style.display='block'; }
-    function nascondiSottomenuQuiz5(){ document.getElementById('submenu-quiz5').style.display='none'; }
-
+    /* --- MENU SUBQUIZ --- */
+    function mostraSottomenuQuiz3(){ document.getElementById("submenu-quiz3").style.display="block"; document.getElementById("quiz-buttons").style.display="none"; }
+    function nascondiSottomenuQuiz3(){ document.getElementById("submenu-quiz3").style.display="none"; document.getElementById("quiz-buttons").style.display="block"; }
+    function mostraSottomenuQuiz4(){ document.getElementById("submenu-quiz4").style.display="block"; document.getElementById("quiz-buttons").style.display="none"; }
+    function nascondiSottomenuQuiz4(){ document.getElementById("submenu-quiz4").style.display="none"; document.getElementById("quiz-buttons").style.display="block"; }
+    function mostraSottomenuQuiz5(){ document.getElementById("submenu-quiz5").style.display="block"; document.getElementById("quiz-buttons").style.display="none"; }
+    function nascondiSottomenuQuiz5(){ document.getElementById("submenu-quiz5").style.display="none"; document.getElementById("quiz-buttons").style.display="block"; }
   </script>
 </body>
 </html>
