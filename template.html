@@ -80,11 +80,19 @@
   <!-- SELEZIONE QUIZ -->
   <div id="quiz-buttons" style="margin-top:20px; display:none; text-align:center;">
     <h2 id="quiz-title"></h2>
-    <button onclick="iniziaQuiz(1)">🎤 Quiz 1 - Competenze Digitali Base</button>
-    <button onclick="iniziaQuiz(2)">📧 Quiz 2 - Internet, Email e PEC</button>
 
-    <!-- 🔽 Raggruppamento Quiz 3 -->
-    <button onclick="mostraSottomenuQuiz3()">🔐 Quiz 3 - SPID, Cybersecurity e GDPR</button>
+    <!-- 🔽 CONTENITORE PULSANTI PRINCIPALI -->
+    <div id="main-quiz-buttons">
+      <button onclick="iniziaQuiz(1)">🎤 Quiz 1 - Competenze Digitali Base</button>
+      <button onclick="iniziaQuiz(2)">📧 Quiz 2 - Internet, Email e PEC</button>
+
+      <!-- pulsanti che aprono sottomenu -->
+      <button onclick="mostraSottomenuQuiz3()">🔐 Quiz 3 - SPID, Cybersecurity e GDPR</button>
+      <button onclick="mostraSottomenuQuiz4()">💬 Quiz 4 - Social Media</button>
+      <button onclick="mostraSottomenuQuiz5()">💻 Quiz 5 - Produttività, Cyberbullismo e Tecnologia</button>
+    </div>
+
+    <!-- SOTTOMENU QUIZ 3 (sibling del main container) -->
     <div id="submenu-quiz3" style="display:none; margin-top:10px;">
       <button onclick="iniziaQuiz(3)">📘 Quiz 3 - Base</button>
       <button onclick="iniziaQuiz('3-2')">🛡️ Quiz 3-2 - Approfondimento</button>
@@ -94,8 +102,7 @@
       </div>
     </div>
 
-    <!-- 🔽 Raggruppamento Quiz 4 -->
-    <button onclick="mostraSottomenuQuiz4()">💬 Quiz 4 - Social Media</button>
+    <!-- SOTTOMENU QUIZ 4 -->
     <div id="submenu-quiz4" style="display:none; margin-top:10px;">
       <button onclick="iniziaQuiz(4)">📘 Quiz 4 - Base</button>
       <button onclick="iniziaQuiz('4-2')">🛡️ Quiz 4-2 - Approfondimento</button>
@@ -105,8 +112,7 @@
       </div>
     </div>
 
-    <!-- 🔽 Raggruppamento Quiz 5 -->
-    <button onclick="mostraSottomenuQuiz5()">💻 Quiz 5 - Produttività, Cyberbullismo e Tecnologia</button>
+    <!-- SOTTOMENU QUIZ 5 -->
     <div id="submenu-quiz5" style="display:none; margin-top:10px;">
       <button onclick="iniziaQuiz(5)">📘 Quiz 5 - Base</button>
       <button onclick="iniziaQuiz('5-2')">🛡️ Quiz 5-2 - Approfondimento</button>
@@ -166,6 +172,11 @@
       document.getElementById("start-container").style.display="none";
       document.getElementById("quiz-buttons").style.display="block";
       document.getElementById("quiz-title").textContent = mode ? "Seleziona un quiz (Modalità Docente)" : "Seleziona un quiz (Modalità Studente)";
+      // assicurarsi che il main menu sia visibile e che i sottomenu siano nascosti
+      document.getElementById('main-quiz-buttons').style.display='block';
+      document.getElementById('submenu-quiz3').style.display='none';
+      document.getElementById('submenu-quiz4').style.display='none';
+      document.getElementById('submenu-quiz5').style.display='none';
     }
 
     async function fetchDomanda(index){
@@ -282,48 +293,93 @@
       });
     }
 
-    function ricomincia(){ punteggio=0; indexDomanda=0; risposteUtente=[]; document.getElementById('punteggio').textContent="0"; document.getElementById('recap').innerHTML=""; document.getElementById('controls-container').style.display="block"; caricaDomanda(); }
-    function tornaAiQuiz(){ document.getElementById("quiz-buttons").style.display="block"; document.getElementById("titolo-quiz").style.display="none"; document.getElementById("stats-container").style.display="none"; document.getElementById("progress-container").style.display="none"; document.getElementById("card-container").style.display="none"; document.getElementById("controls-container").style.display="none"; document.getElementById("recap").innerHTML=""; document.getElementById("docente-container").style.display="none"; }
-    function tornaAllaModalita(){ document.getElementById("start-container").style.display="block"; document.getElementById("quiz-buttons").style.display="none"; }
+    function ricomincia(){ punteggio=0; indexDomanda=0; risposteUtente=[]; document.getElementById('punteggio').textContent="0"; document.getElementById('recap').innerHTML=""; document.getElementById('controls-container').style.display='block'; document.getElementById('progress-container').style.display='block'; caricaDomanda(); }
+    function terminaTest(){ indexDomanda=MAX_DOMANDE; mostraRecap(); }
 
-    async function iniziaQuiz(numeroQuiz){
-      quizCorrente=numeroQuiz; indexDomanda=0; punteggio=0; risposteUtente=[]; MAX_DOMANDE=0;
-      document.getElementById("quiz-buttons").style.display="none";
-      document.getElementById("titolo-quiz").style.display="block";
-      document.getElementById("stats-container").style.display="flex";
-      document.getElementById("progress-container").style.display="block";
-      document.getElementById("card-container").style.display="block";
-      document.getElementById("controls-container").style.display="block";
-      document.getElementById("recap").innerHTML="";
-      document.getElementById("punteggio").textContent="0";
-      caricaDomanda();
+    async function iniziaQuiz(quizId){
+      quizCorrente=quizId;
+      document.getElementById('quiz-buttons').style.display='none';
+      if(docenteMode){
+        document.getElementById('docente-container').style.display='block';
+        caricaModalitaDocente();
+      } else {
+        punteggio=0; indexDomanda=0; risposteUtente=[]; MAX_DOMANDE=0;
+        document.getElementById('punteggio').textContent='0';
+        document.getElementById('recap').innerHTML='';
+        document.getElementById('titolo-quiz').style.display='block';
+        document.getElementById('stats-container').style.display='flex';
+        document.getElementById('card-container').style.display='block';
+        document.getElementById('controls-container').style.display='block';
+        document.getElementById('progress-container').style.display='block';
+        caricaDomanda();
+      }
     }
 
-    async function terminaTest(){
-      if(!confirm("Vuoi davvero terminare il test?")) return;
-      mostraRecap();
-    }
-
-    async function mostraDocente(){
-      document.getElementById("quiz-buttons").style.display="none";
-      document.getElementById("docente-container").style.display="block";
-      const res=await fetch(`/docente`);
-      const lista=await res.json();
-      let html="<h3>📑 Risposte di tutti gli studenti</h3><ul>";
-      lista.forEach(studente=>{
-        html+=`<li><strong>${studente.nome}</strong> - Punteggio: ${studente.punteggio}</li>`;
+    async function caricaModalitaDocente(){
+      const res=await fetch(`/quiz_all/${quizCorrente}`);
+      const domande=await res.json();
+      const container=document.getElementById("lista-docente");
+      container.innerHTML="";
+      domande.forEach((d,i)=>{
+        let html=`<div class="card"><div style="font-size:1.2em; margin-bottom:10px;"><strong>${i+1}. ${d.domanda}</strong></div>`;
+        d.risposte.forEach(r=>{ html+=r===d.corretta ? `<div class="risposta corretta">✔️ ${r}</div>` : `<div class="risposta">${r}</div>`; });
+        html+="</div>";
+        container.innerHTML+=html;
       });
-      html+="</ul>";
-      document.getElementById("lista-docente").innerHTML=html;
     }
 
-    /* --- MENU SUBQUIZ --- */
-    function mostraSottomenuQuiz3(){ document.getElementById("submenu-quiz3").style.display="block"; document.getElementById("quiz-buttons").style.display="none"; }
-    function nascondiSottomenuQuiz3(){ document.getElementById("submenu-quiz3").style.display="none"; document.getElementById("quiz-buttons").style.display="block"; }
-    function mostraSottomenuQuiz4(){ document.getElementById("submenu-quiz4").style.display="block"; document.getElementById("quiz-buttons").style.display="none"; }
-    function nascondiSottomenuQuiz4(){ document.getElementById("submenu-quiz4").style.display="none"; document.getElementById("quiz-buttons").style.display="block"; }
-    function mostraSottomenuQuiz5(){ document.getElementById("submenu-quiz5").style.display="block"; document.getElementById("quiz-buttons").style.display="none"; }
-    function nascondiSottomenuQuiz5(){ document.getElementById("submenu-quiz5").style.display="none"; document.getElementById("quiz-buttons").style.display="block"; }
+    function tornaAiQuiz(){
+      document.getElementById('titolo-quiz').style.display='none';
+      document.getElementById('stats-container').style.display='none';
+      document.getElementById('card-container').style.display='none';
+      document.getElementById('controls-container').style.display='none';
+      document.getElementById('docente-container').style.display='none';
+      document.getElementById('progress-container').style.display='none';
+      document.getElementById('recap').innerHTML='';
+      document.getElementById('quiz-buttons').style.display='block';
+      // assicurarsi che il main menu sia visibile e i sottomenu nascosti
+      document.getElementById('main-quiz-buttons').style.display='block';
+      document.getElementById('submenu-quiz3').style.display='none';
+      document.getElementById('submenu-quiz4').style.display='none';
+      document.getElementById('submenu-quiz5').style.display='none';
+    }
+
+    function tornaAllaModalita(){ 
+      document.getElementById('quiz-buttons').style.display='none'; 
+      document.getElementById('start-container').style.display='block'; 
+      // assicurarsi che i sottomenu siano chiusi
+      document.getElementById('main-quiz-buttons').style.display='block';
+      document.getElementById('submenu-quiz3').style.display='none';
+      document.getElementById('submenu-quiz4').style.display='none';
+      document.getElementById('submenu-quiz5').style.display='none';
+    }
+
+    // --- MODIFICHE MINIME ALLE FUNZIONI DEI SOTTOMENU (nasconde SOLO i pulsanti principali) ---
+    function mostraSottomenuQuiz3(){ 
+      document.getElementById('main-quiz-buttons').style.display='none';
+      document.getElementById('submenu-quiz3').style.display='block';
+    }
+    function nascondiSottomenuQuiz3(){ 
+      document.getElementById('submenu-quiz3').style.display='none';
+      document.getElementById('main-quiz-buttons').style.display='block';
+    }
+    function mostraSottomenuQuiz4(){ 
+      document.getElementById('main-quiz-buttons').style.display='none';
+      document.getElementById('submenu-quiz4').style.display='block';
+    }
+    function nascondiSottomenuQuiz4(){ 
+      document.getElementById('submenu-quiz4').style.display='none';
+      document.getElementById('main-quiz-buttons').style.display='block';
+    }
+    function mostraSottomenuQuiz5(){ 
+      document.getElementById('main-quiz-buttons').style.display='none';
+      document.getElementById('submenu-quiz5').style.display='block';
+    }
+    function nascondiSottomenuQuiz5(){ 
+      document.getElementById('submenu-quiz5').style.display='none';
+      document.getElementById('main-quiz-buttons').style.display='block';
+    }
+
   </script>
 </body>
 </html>
