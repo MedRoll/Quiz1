@@ -11,13 +11,12 @@ quizzes = {}
 def load_data():
     """
     Carica i file ordered_questions1.json ... ordered_questions5.json
-    + il quiz extra ordered_questions3-2.json
-    + il nuovo quiz 3-3 (vero/falso)
+    + i quiz extra (3-2, 3-3, 4-2, 4-3, 5-2, 5-3)
     """
     global quizzes
     quizzes.clear()
     
-    # quiz 1 → 5
+    # quiz base 1 → 5
     for i in range(1, 6):
         path = Path(f"ordered_questions{i}.json")
         if path.exists():
@@ -35,6 +34,7 @@ def load_data():
     if path_extra_3_3.exists():
         with open(path_extra_3_3, "r", encoding="utf-8") as f:
             quizzes["3-3"] = json.load(f)
+
     # quiz extra 4-2
     path_extra_4_2 = Path("ordered_questions4-2.json")
     if path_extra_4_2.exists():
@@ -47,6 +47,18 @@ def load_data():
         with open(path_extra_4_3, "r", encoding="utf-8") as f:
             quizzes["4-3"] = json.load(f)
 
+    # quiz extra 5-2
+    path_extra_5_2 = Path("ordered_questions5-2.json")
+    if path_extra_5_2.exists():
+        with open(path_extra_5_2, "r", encoding="utf-8") as f:
+            quizzes["5-2"] = json.load(f)
+
+    # quiz extra 5-3
+    path_extra_5_3 = Path("ordered_questions5-3.json")
+    if path_extra_5_3.exists():
+        with open(path_extra_5_3, "r", encoding="utf-8") as f:
+            quizzes["5-3"] = json.load(f)
+
 # carico subito i dati all'avvio
 load_data()
 
@@ -54,7 +66,7 @@ load_data()
 def get_quiz_question(quiz_id: str, index: int):
     """
     Restituisce la domanda 'index' del quiz 'quiz_id'
-    quiz_id può essere "1", "2", "3", "3-2", "3-3", "4", "5"
+    quiz_id può essere "1", "2", "3", "3-2", "3-3", "4", "4-2", "4-3", "5", "5-2", "5-3"
     """
     if quiz_id not in quizzes:
         return {"errore": "Quiz non trovato"}
